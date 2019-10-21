@@ -11,9 +11,18 @@
 │       └── style.css
 ├── routes
 │   ├── index.js
-│   └── users.js
-└── views
-    ├── error.pug
-    ├── index.pug
-    └── layout.pug
+│   └── api
+│       └── users.js
+├── views
+│   ├── error.pug
+│   ├── index.pug
+│   └── layout.pug
+├── config
+├── frontend
+├── models
+├── validations
+└── node_modules
+
+
+
 ```
