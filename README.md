@@ -30,9 +30,9 @@ PhilanthroTrees will be a mobile first-focus web app. Communities, Citizens and 
 #### Backend:
 - [MongoDB](https://www.mongodb.com/)
 - [ExpressJS](http://expressjs.com/)
+- [Node.js](https://nodejs.org/en/)
 #### Frontend: 
 - [React](https://reactjs.org/)
-- [Node.js](https://nodejs.org/en/)
 - [Redux](https://redux.js.org/)
 - [SCSS/SASS](https://sass-lang.com/documentation)
 
@@ -56,7 +56,7 @@ Technical Challenges
 ### Group Members and Work Breakdown
 Bee Ellis, Garvin Ming, Kaneka Chhak
 
-High Priority:
+### High Priority:
 - User Auth - all team members
 - Working Models for Community, Projects, Chief and Citizens
 - Routes to Community Garden (project index, member list), Citizen Stats, Project Cultivation(task index)
