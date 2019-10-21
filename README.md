@@ -61,3 +61,6 @@ Bee Ellis, Garvin Ming, Kaneka Chhak
 - Working Models for Community, Projects, Chief and Citizens
 - Routes to Community Garden (project index, member list), Citizen Stats, Project Cultivation(task index)
 - Community Page, Project Cultivation Page, Citizen Stats Page, Chief Functionality
+
+### Scorecard
+[Link](https://docs.google.com/spreadsheets/d/1M6uAXOZV7PL76SbMAm66zqEoxie4MYXUz8P6zrzJVJ0/edit?usp=sharing)
