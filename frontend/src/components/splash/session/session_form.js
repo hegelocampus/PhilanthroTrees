@@ -1,4 +1,5 @@
 import React from 'react';
+import { RenderErrors } from '../../../util/form_utils';
 
 export default class SessionForm extends React.Component {
   constructor(props) {
@@ -42,18 +43,10 @@ export default class SessionForm extends React.Component {
   }
 
   render() {
-    let errors;
-    if (this.props.errors) {
-      errors = this.props.errors.map((error, idx) => (
-        <p key={idx}>{error}</p>
-      ));
-    };
     return (
       <React.Fragment>
-        <div className="modal-content-errors-container">
-          {errors}
-        </div>
-        <form onSubmit={this.handleSubmit} className="modal-content-form">
+        <RenderErrors />
+        <form onSubmit={this.handleSubmit} className="session-form">
           {this.props.formType === 'signup' ? (
             <input
               name='username'
