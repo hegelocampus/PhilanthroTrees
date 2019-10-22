@@ -8,7 +8,8 @@
     "server:debug": "nodemon --inspect app.js",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "db:seed": "node ./bin/seeder.js"
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",
@@ -16,6 +17,7 @@
     "@types/react": "^16.9.9",
     "babel-plugin-transform-react-pug": "^7.0.1",
     "bcryptjs": "^2.4.3",
+    "casual": "^1.6.2",
     "concurrently": "^5.0.0",
     "cookie-parser": "^1.4.4",
     "debug": "~2.6.9",
@@ -23,6 +25,7 @@
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "jstransformer": "^1.0.0",
+    "mongo-seeding": "^3.4.0-alpha.0",
     "mongoose": "^5.7.6",
     "morgan": "~1.9.1",
     "node-sass": "^4.12.0",
