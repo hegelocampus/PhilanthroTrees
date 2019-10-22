@@ -20,13 +20,12 @@ router.get("/", (req, res)=>{
 router.get("/:id", (req, res)=> {
   let commDisplay;
   Community.findById(req.params.id)
-  .then(
-    community => { 
+  .then( community => { 
       commDisplay.citizens = community.citizens;
       commDisplay.projects = community.projects;
       return res.json(commDisplay);
     })
-  .catch(err=>res.status(400).json.err)
+  .catch( err => res.status(400).json(err))
 })
 
 // Create a Community 
