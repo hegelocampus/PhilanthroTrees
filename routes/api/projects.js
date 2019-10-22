@@ -5,7 +5,7 @@ const Project = require('../../models/Project');
 const validateProject = require('../../validation/valid-project');
 
 ///communities/:communityId/projects
-router.get('/projects', (req, res) => {
+router.get('/', (req, res) => {
   const communityId = req.params.communityId;
 
   Project.find({community: communityId})
@@ -18,19 +18,24 @@ router.get('/projects', (req, res) => {
 });
 
 ///communities/:communityId/projects/:projectId
-router.get('/projects/:projectId', (req, res) => {
+router.get('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
-  Project.findOne({id: projectId})
-    .then(project => res.json(project))
-    .catch(err => 
-      res.status(404).json({
-        project: 'Project not found'
-      }))
+  Project.findOne({_id: projectId})
+    .then(project => {
+      if (!project){
+        res.status(404).json({
+          project: 'Project not found'
+        })
+      } else {
+        res.json(project);
+      }
+    });
 });
 
 //'/communities/:communityId/projects/create'
 router.post('/create', (req, res) => {
+  // const communityId = req.params.communityId;
   const { errors, isValid } = validateProject(req.body);
 
   if (!isValid) {
@@ -40,17 +45,17 @@ router.post('/create', (req, res) => {
   const newProject = new Project({
     name: req.body.name,
     description: req.body.description,
-    plant: req.body.plant,
-    community: req.body.communityId
-    // community: req.params.communityId
+    plant: req.body.plant
+    // community: communityId
   });
 
   newProject  
     .save()
     .then(project => res.json(project))
+    .catch(err => res.status(400).json(errors))
 });
 
-router.patch('/projects/:projectId/edit', (req, res) => {
+router.patch('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
   const { errors, isValid } = validateProject(req.body);
@@ -59,18 +64,19 @@ router.patch('/projects/:projectId/edit', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  Project.findOneAndUpdate({id: projectId},
+  Project.findOneAndUpdate({_id: projectId},
     {
       name: req.body.name,
-      description: req.body.description
-    }
+      description: req.body.description,
+      plant: req.body.plant
+    }, {new: true}
   ).then(project => res.json(project));
 });
 
-router.delete('/projects/:projectId/delete', (req, res) => {
+router.delete('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
-  Project.findOneAndDelete({id: projectId})
+  Project.findOneAndDelete({_id: projectId})
     .then(project => res.json(project))
 })
 
