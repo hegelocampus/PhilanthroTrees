@@ -20,8 +20,8 @@ module.exports = function validateProject(data) {
     errors.description = "Project description cannot exceed 250 characters";
   }
 
-  if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+  if (Validator.isEmpty(data.description)) {
+    errors.description = "Project description field is required";
   }
 
   return {
