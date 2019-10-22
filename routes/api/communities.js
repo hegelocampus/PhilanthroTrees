@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const Community = require('../../models/Community');
+const validateCommunity = require('../../validation/create_community');
 
 
 // Get a list of Community's to join.
@@ -15,7 +16,14 @@ router.get("/", (req, res)=>{
 })
 
 // Create a Community 
-router.post("/users/:user_id", (req, res) => {
+router.post("/users/:user_id/", 
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { isValid, errors } = validateCommunity(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
 
   const newCommunity = new newCommunity({
     name: req.body.name,
