@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
+import { loadProgressBar } from 'axios-progress-bar'
 
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
+
+loadProgressBar()
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

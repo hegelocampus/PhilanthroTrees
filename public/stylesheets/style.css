@@ -1,0 +1,12 @@
+@import url(@material/theme/dist/mdc.theme.css);
+/* Build a Material theme */
+/*  Typography */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+/* Shape */
+/* Color */
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: #00B7FF; }

@@ -1,10 +1,10 @@
 import React from 'react';
-import Button from '@material/react-button';
+import { Button } from '@rmwc/button';
 
 export default (props) => {
   return (
     <Button
-      raised
+      theme={['background']}
       className='button-alternate'
       onClick={() => console.log('clicked!')}
     >
