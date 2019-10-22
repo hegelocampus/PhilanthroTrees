@@ -11,7 +11,11 @@ const passport = require('passport');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const projectsRouter = require('./routes/api/projects');
+<<<<<<< HEAD
 const communitiesRouter = require('./routes/api/communities');
+=======
+const tasksRouter = require('./routes/api/tasks');
+>>>>>>> e8851f3... Complete Tasks backend setup
 
 const app = express();
 app.use(passport.initialize());
@@ -44,6 +48,7 @@ app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/projects', projectsRouter);
 app.use('/api/communities', communitiesRouter);
+app.use('/api', tasksRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
