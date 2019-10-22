@@ -27,8 +27,8 @@ app.set('view engine', 'pug');
 
 app.use(
   sassMiddleware({
-    src: __dirname + '/public/stylesheets/sass',
-    dest: __dirname + '/public',
+    src: __dirname + '/frontend/sass',
+    dest: __dirname + '/frontend',
     debug: true
   })
 );

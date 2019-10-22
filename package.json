@@ -6,8 +6,8 @@
     "start": "node ./bin/www",
     "server": "nodemon app.js",
     "server:debug": "nodemon --inspect app.js",
-    "frontend-install": "npm install --prefix public",
-    "frontend": "npm start --prefix public",
+    "frontend-install": "npm install --prefix frontend",
+    "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\""
   },
   "dependencies": {
