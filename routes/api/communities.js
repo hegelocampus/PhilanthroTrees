@@ -53,29 +53,19 @@ router.post("/users/:user_id/",
 
 
 // Add a Citizen to a Community
-router.patch('/:id/user/:user_id/citizens',
+router.patch('/:community_id/user/:user_id/citizens',
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    let errors;
-
-    User.findOne({ _id: req.params.user_id }).then(user => {
-      if (user) {   
-
-      Community.find(
-        { id: req.community.id },
+    User.findById(req.params.user_id)
+    .then(
+      Community.findByIdAndUpdate(
+        req.params.community_id,
         { $push: { citizens: req.params.user_id } })
-        .then((community)=> res.json(community))
+        .then((community)=> (res.json(`You've joined the ${community.name} Community!`)))
+        //Async server issue prevents the updated community from being pulled here 
         .catch(err => res.status(400).json(err))
-        
-      }else{
-        errors.user = "Invalid user";
-        return res.status(400).json(errors);
-      }
-      /* db.communities.update(
-        {id: req.community.id},
-        {$push: {citizens: req.user.id}}
-        )*/
-    })
+    ).catch(err => res.json(err))
+      
 });
 
 
@@ -84,11 +74,16 @@ router.patch('/user/:user_id/community/:community_id/projects/',
   passport.authenticate("jwt", { session: false }),
  (req, res) => {
 
-  Community.find(
-    {id: req.community.id, admin: req.params.user_id},
-    {$push: {projects: req.projects.id}})
-    .then((community) => res.json(community))
-    .catch(err => res.status(400).json(err))
+  Community.findOne({ id: req.community.id, admin: req.params.user_id })
+  .then(community =>{
+    if (community){
+      Community.findby(
+        {id: req.community.id, admin: req.params.user_id},
+        {$push: {projects: req.projects.id}})
+        .then((community) => res.json(community))
+        .catch(err => res.status(400).json(err))
+      }})
+  .catch(err => res.json(err))
 });
 
 
