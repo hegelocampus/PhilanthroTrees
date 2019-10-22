@@ -9,8 +9,8 @@ const Community = require('../../models/Community');
 // Get a list of Community's to join.
 
 router.get("/", (req, res)=>{
-  Community.find().skip(numItems*(req.body.pgNum - 1))
-  .limit(numItems)
+  Community.find().skip(5 * (1)) //  numItems * (req.body.pgNum - 1)
+  .limit(5)
   .then(communities => res.json(communities))
 })
 
