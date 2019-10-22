@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 const Community = require('../../models/Community');
 const validateCommunity = require('../../validation/create_community');
 
-
 // Get a list of Community's to join.
 
 router.get("/", (req, res)=>{
@@ -39,36 +38,37 @@ router.post("/users/:user_id/",
 
 
 // Add a Citizen to a Community
-router.patch('/users/:user_id/community/:community_id/citizens', (req, res) => {
-  
-  Community.findOne(({ id: req.community.id }))
-  .then(community => {
-    community.update(
-      { $push: { citizens: req.user.id } }
-      )
-    }
-    )
-    
-    /* db.communities.update(
-      {id: req.community.id},
-      {$push: {citizens: req.user.id}}
-      )*/
-      
+router.patch('/users/:user_id/community/:community_id/citizens',
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    let errors;
+
+    User.findOne({ _id: req.user.id }).then(user => {
+      if (user) {   
+
+      Community.find(
+        { id: req.community.id },
+        { $push: { citizens: req.user.id } }
+          )
+        return res.status(200).json({msg: "Successfully joined the community!"})
+      }else{
+        errors.user = "Invalid user";
+        return res.status(400).json(errors);
+      }
+      /* db.communities.update(
+        {id: req.community.id},
+        {$push: {citizens: req.user.id}}
+        )*/
+    })
 });
 
 
 // Add a Project to a Community
-router.patch('/users/:user_id/community/:community_id/projects/', (req, res) => {
+router.patch('/users/:user_id/community/:community_id/projects/',
+  passport.authenticate("jwt", { session: false }),
+ (req, res) => {
 
-  // Community.findOne(({ id: req.community.id }))
-  //   .then(community => {
-  //     community.update(
-  //       { $push: { projects: req.user.id } }
-  //     )
-  //   }
-  //   )
-
-  db.communities.find(
+  Community.find(
     {id: req.community.id},
     {$push: {projects: req.projects.id}}
   )
