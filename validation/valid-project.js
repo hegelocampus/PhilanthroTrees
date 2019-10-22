@@ -6,6 +6,7 @@ module.exports = function validateProject(data) {
 
   data.name = validText(data.name) ? data.name : "";
   data.description = validText(data.description) ? data.description : "";
+  data.plant = validText(data.plant) ? data.plant : "";
 
 
   if (!Validator.isLength(data.name, { min: 5, max: 30 })) {
@@ -23,6 +24,11 @@ module.exports = function validateProject(data) {
   if (Validator.isEmpty(data.description)) {
     errors.description = "Project description field is required";
   }
+
+  if (Validator.isEmpty(data.plant)) {
+    errors.plant = "Project must have a plant!";
+  }
+
 
   return {
     errors,
