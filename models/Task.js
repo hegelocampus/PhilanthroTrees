@@ -6,7 +6,7 @@ const TaskSchema = new Schema({
     type: String,
     required: true
   },
-  body: {
+  detail: {
     type: String
   },
   expGain: {

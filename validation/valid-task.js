@@ -5,7 +5,7 @@ module.exports = function validateTask(data) {
   let errors = {};
 
   data.title = validText(data.title) ? data.title : "";
-  data.body = validText(data.body) ? data.body : "";
+  data.details = validText(data.details) ? data.details : "";
 
   if (!Validator.isLength(data.title, { min: 5, max: 30 })) {
     errors.title = "Task title must be between 5 and 30 characters";
@@ -15,8 +15,8 @@ module.exports = function validateTask(data) {
     errors.title = "Task title is required";
   }
 
-  if (!Validator.isLength(data.body, { max: 250 })) {
-    errors.body = "Task body cannot exceed 250 characters";
+  if (!Validator.isLength(data.details, { max: 250 })) {
+    errors.details = "Task details cannot exceed 250 characters";
   }
 
   return {
