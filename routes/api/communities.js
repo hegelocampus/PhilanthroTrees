@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const Community = require('../../models/Community');
+const User = require('../../models/User');
 const validateCommunity = require('../../validation/create_community');
 
 // Get a list of Community's to join.
@@ -14,8 +15,22 @@ router.get("/", (req, res)=>{
   .then(communities => res.json(communities))
 })
 
+// Show a Community
+
+router.get("/:id", (req, res)=> {
+  let commDisplay;
+  Community.findById(req.params.id)
+  .then(
+    community => { 
+      commDisplay.citizens = community.citizens;
+      commDisplay.projects = community.projects;
+      return res.json(commDisplay);
+    })
+  .catch(err=>res.status(400).json.err)
+})
+
 // Create a Community 
-router.post("/users/:admin/", 
+router.post("/users/:user_id/", 
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { isValid, errors } = validateCommunity(req.body);
@@ -25,7 +40,7 @@ router.post("/users/:admin/",
   }else{
     const newCommunity = new Community({
       name: req.body.name,
-      admin: req.params.user_id,
+      admin: req.body.admin,
       projects: [],
       citizens: []
     })
@@ -39,17 +54,17 @@ router.post("/users/:admin/",
 
 
 // Add a Citizen to a Community
-router.patch('/users/:user_id/community/:community_id/citizens',
+router.patch('/user/:user_id/community/:community_id/citizens',
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     let errors;
 
-    User.findOne({ _id: req.user.id }).then(user => {
+    User.findOne({ _id: req.params.user_id }).then(user => {
       if (user) {   
 
       Community.find(
         { id: req.community.id },
-        { $push: { citizens: req.user.id } })
+        { $push: { citizens: req.params.user_id } })
         .then((community)=> res.json(community))
         .catch(err => res.status(400).json(err))
         
@@ -66,12 +81,12 @@ router.patch('/users/:user_id/community/:community_id/citizens',
 
 
 // Add a Project to a Community
-router.patch('/users/:user_id/community/:community_id/projects/',
+router.patch('/user/:user_id/community/:community_id/projects/',
   passport.authenticate("jwt", { session: false }),
  (req, res) => {
 
   Community.find(
-    {id: req.community.id, admin: req.user.id},
+    {id: req.community.id, admin: req.params.user_id},
     {$push: {projects: req.projects.id}})
     .then((community) => res.json(community))
     .catch(err => res.status(400).json(err))
