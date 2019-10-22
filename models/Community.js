@@ -7,7 +7,7 @@ const CommunitySchema = new Schema({
     required: true
   },
   admin: {
-    type: Number,
+    type: String,
     required: true
   },
   projects: {

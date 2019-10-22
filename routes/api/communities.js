@@ -15,25 +15,26 @@ router.get("/", (req, res)=>{
 })
 
 // Create a Community 
-router.post("/users/:user_id/", 
+router.post("/users/:admin/", 
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { isValid, errors } = validateCommunity(req.body);
 
-    if (!isValid) {
-      return res.status(400).json(errors);
-    }
-
-  const newCommunity = new newCommunity({
-    name: req.body.name,
-    admin: req.user.id,
-    projects: req.body.projects,
-    citizens: []
-  })
-
-  newCommunity
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }else{
+    const newCommunity = new Community({
+      name: req.body.name,
+      admin: req.params.user_id,
+      projects: [],
+      citizens: []
+    })
+    
+    newCommunity
     .save()
     .then(community => res.json(community))
+    .catch(err=>res.json(err))
+  }
 })
 
 
