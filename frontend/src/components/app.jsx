@@ -1,14 +1,17 @@
 import React from 'react';
-import { Button } from '@rmwc/button';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
-export default (props) => {
-  return (
-    <Button
-      theme={['background']}
-      className='button-alternate'
-      onClick={() => console.log('clicked!')}
-    >
-      Click Me!
-    </Button>
-  );
-};
+//import TopBar from './top_bar/top_bar';
+import MainDisplay from './main/main_display';
+import Splash from './splash/splash';
+
+export default () => (
+  <React.Fragment>
+    {/*<TopBar />*/}
+    <main>
+      <AuthRoute component={ Splash } />
+      <ProtectedRoute component={ MainDisplay } />
+    </main>
+  </React.Fragment>
+);
+
