@@ -7,10 +7,9 @@ const CommunitySchema = new Schema({
     required: true
   },
   admin: {
-    type: String,
-    required: true
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   },
-  projects:[String],
   citizens: [String],
   date: {
     type: Date,
