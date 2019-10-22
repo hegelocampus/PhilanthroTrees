@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { CLEAR_ERRORS } from '../../actions/session_actions';
 
 import SessionForm from './session_form_container.js';
 
 export default (props) => {
   const [formType, setFormType] = useState("login");
-  const dispatch = useDispatch();
 
   const changeForm = (type) => {
     return (e) => {
       e.preventDefault();
       setFormType(type);
-      dispatch({ type: CLEAR_ERRORS });
     }
   }
 
@@ -21,18 +17,18 @@ export default (props) => {
     headerContent = "Sign In";
     footer = (
       <span>Don't have an account?
-        <a href='#' onClick={changeForm("signup")} >
+        <button type="button" onClick={changeForm("signup")} >
           Sign up
-        </a>
+        </button>
       </span>
     )
   } else {
     headerContent = "Sign up";
     footer = (
       <span>Already have an account?
-        <a href='#' onClick={changeForm("login")} >
+        <button type="button" onClick={changeForm("login")} >
           Sign In
-        </a>
+        </button>
       </span>
     );
   }
