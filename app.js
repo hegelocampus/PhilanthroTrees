@@ -10,11 +10,8 @@ const passport = require('passport');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
-<<<<<<< HEAD
 const projectsRouter = require('./routes/api/projects');
-=======
 const communitiesRouter = require('./routes/api/communities');
->>>>>>> 6546c5e... imports communities route to app.js
 
 const app = express();
 app.use(passport.initialize());
@@ -45,16 +42,9 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
-<<<<<<< HEAD
-<<<<<<< HEAD
 app.use('/api/projects', projectsRouter);
-=======
-app.use('/api/communities', communitiesRouter)
-=======
 app.use('/api/communities', communitiesRouter);
->>>>>>> 71f9945... refactors CommunitySchema
 
->>>>>>> 6546c5e... imports communities route to app.js
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
