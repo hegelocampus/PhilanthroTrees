@@ -11,6 +11,7 @@ const passport = require('passport');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const projectsRouter = require('./routes/api/projects');
+const communitiesRouter = require('./routes/api/communities');
 
 const app = express();
 app.use(passport.initialize());
@@ -42,6 +43,8 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/projects', projectsRouter);
+app.use('/api/communities', communitiesRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
