@@ -9,11 +9,11 @@ const validateCommunity = require('../../validation/create_community');
 
 // Get a list of Community's to join.
 
-router.get("/", (req, res)=>{
-  Community.find().skip(0) //  numItems * (req.body.pgNum - 1)
-  .limit(5)
-  .then(communities => res.json(communities))
-})
+// router.get("/", (req, res)=>{
+//   Community.find().skip(0) //  numItems * (req.body.pgNum - 1)
+//   .limit(5)
+//   .then(communities => res.json(communities))
+// })
 
 // Show a Community
 
@@ -70,21 +70,22 @@ router.patch('/:community_id/user/:user_id/citizens',
 
 
 // Add a Project to a Community
-router.patch('/user/:user_id/community/:community_id/projects/',
-  passport.authenticate("jwt", { session: false }),
- (req, res) => {
+// router.patch('/:community_id/user/:user_id/project/:project_id',
+//   passport.authenticate("jwt", { session: false }),
+//  (req, res) => {
 
-  Community.findOne({ id: req.community.id, admin: req.params.user_id })
-  .then(community =>{
-    if (community){
-      Community.findby(
-        {id: req.community.id, admin: req.params.user_id},
-        {$push: {projects: req.projects.id}})
-        .then((community) => res.json(community))
-        .catch(err => res.status(400).json(err))
-      }})
-  .catch(err => res.json(err))
-});
+//   Community.findOne({ id: req.params.community_id, admin: req.params.user_id })
+//   .then(community =>{
+//     if (community){
+//       return (Community.findByIdAndUpdate(
+//         req.params.community_id,
+//         {$push: {projects: req.projects.id}})
+//         .then(res.json("Project successfully created!"))  //(community) => res.json(community)
+//         .catch(err => res.status(400).json(err))
+//       )
+//       }})
+//   .catch(err => res.json(err))
+// });
 
 
 
