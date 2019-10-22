@@ -10,10 +10,8 @@ const CommunitySchema = new Schema({
     type: String,
     required: true
   },
-  projects: {
-
-  },
-  citizens: [Number],
+  projects:[String],
+  citizens: [String],
   date: {
     type: Date,
     default: Date.now

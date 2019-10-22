@@ -18,14 +18,14 @@ router.get("/", (req, res)=>{
 // Show a Community
 
 router.get("/:id", (req, res)=> {
-  let commDisplay;
+  let commDisplay= {};
   Community.findById(req.params.id)
   .then( community => { 
       commDisplay.citizens = community.citizens;
       commDisplay.projects = community.projects;
       return res.json(commDisplay);
     })
-  .catch( err => res.status(400).json(err))
+  .catch( err => res.status(400).json({err, msg: "an error has occured"}))
 })
 
 // Create a Community 
@@ -53,7 +53,7 @@ router.post("/users/:user_id/",
 
 
 // Add a Citizen to a Community
-router.patch('/user/:user_id/community/:community_id/citizens',
+router.patch('/:id/user/:user_id/citizens',
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     let errors;
