@@ -14,7 +14,10 @@ const CommunitySchema = new Schema({
 
   },
   citizens: [Number],
-  timestamps: true
+  date: {
+    type: Date,
+    default: Date.now
+  }
 
 })
 

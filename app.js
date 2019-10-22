@@ -46,9 +46,13 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use('/api/projects', projectsRouter);
 =======
 app.use('/api/communities', communitiesRouter)
+=======
+app.use('/api/communities', communitiesRouter);
+>>>>>>> 71f9945... refactors CommunitySchema
 
 >>>>>>> 6546c5e... imports communities route to app.js
 // catch 404 and forward to error handler
