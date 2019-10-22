@@ -48,9 +48,10 @@ router.patch('/users/:user_id/community/:community_id/citizens',
 
       Community.find(
         { id: req.community.id },
-        { $push: { citizens: req.user.id } }
-          )
-        return res.status(200).json({msg: "Successfully joined the community!"})
+        { $push: { citizens: req.user.id } })
+        .then((community)=> res.json(community))
+        .catch(err => res.status(400).json(err))
+        
       }else{
         errors.user = "Invalid user";
         return res.status(400).json(errors);
@@ -69,9 +70,10 @@ router.patch('/users/:user_id/community/:community_id/projects/',
  (req, res) => {
 
   Community.find(
-    {id: req.community.id},
-    {$push: {projects: req.projects.id}}
-  )
+    {id: req.community.id, admin: req.user.id},
+    {$push: {projects: req.projects.id}})
+    .then((community) => res.json(community))
+    .catch(err => res.status(400).json(err))
 });
 
 
