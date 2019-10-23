@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 import UserDetail from './user/user_detail';
+import ProjectContainer from '../project/project_container';
 
 export default (props) => {
   return (
@@ -15,6 +16,8 @@ export default (props) => {
         <Route path={'/profile/:userId'}>
           <h1>User show page</h1>
         </Route>
+        <Route path="/projects/:projectId" 
+        component={ProjectContainer} />
         {/* Tasks will be displayed on the root page
         <Route path="/" component={ Tasks } />
         */}
