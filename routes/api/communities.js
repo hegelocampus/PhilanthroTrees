@@ -73,9 +73,7 @@ router.patch('/:community_id/user/:user_id/citizens',
       community => {
         User.findByIdAndUpdate(
           req.params.user_id,
-
           { $set: { community: community.id }}
-
         ).then(
           user => res.json({
             users: { [user.id]: user },
