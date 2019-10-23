@@ -9,5 +9,5 @@ export const fetchProject = projectId => {
 }
 
 export const updateProject = project => {
-  return axios.update(`api/projects/${project._id}`)
+  return axios.update(`api/projects/${project._id}`);
 }
