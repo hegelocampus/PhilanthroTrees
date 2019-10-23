@@ -2,17 +2,12 @@ import React from 'react';
 import RenderErrors from '../../util/render_errors';
 import Task from './task';
 import Synopsis from './synopsis';
+import EditProject from './edit_project';
 
 class Project extends React.Component{
   constructor(props){
     super(props);
 
-    // this.state ={
-    //   name: "",
-    //   description: "",
-    //   plant: "",
-    //   communityId: ""
-    // }
     this.checkNotEmpty = this.checkNotEmpty.bind(this);
   }
 
@@ -34,12 +29,19 @@ class Project extends React.Component{
   render(){
 
     let synopsis = <p></p>;
+    let edit = <p></p>;
+    
 
     //Ensure Project Pops have Populated
     if(this.checkNotEmpty(this.props.project)){
       synopsis = <Synopsis
        project={this.props.project}
        />
+       edit = <EditProject
+       project={this.props.project}
+       updateProject={this.props.updateProject}
+       />
+
     }
 
 
@@ -48,7 +50,7 @@ class Project extends React.Component{
         <RenderErrors/>
         {synopsis}
         <Task/>
-
+        {edit}
       </React.Fragment>
     )
 
