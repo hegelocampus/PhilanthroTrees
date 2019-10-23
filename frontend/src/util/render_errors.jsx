@@ -3,10 +3,12 @@ import {
   useDispatch,
   useSelector
 } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { CLEAR_ERRORS } from '../actions/session_actions';
 
 export default (props) => {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   let errors = useSelector(state => {
     if (state.errors) {
@@ -17,9 +19,9 @@ export default (props) => {
   });
 
   useEffect(() => {
-    return () => dispatch({ type: CLEAR_ERRORS });
+    dispatch({ type: CLEAR_ERRORS });
     },
-    [dispatch]
+    [dispatch, location.pathname]
   );
 
   return (
