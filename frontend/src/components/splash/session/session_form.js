@@ -36,9 +36,8 @@ export default class SessionForm extends React.Component {
 
   handleGuestLogin(e) {
     this.setState({
-      username: "ExampleUser",
       email: "test@test.com",
-      password: "testusr1"
+      password: "testpass1"
     }, () => this.handleSubmit())
   }
 
