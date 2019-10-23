@@ -1,5 +1,3 @@
-import merge from 'lodash/merge';
-
 import {RECEIVE_PROJECT_ERRORS} from '../actions/project_actions';
 
 

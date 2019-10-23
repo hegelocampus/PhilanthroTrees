@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import { fetchProject } from '../../actions/project_actions';
 import { fetchTasks } from '../../actions/task_actions';
+import Project from './project';
 
 const mapStateToProps = (state,ownProps) =>{
   let projectId = ownProps.match.params.projectId
