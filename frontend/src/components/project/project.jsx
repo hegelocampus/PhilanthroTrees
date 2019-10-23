@@ -1,5 +1,6 @@
 import React from 'react';
 import RenderErrors from '../../util/render_errors';
+import Task from './task';
 
 class Project extends React.Component{
   constructor(props){
@@ -28,8 +29,11 @@ class Project extends React.Component{
 
     let synopsis = <p></p>;
 
-    if(this.props.projectId){
-      
+    if(this.props.project.projectId){
+      this.state.name = this.props.project.name
+      this.state.description = this.props.project.description
+      this.state.plant = this.props.project.plant
+      this.state.communityId =this.props.project.communityId
     }
 
 
@@ -45,7 +49,8 @@ class Project extends React.Component{
     return(
       <React.Fragment>
         <RenderErrors/>
-
+        {synopsis}
+        <Task/>
 
       </React.Fragment>
     )
