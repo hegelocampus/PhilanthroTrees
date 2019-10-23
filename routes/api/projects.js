@@ -1,24 +1,19 @@
 var express = require('express');
-var router = express.Router();
+var projectRouter = express.Router();
+var taskRouter = express.Router({ mergeParams: true });
+
+projectRouter.use('/:projectId/tasks', taskRouter);
 
 const Project = require('../../models/Project');
+const Task = require('../../models/Task');
+
 const validateProject = require('../../validation/valid-project');
+const validateTask = require('../../validation/valid-task');
 
-///communities/:communityId/projects
-router.get('/', (req, res) => {
-  const communityId = req.params.communityId;
 
-  Project.find({community: communityId})
-    .then(projects => res.json(projects))
-    .catch(err =>
-      res.status(404).json({
-        project: 'No projects found'
-      })
-    );
-});
+//Project Show 
 
-///communities/:communityId/projects/:projectId
-router.get('/:projectId', (req, res) => {
+projectRouter.get('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
   Project.findOne({_id: projectId})
@@ -33,29 +28,10 @@ router.get('/:projectId', (req, res) => {
     });
 });
 
-//'/communities/:communityId/projects/create'
-router.post('/create', (req, res) => {
-  // const communityId = req.params.communityId;
-  const { errors, isValid } = validateProject(req.body);
 
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
+//Project Update
 
-  const newProject = new Project({
-    name: req.body.name,
-    description: req.body.description,
-    plant: req.body.plant
-    // community: communityId
-  });
-
-  newProject  
-    .save()
-    .then(project => res.json(project))
-    .catch(err => res.status(400).json(errors))
-});
-
-router.patch('/:projectId', (req, res) => {
+projectRouter.patch('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
   const { errors, isValid } = validateProject(req.body);
@@ -73,12 +49,39 @@ router.patch('/:projectId', (req, res) => {
   ).then(project => res.json(project));
 });
 
-router.delete('/:projectId', (req, res) => {
+projectRouter.delete('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
   Project.findOneAndDelete({_id: projectId})
     .then(project => res.json(project))
 })
 
-module.exports = router;
+taskRouter.get('/', (req, res) => {
+  const projectId = req.params.projectId;
+
+  Task.find({ project: projectId })
+    .then(tasks => res.json(tasks));
+});
+
+taskRouter.post('/create', (req, res) => {
+  const projectId = req.params.projectId;
+  const { errors, isValid } = validateTask(req.body);
+
+  if (!isValid) {
+    return res.status(422).json(errors);
+  }
+
+  const newTask = new Task({
+    project: projectId,
+    title: req.body.title,
+    details: req.body.details
+  });
+
+  newTask
+    .save()
+    .then(task => res.json(task))
+    .catch(err => res.status(400).json(errors))
+});
+
+module.exports = projectRouter;
 
