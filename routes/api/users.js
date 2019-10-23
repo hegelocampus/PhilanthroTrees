@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const communityRouter = express.Router({ mergeParams: true });
+
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
@@ -124,6 +126,34 @@ router.get('/:id', (req, res) => {
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
+
+
+// Community Register Route
+
+router.use("/:user_id", communityRouter)
+
+communityRouter.route("/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { isValid, errors } = validateCommunity(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    } else {
+      const newCommunity = new Community({
+        name: req.body.name,
+        admin: req.body.admin,
+        projects: [],
+        citizens: []
+      })
+
+      newCommunity
+        .save()
+        .then(community => res.json(community))
+        .catch(err => res.json(err))
+    }
+  })
+
 
 module.exports = router;
 
