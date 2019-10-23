@@ -7,6 +7,7 @@ class EditProject extends React.Component{
     super(props);
 
     this.state = {
+      _id: this.props.project._id,
       name: this.props.project.name,
       description: this.props.project.description,
       plant: this.props.project.plant,
