@@ -6,7 +6,7 @@ export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const fetchProject = projectId => dispatch => (
   ProjectApiUtil.fetchProject(projectId)
   .then(
-    project => dispatch(receiveProject(project)),
+    project => dispatch(receiveProject(project.data)),
     errors => dispatch(receiveErrors(errors))
 ))
 

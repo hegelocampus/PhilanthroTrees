@@ -13,16 +13,21 @@ class Project extends React.Component{
     //   plant: "",
     //   communityId: ""
     // }
+    this.checkNotEmpty = this.checkNotEmpty.bind(this);
   }
 
   componentDidMount(){
     let projectId = this.props.match.params.projectId;
     this.props.fetchProject(projectId);
+    this.props.fetchTasks(projectId);
   }
 
-  componentDidUpdate(){
-    let projectId = this.props.match.params.projectId;
-    this.props.fetchTasks(projectId);
+  checkNotEmpty(object) {
+    for (const key in object) {
+      if (object.hasOwnProperty(key))
+        return true;
+    }
+    return false;
   }
 
 
@@ -30,25 +35,18 @@ class Project extends React.Component{
 
     let synopsis = <p></p>;
 
-    if(this.props.project.projectId){
+    //Ensure Project Pops have Populated
+    if(this.checkNotEmpty(this.props.project)){
       synopsis = <Synopsis
        project={this.props.project}
        />
     }
 
 
-    //Ensure Project Pops have Populated
-    if(this.state.name){
-      synopsis = 
-    }
-
-
-
-
     return(
       <React.Fragment>
         <RenderErrors/>
-        
+        {synopsis}
         <Task/>
 
       </React.Fragment>

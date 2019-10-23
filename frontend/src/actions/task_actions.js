@@ -6,7 +6,7 @@ export const RECEIVE_TASK_ERRORS = 'RECEIVE_TASK_ERRORS';
 export const fetchTasks = projectId => dispatch => (
   TaskApiUtil.fetchTasks(projectId)
   .then(
-    tasks => dispatch(receiveTasks(tasks)),
+    tasks => dispatch(receiveTasks(tasks.data)),
     errors => dispatch(receiveErrors(errors))
   )
 );

@@ -1,6 +1,4 @@
-import React from 'react'
-
-import React from 'react'
+import React from 'react';
 
 class Synopsis extends React.Component {
   constructor(props) {

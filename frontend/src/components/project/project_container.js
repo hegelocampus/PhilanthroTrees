@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch =>{
 
   return({
     fetchProject: (projectId) => dispatch(fetchProject(projectId)),
-    fetchTasks: (projectId) => dispatch(fetchProject(projectId))
+    fetchTasks: (projectId) => dispatch(fetchTasks(projectId))
   })
 }
 
