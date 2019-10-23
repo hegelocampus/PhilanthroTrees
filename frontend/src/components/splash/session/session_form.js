@@ -49,7 +49,7 @@ export default class SessionForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="session-form">
           {this.props.formType === 'signup' ? (
             <React.Fragment>
-            <p> Username must be between 2 and 20 characters. Choose wisely! Other members of your community will be able to see this.</p>
+            <p> Username must be between 2 and 30 characters. Choose wisely! Other members of your community will be able to see this.</p>
               <input
                 name='username'
                 placeholder='Username'
