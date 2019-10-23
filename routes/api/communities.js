@@ -7,7 +7,8 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const Community = require('../../models/Community');
 const User = require('../../models/User');
-const validateCommunity = require('../../validation/create_community');
+const validateProject = require('../../validation/valid-project');
+
 
 // Project Index Route
 router.use('/:communityId/projects', projectRouter)
@@ -23,6 +24,31 @@ projectRouter.route('/', (req, res) => {
       })
     );
 });
+
+//Project Create Route
+
+projectRouter.route('/create', (req, res) => {
+  const communityId = req.params.communityId;
+  const { errors, isValid } = validateProject(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  const newProject = new Project({
+    name: req.body.name,
+    description: req.body.description,
+    plant: req.body.plant,
+    community: communityId
+  });
+
+  newProject
+    .save()
+    .then(project => res.json(project))
+    .catch(err => res.status(400).json(errors))
+});
+
+
 
 
 // Citizen Index
