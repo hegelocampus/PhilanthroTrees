@@ -7,7 +7,6 @@ import { login, signup } from "../../../actions/session_actions";
 export default (props) => {
   const dispatch = useDispatch();
 
-
   return (
     <React.Fragment>
       <RenderErrors />
