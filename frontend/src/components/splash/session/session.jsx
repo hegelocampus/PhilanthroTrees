@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import SessionForm from './session_form_container.js';
 
 export default (props) => {
   const [formType, setFormType] = useState("login");
+  let history = useHistory();
 
   const changeForm = (type) => {
     return (e) => {
       e.preventDefault();
+      history.push(`/home/${type}`);
       setFormType(type);
     }
   }
