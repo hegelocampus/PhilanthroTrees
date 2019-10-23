@@ -18,9 +18,18 @@ class Synopsis extends React.Component {
 
 
     return (
-      <p>
-        TASK HERE!
-      </p>
+      <div className="project-synopsis">
+        <h1 className="project-name">
+          {this.state.name}
+        </h1>
+
+        <p className="project-desc">
+          {this.state.description}
+        </p>
+
+        <img className="project-plant" src="" alt="" />
+
+      </div>
     )
   }
 }
