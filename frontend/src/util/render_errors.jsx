@@ -5,7 +5,7 @@ import {
 } from 'react-redux';
 import { CLEAR_ERRORS } from '../actions/session_actions';
 
-export default = (props) => {
+export default (props) => {
   const dispatch = useDispatch();
 
   let errors = useSelector(state => {
