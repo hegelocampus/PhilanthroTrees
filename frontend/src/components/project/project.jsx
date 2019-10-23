@@ -59,7 +59,7 @@ class Project extends React.Component{
     return(
       <React.Fragment>
         <RenderErrors/>
-        {synopsis}
+        
         <Task/>
 
       </React.Fragment>
