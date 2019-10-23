@@ -8,7 +8,14 @@ export const fetchProject = projectId => dispatch => (
   .then(
     project => dispatch(receiveProject(project.data)),
     errors => dispatch(receiveErrors(errors))
-))
+));
+
+export const updateProject = projectId => dispatch => (
+  ProjectApiUtil.updateProject(projectId)
+  .then(
+    project => dispatch(receiveProject(project.data)),
+    errors => dispatch(receiveErrors(errors))
+));
 
 export const receiveProject = project => {
   return({
