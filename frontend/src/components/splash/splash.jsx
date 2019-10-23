@@ -16,7 +16,7 @@ export default (props) => {
         <SessionForm />
       </div>
 
-      <div className="about">
+      <div className="details">
         <h2>Build and grow your community.</h2>
         <p> PhilanthroTrees is a free task-tracker and producticity app that encourages you to go
            out and make a difference by providing you with more instant gratification. Completing 

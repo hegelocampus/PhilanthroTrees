@@ -7,6 +7,14 @@ html {
   background-color: #46A049;
 }
 
+a {
+  cursor: pointer;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
 .splash-page {
   width: 100%;
   margin: 0 auto;
@@ -28,6 +36,14 @@ div.about {
   margin: 0 auto;
 }
 
+div.details {
+  text-align: center;
+  min-width: 300px;
+  max-width: 75%;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
 /* SESSION FORM */
 
 div.session-content {
@@ -36,9 +52,18 @@ div.session-content {
   max-width: 45%;
 }
 
-div.session-header, form.session-form, div.session-content-secondary{
+div.session-header, form.session-form, div.session-content-secondary {
   width: 85%;
   margin: 0 auto;
+}
+
+div.session-content-secondary {
+  margin-top: 5px;
+  text-align: center;
+}
+
+a.switch-form > span {
+  font-weight: 600;
 }
 
 form.session-form > p {

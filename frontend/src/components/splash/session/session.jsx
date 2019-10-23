@@ -19,20 +19,12 @@ export default (props) => {
   if (formType === 'login') {
     headerContent = "Sign In";
     footer = (
-      <span>Don't have an account?
-        <button type="button" onClick={changeForm("signup")} >
-          Sign up
-        </button>
-      </span>
+      <a className="switch-form" onClick={changeForm("signup")}>Don't have an account? <span>Sign Up</span></a>
     )
   } else {
     headerContent = "Sign Up For Free";
     footer = (
-      <span>Already have an account?
-        <button type="button" onClick={changeForm("login")} >
-          Sign In
-        </button>
-      </span>
+      <a className="switch-form" onClick={changeForm("login")}>Already have an account? <span>Sign In</span></a>
     );
   }
 
