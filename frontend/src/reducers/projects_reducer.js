@@ -3,7 +3,7 @@ import merge from 'lodash/merge';
 import { RECEIVE_PROJECT } from '../actions/project_actions';
 
 
-const projectReducer = (state ={}, action) =>{
+const projectsReducer = (state ={}, action) =>{
   Object.freeze(state);
   let newState;
 
@@ -19,4 +19,4 @@ const projectReducer = (state ={}, action) =>{
   }
 }
 
-export default projectReducer;
+export default projectsReducer;

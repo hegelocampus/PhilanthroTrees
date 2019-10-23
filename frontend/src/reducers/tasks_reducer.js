@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 
 import { RECEIVE_ALL_TASKS } from '../actions/task_actions';
 
-const taskReducer = (state= {}, action) => {
+const tasksReducer = (state= {}, action) => {
   Object.freeze(state);
   let newState;
 
@@ -20,4 +20,4 @@ const taskReducer = (state= {}, action) => {
   }
 }
 
-export default taskReducer;
+export default tasksReducer;
