@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "server": "nodemon app.js",
-    "server:debug": "nodemon --inspect app.js",
+    "server": "nodemon ./bin/www",
+    "server:debug": "nodemon --inspect ./bin/www",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
