@@ -11,7 +11,7 @@ const validateProject = require('../../validation/valid-project');
 const validateTask = require('../../validation/valid-task');
 
 
-//Project Show 
+//Project Show
 
 projectRouter.get('/:projectId', (req, res) => {
   const projectId = req.params.projectId;

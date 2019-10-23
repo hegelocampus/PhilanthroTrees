@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
+const Community = require('../../models/Community');
 
 
 const keys = require("../../config/keys");
@@ -111,10 +112,31 @@ router.get('/:id', (req, res) => {
           username: user.username,
           hp: user.hp,
           exp: user.exp,
+          communityId: user.communityId,
           email: user.email
         });
       }
     },
+      errors => {
+        res.json({errors: {
+          user: errors
+        }});
+      }
+    );
+});
+
+// Give the community for a specific user
+router.get('/:id/community', (req, res, next) => {
+  User.findById(req.params.id)
+    .then(
+      user=> {
+        if (!user) {
+          errors.user = 'User not found';
+        } else {
+          Community.findById(req.params.id)
+          res.json(commutities);
+        }
+      },
       errors => {
         res.json({errors: {
           user: errors
@@ -128,11 +150,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-
 // Community Register Route
-
 router.use("/:user_id", communityRouter)
-
 communityRouter.route("/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
@@ -154,7 +173,6 @@ communityRouter.route("/",
         .catch(err => res.json(err))
     }
   })
-
 
 module.exports = router;
 
