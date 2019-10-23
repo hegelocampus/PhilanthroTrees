@@ -10,18 +10,8 @@ const Task = require('../../models/Task');
 const validateProject = require('../../validation/valid-project');
 const validateTask = require('../../validation/valid-task');
 
-///communities/:communityId/projects
-projectRouter.get('/', (req, res) => {
-  const communityId = req.params.communityId;
 
-  Project.find({community: communityId})
-    .then(projects => res.json(projects))
-    .catch(err =>
-      res.status(404).json({
-        project: 'No projects found'
-      })
-    );
-});
+//Project Show 
 
 projectRouter.get('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
@@ -38,27 +28,8 @@ projectRouter.get('/:projectId', (req, res) => {
     });
 });
 
-//'/communities/:communityId/projects/create'
-projectRouter.post('/create', (req, res) => {
-  // const communityId = req.params.communityId;
-  const { errors, isValid } = validateProject(req.body);
 
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
-
-  const newProject = new Project({
-    name: req.body.name,
-    description: req.body.description,
-    plant: req.body.plant
-    // community: communityId
-  });
-
-  newProject  
-    .save()
-    .then(project => res.json(project))
-    .catch(err => res.status(400).json(errors))
-});
+//Project Update
 
 projectRouter.patch('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
