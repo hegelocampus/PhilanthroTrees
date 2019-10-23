@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import SessionForm from './session_form_container.js';
 
 export default (props) => {
-  const [formType, setFormType] = useState("login");
+  const [formType, setFormType] = useState("signup");
   let history = useHistory();
 
   const changeForm = (type) => {
@@ -26,7 +26,7 @@ export default (props) => {
       </span>
     )
   } else {
-    headerContent = "Sign up";
+    headerContent = "Sign Up For Free";
     footer = (
       <span>Already have an account?
         <button type="button" onClick={changeForm("login")} >
