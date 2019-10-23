@@ -20,7 +20,7 @@ const validateCommunity = require('../../validation/create_community');
 router.get("/:id", (req, res)=> {
   let commDisplay= {};
   Community.findById(req.params.id)
-  .then( community => { 
+  .then( community => {
       commDisplay.citizens = community.citizens;
       commDisplay.projects = community.projects;
       return res.json(commDisplay);
@@ -28,8 +28,8 @@ router.get("/:id", (req, res)=> {
   .catch( err => res.status(400).json({err, msg: "an error has occured"}))
 })
 
-// Create a Community 
-router.post("/users/:user_id/", 
+// Create a Community
+router.post("/users/:user_id/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { isValid, errors } = validateCommunity(req.body);
@@ -43,7 +43,7 @@ router.post("/users/:user_id/",
       projects: [],
       citizens: []
     })
-    
+
     newCommunity
     .save()
     .then(community => res.json(community))
@@ -65,7 +65,6 @@ router.patch('/:community_id/user/:user_id/citizens',
         //Async server issue prevents the updated community from being pulled here 
         .catch(err => res.status(400).json(err))
     ).catch(err => res.json(err))
-      
 });
 
 
@@ -91,3 +90,4 @@ router.patch('/:community_id/user/:user_id/citizens',
 
 
 module.exports = router;
+
