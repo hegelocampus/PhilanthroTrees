@@ -48,14 +48,17 @@ export default class SessionForm extends React.Component {
         <RenderErrors />
         <form onSubmit={this.handleSubmit} className="session-form">
           {this.props.formType === 'signup' ? (
-            <input
-              name='username'
-              placeholder='Username'
-              type='text'
-              required
-              onChange={this.update}
-              value={this.state.username}
-            />
+            <React.Fragment>
+            <p> Username must be between 2 and 30 characters. Choose wisely! Other members of your community will be able to see this.</p>
+              <input
+                name='username'
+                placeholder='Username'
+                type='text'
+                required
+                onChange={this.update}
+                value={this.state.username}
+              />
+            </React.Fragment>
           ) : (
             null
           )}
@@ -69,7 +72,7 @@ export default class SessionForm extends React.Component {
           />
           <input
             name='password'
-            placeholder='password'
+            placeholder='Password'
             type='password'
             required
             onChange={this.update}
@@ -79,7 +82,7 @@ export default class SessionForm extends React.Component {
             <>
               <input
                 name='password2'
-                placeholder='Confirm'
+                placeholder='Confirm Password'
                 type='password'
                 required onChange={ this.update }
                 value={ this.state.passwordConfirmation }
@@ -89,7 +92,6 @@ export default class SessionForm extends React.Component {
           ) : (
               <>
                 <button type='submit' className="big-button">Sign In</button>
-                <span>or sign in with</span>
                 <button
                   type="button"
                   onClick={this.handleGuestLogin}

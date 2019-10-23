@@ -6,8 +6,9 @@ const useLoggedIn = () => {
   return useSelector(state => state.session.isAuthenticated);
 }
 
-export const AuthRoute = ({ component: Component, exact }) => {
+export const AuthRoute = ({ component: Component, exact, props }) => {
   const loggedIn = useLoggedIn();
+  console.log(loggedIn);
   return (
     <Route
       exact={exact}
@@ -18,11 +19,11 @@ export const AuthRoute = ({ component: Component, exact }) => {
   );
 }
 
-export const ProtectedRoute = ({ component: Component, ...rest }) => {
+export const ProtectedRoute = ({ component: Component, exact, ...props }) => {
   const loggedIn = useLoggedIn();
   return (
     <Route
-      {...rest}
+      exact={exact}
       render={props =>
         loggedIn ? <Component {...props} /> : <Redirect to="/home" />
       }
