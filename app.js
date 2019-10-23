@@ -3,7 +3,7 @@ const createError = require('http-errors');
 const path = require('path');
 const sassMiddleware = require('node-sass-middleware');
 const mongoose = require('mongoose');
-const db = require("./config/keys").mongoURI;
+const db = require('./config/keys').mongoURI;
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require('passport');
@@ -19,7 +19,10 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
