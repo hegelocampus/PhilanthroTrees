@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; 
 import RenderErrors from '../../util/render_errors';
 import Task from './task';
 import Synopsis from './synopsis';
@@ -9,6 +10,7 @@ class Project extends React.Component{
     super(props);
 
     this.checkNotEmpty = this.checkNotEmpty.bind(this);
+    this.createTask = this.createTask.bind(this);
   }
 
   componentDidMount(){
@@ -29,11 +31,16 @@ class Project extends React.Component{
     
   }
 
+  createTask(){
+
+    this.setState({display: })
+  }
 
   render(){
 
     let synopsis = <p></p>;
     let edit = <p></p>;
+    let newTask = <p></p>;
     let tasks =<p></p>;
     
 
@@ -42,6 +49,9 @@ class Project extends React.Component{
       synopsis = <Synopsis
        project={this.props.project}
        />
+
+      newTask = <button onClick={this.createTask}>Create a New Task!</button>
+
        edit = <EditProject
        project={this.props.project}
        updateProject={this.props.updateProject}
@@ -60,6 +70,7 @@ class Project extends React.Component{
         <ul className="project-tasks">
           {tasks}
         </ul>
+        {newTask}
         {edit}
       </React.Fragment>
     )
