@@ -3,6 +3,23 @@ import * as ProjectApiUtil from '../util/project_api_util';
 export const RECEIVE_PROJECT = 'RECEIVE_PROJECT';
 export const RECEIVE_ALL_PROJECTS = 'RECEIVE_ALL_PROJECTS';
 export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
+export const REMOVE_PROJECT = 'REMOVE_PROJECT';
+
+export const deleteProject = project => dispatch =>(
+  ProjectApiUtil.deleteProject(project)
+  .then(
+    project => dispatch(removeProject(project.data)),
+    errors => dispatch(receiveErrors(errors))
+  )
+)
+
+export const removeProject = project => {
+  let projectId = project._id
+  return({
+    type: REMOVE_PROJECT,
+    projectId
+  })
+}
 
 export const fetchProjects = communityId => dispatch =>(
   ProjectApiUtil.fetchProjects(communityId)
