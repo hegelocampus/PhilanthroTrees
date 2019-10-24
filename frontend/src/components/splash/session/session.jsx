@@ -4,6 +4,7 @@ import SessionForm from './session_form';
 
 export default (props) => {
   const [formType, setFormType] = useState("signup");
+
   const changeForm = (type) => {
     return (e) => {
       setFormType(type);

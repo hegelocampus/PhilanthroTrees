@@ -152,7 +152,6 @@ router.get('/', function(req, res, next) {
 
 // Community Register Route
 router.use("/:user_id", communityRouter)
-
 communityRouter.route("/create-community",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
