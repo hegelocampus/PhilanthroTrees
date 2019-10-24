@@ -30,7 +30,7 @@ class EditProject extends React.Component{
 
   render(){
     return(
-    <form onSubmit={this.submit}>
+    <form className="project-edit" onSubmit={this.submit}>
 
       <input className="name" type="text"
        value={this.state.name} onChange={this.update('name')}/>
