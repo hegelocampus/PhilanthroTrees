@@ -33,7 +33,7 @@ class Project extends React.Component{
 
   createTask(){
 
-    this.setState({display: })
+    // this.setState({display: })
   }
 
   render(){
