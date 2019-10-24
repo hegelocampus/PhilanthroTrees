@@ -8,7 +8,6 @@ import Splash from './splash/splash';
 
 export default () => (
   <React.Fragment>
-    {/*<TopBar />*/}
     <main>
       <AuthRoute component={ Splash } />
       <ProtectedRoute component={ MainDisplay } />
