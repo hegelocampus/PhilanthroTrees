@@ -1,5 +1,4 @@
 import React from 'react';
-import RenderErrors from '../../util/render_errors';
 
 class EditProject extends React.Component{
 
@@ -46,7 +45,7 @@ class EditProject extends React.Component{
         <option value="plant3">Plant 3 Image</option>
       </select>/>
 
-      <button>UPDATE!</button>
+      <button type="submit">UPDATE!</button>
  
     </form>
     )

@@ -14,6 +14,13 @@ class Synopsis extends React.Component {
 
   render() {
 
+    this.state = {
+      name: this.props.project.name,
+      description: this.props.project.description,
+      plant: this.props.project.plant,
+      communityId: this.props.project.communityId
+    }
+
 
     return (
       <div className="project-synopsis">

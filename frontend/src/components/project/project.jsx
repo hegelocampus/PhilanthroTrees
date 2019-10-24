@@ -25,11 +25,16 @@ class Project extends React.Component{
     return false;
   }
 
+  componentDidUpdate(){
+    
+  }
+
 
   render(){
 
     let synopsis = <p></p>;
     let edit = <p></p>;
+    let tasks =<p></p>;
     
 
     //Ensure Project Pops have Populated
@@ -41,7 +46,10 @@ class Project extends React.Component{
        project={this.props.project}
        updateProject={this.props.updateProject}
        />
+    }
 
+    if(this.checkNotEmpty(this.props.tasks)){
+      tasks = Object.values(this.props.tasks).map(task => <Task task={task} />)
     }
 
 
@@ -49,13 +57,13 @@ class Project extends React.Component{
       <React.Fragment>
         <RenderErrors/>
         {synopsis}
-        <Task/>
+        <ul className="project-tasks">
+          {tasks}
+        </ul>
         {edit}
       </React.Fragment>
     )
-
   }
-
 }
 
 export default Project;

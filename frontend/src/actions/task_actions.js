@@ -7,7 +7,7 @@ export const fetchTasks = projectId => dispatch => (
   TaskApiUtil.fetchTasks(projectId)
   .then(
     tasks => dispatch(receiveTasks(tasks.data)),
-    errors => dispatch(receiveErrors(errors))
+    errors => dispatch(receiveErrors(errors.data))
   )
 );
 
