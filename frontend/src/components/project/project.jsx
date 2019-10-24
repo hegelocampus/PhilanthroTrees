@@ -4,10 +4,17 @@ import RenderErrors from '../../util/render_errors';
 import Task from './task';
 import Synopsis from './synopsis';
 import EditProject from './edit_project';
+import CreateTask from './create_task';
 
 class Project extends React.Component{
   constructor(props){
     super(props);
+
+
+    this.state = {
+      taskCreate: false,
+      projectUpdate: false
+    }
 
     this.checkNotEmpty = this.checkNotEmpty.bind(this);
     this.createTask = this.createTask.bind(this);
@@ -31,17 +38,21 @@ class Project extends React.Component{
     
   }
 
-  createTask(){
-
-    // this.setState({display: })
+  showForm(field){
+    e.preventDefault();
+    let set = this.state[field] ? false : true;
+    this.setState({[field]: set });
   }
+
 
   render(){
 
     let synopsis = <p></p>;
-    let edit = <p></p>;
-    let newTask = <p></p>;
     let tasks =<p></p>;
+    let showCreate = <p></p>;
+    let newTask= <p></p>
+    let showEdit = <p></p>;
+    let newEdit = <p></p>;
     
 
     //Ensure Project Pops have Populated
@@ -50,12 +61,18 @@ class Project extends React.Component{
        project={this.props.project}
        />
 
-      newTask = <button onClick={this.createTask}>Create a New Task!</button>
+      showCreate = <button onClick={this.showForm("taskCreate")}>New Task!</button>
 
-       edit = <EditProject
+      newTask = this.state.taskCreate ? <CreateTask
+      createTask={this.props.createTask}/> : <p></p>;
+
+
+      showEdit = <button onClick={this.showForm("projectUpdate")}>Edit Project!</button>
+
+       newEdit = this.state.projectUpdate ? <EditProject
        project={this.props.project}
        updateProject={this.props.updateProject}
-       />
+       /> : <p></p>;
     }
 
     if(this.checkNotEmpty(this.props.tasks)){
@@ -70,8 +87,10 @@ class Project extends React.Component{
         <ul className="project-tasks">
           {tasks}
         </ul>
+        {showCreate}
         {newTask}
-        {edit}
+        {showEdit}
+        {newEdit}
       </React.Fragment>
     )
   }
