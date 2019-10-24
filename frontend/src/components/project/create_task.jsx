@@ -14,7 +14,7 @@ class CreateTask extends React.Component {
 
   submit(e) {
     e.preventDefault();
-    this.props.updateProject(this.state);
+    this.props.createTask(this.state);
   }
 
   update(field) {
