@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 
-import { RECEIVE_PROJECT } from '../actions/project_actions';
+import { RECEIVE_PROJECT, RECEIVE_ALL_PROJECTS } from '../actions/project_actions';
 
 
 const projectsReducer = (state ={}, action) =>{
@@ -8,6 +8,13 @@ const projectsReducer = (state ={}, action) =>{
   let newState;
 
   switch(action.type){
+
+    case RECEIVE_ALL_PROJECTS:
+      newState = merge({}, state);
+      Object.values(action.projects).forEach(project=>{
+        newState[projects._id] = project
+      });
+      return newState;
     
     case RECEIVE_PROJECT:
       let project = {[action.project._id]: action.project}
