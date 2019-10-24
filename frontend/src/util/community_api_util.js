@@ -4,7 +4,11 @@ export const fetchCommunity = communityId => {
   return axios.get(`/api/communities/${ communityId }`);
 };
 
-export const login = communitiesData => {
-  return axios.get("/api/communitys/login", communityData);
+export const addUserToCommunity = (userId, communityId) => {
+  return axios.get(`/api/users/${ userId }`);
+};
+
+export const createCommunity = userId => {
+  return axios.get(`/api/users/${ userId }/create-community`)
 };
 

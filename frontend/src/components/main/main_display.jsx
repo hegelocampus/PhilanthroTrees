@@ -7,6 +7,7 @@ import {
 import TopBar from './top_bar/top_bar';
 import UserDetail from './user/user_detail';
 import ProjectContainer from '../project/project_container';
+import Community from './community/community';
 
 export default (props) => {
   return (
@@ -19,6 +20,10 @@ export default (props) => {
           <Route path={'/profile/:userId'}>
             <h1>User show page</h1>
           </Route>
+          <Route
+            path='/community'
+            component={ Community }
+          />
           <Route path="/projects/:projectId"
           component={ProjectContainer} />
           {/* Tasks will be displayed on the root page
@@ -29,3 +34,4 @@ export default (props) => {
     </React.Fragment>
   )
 }
+
