@@ -125,7 +125,9 @@ router.get('/:id', (req, res) => {
     );
 });
 
+
 // Get the community for a specific user
+
 router.get('/:id/community', (req, res, next) => {
   User.findById(req.params.id)
     .then(
@@ -152,7 +154,9 @@ router.get('/', function(req, res, next) {
 
 // Community Register Route
 router.use("/:user_id", communityRouter)
+
 communityRouter.route("/create-community",
+
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { isValid, errors } = validateCommunity(req.body);

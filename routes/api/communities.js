@@ -13,7 +13,7 @@ const validateProject = require('../../validation/valid-project');
 // Project Index Route
 router.use('/:communityId/projects', projectRouter)
 
-projectRouter.route('/', (req, res) => {
+projectRouter.get('/', (req, res) => {
   const communityId = req.params.communityId;
 
   Project.find({ community: communityId })
@@ -27,7 +27,7 @@ projectRouter.route('/', (req, res) => {
 
 //Project Create Route
 
-projectRouter.route('/create', (req, res) => {
+projectRouter.post('/create', (req, res) => {
   const communityId = req.params.communityId;
   const { errors, isValid } = validateProject(req.body);
 
@@ -73,7 +73,9 @@ router.patch('/:community_id/user/:user_id/citizens',
       community => {
         User.findByIdAndUpdate(
           req.params.user_id,
+
           { $set: { community: community.id }}
+
         ).then(
           user => res.json({
             users: { [user.id]: user },

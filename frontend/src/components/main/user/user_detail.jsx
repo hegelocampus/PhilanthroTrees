@@ -11,7 +11,6 @@ export default (props) => {
 
   const currentUserId = useSelector(state => state.session.user.id);
   const currentUser = useSelector(state => state.entities.users[currentUserId]);
-  console.log(currentUserId);
 
   useEffect(() => {
     dispatch(requestUser(currentUserId));
@@ -21,11 +20,9 @@ export default (props) => {
   [currentUserId, dispatch]
   );
 
-  console.log(currentUser);
-
   return (
     <React.Fragment>
-      { currentUser && currentUser.username ? (
+      { currentUser && currentUser.health ? (
         <div className="user-detail-container">
           <ul className="user-stats-ul">
             <li className="user-stats-li user-detail-username-li">
