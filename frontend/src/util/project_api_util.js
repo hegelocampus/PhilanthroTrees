@@ -7,3 +7,7 @@ export const fetchProjects = communityId => {
 export const fetchProject = projectId => {
   return axios.get(`api/projects/${projectId}`);
 }
+
+export const updateProject = project => {
+  return axios.patch(`api/projects/${project._id}`, project);
+}
