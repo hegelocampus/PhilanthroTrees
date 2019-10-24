@@ -5,5 +5,5 @@ export const fetchTasks = projectId => {
 }
 
 export const createTask = (projectId, task) => {
-  return axios.get(`/api/projects/${projectId}/tasks/create`, task)
+  return axios.post(`/api/projects/${projectId}/tasks/create`, task)
 }

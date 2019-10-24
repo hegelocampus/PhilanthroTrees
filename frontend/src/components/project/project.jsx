@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
 import RenderErrors from '../../util/render_errors';
 import Task from './task';
 import Synopsis from './synopsis';
@@ -66,6 +65,7 @@ class Project extends React.Component{
       showCreate = <button onClick={this.showForm("taskCreate")}>New Task!</button>
 
       newTask = this.state.taskCreate ? <CreateTask
+      projectId={this.props.match.params.projectId}
       createTask={this.props.createTask}/> : <p></p>;
 
 

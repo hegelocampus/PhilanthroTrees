@@ -16,7 +16,7 @@ export const createTask = (projectId, task) => dispatch => (
   TaskApiUtil.createTask(projectId, task)
   .then(
     task => dispatch(receiveTask(task.data)),
-    errors => dispatch(receiveErrors(errors.data))
+    errors => dispatch(receiveErrors(errors.request.statusText))
   )
 )
 
