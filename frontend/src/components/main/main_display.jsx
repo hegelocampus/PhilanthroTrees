@@ -27,8 +27,8 @@ export default (props) => {
           <Route path="/projects/:projectId"
           component={ProjectContainer} />
           {/* Tasks will be displayed on the root page
-          <Route path="/" component={ Tasks } />
-          */}
+          <Route path="/" component={ Tasks } /> */}
+         
         </Switch>
       </div>
     </React.Fragment>
