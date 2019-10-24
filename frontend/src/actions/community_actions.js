@@ -17,3 +17,4 @@ export const requestCommunity = communityId => dispatch => ApiUtil.fetchCommunit
   .then(
     res => dispatch(receiveCommunity(res.data))
   );
+
