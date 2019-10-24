@@ -74,7 +74,6 @@ export default (props) => {
                 >
                   Sign In
                 </button>
-
                 <button
                   type="button"
                   onClick={(e) => {
