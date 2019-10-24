@@ -17,7 +17,7 @@ class Project extends React.Component{
     }
 
     this.checkNotEmpty = this.checkNotEmpty.bind(this);
-    this.createTask = this.createTask.bind(this);
+    this.showForm = this.showForm.bind(this);
   }
 
   componentDidMount(){
@@ -39,9 +39,11 @@ class Project extends React.Component{
   }
 
   showForm(field){
-    e.preventDefault();
+    return (e) =>{
+    // e.preventDefault();
     let set = this.state[field] ? false : true;
     this.setState({[field]: set });
+    }
   }
 
 

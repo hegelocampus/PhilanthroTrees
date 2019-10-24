@@ -25,7 +25,7 @@ class CreateTask extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.submit}>
+      <form className="create-task" onSubmit={this.submit}>
 
         <label>
         Task Title
