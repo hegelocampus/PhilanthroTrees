@@ -12,7 +12,7 @@ const projectsReducer = (state ={}, action) =>{
     case RECEIVE_ALL_PROJECTS:
       newState = merge({}, state);
       Object.values(action.projects).forEach(project=>{
-        newState[projects._id] = project
+        newState[project._id] = project
       });
       return newState;
     
