@@ -13,7 +13,7 @@ const validateProject = require('../../validation/valid-project');
 // Project Index Route
 router.use('/:communityId/projects', projectRouter)
 
-projectRouter.route('/', (req, res) => {
+projectRouter.get('/', (req, res) => {
   const communityId = req.params.communityId;
 
   Project.find({ community: communityId })
@@ -27,7 +27,7 @@ projectRouter.route('/', (req, res) => {
 
 //Project Create Route
 
-projectRouter.route('/create', (req, res) => {
+projectRouter.post('/create', (req, res) => {
   const communityId = req.params.communityId;
   const { errors, isValid } = validateProject(req.body);
 
@@ -48,9 +48,6 @@ projectRouter.route('/create', (req, res) => {
     .catch(err => res.status(400).json(errors))
 });
 
-
-
-
 // Citizen Index
 router.get('/:communityId/citizens', (req, res) => {
   let citizens = [];
@@ -69,17 +66,28 @@ router.get('/:communityId/citizens', (req, res) => {
 router.patch('/:community_id/user/:user_id/citizens',
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    User.findById(req.params.user_id)
-    .then(
-      Community.findByIdAndUpdate(
-        req.params.community_id,
-        { $push: { citizens: req.params.user_id } })
-        .then((community)=> (res.json(`You've joined the ${community.name} Community!`)))
-        //Async server issue prevents the updated community from being pulled here 
-        .catch(err => res.status(400).json(err))
-    ).catch(err => res.json(err))
-});
+    Community.findByIdAndUpdate(
+      req.params.community_id,
+      { $push: { citizens: req.params.user_id }}
+    ).then(
+      community => {
+        User.findByIdAndUpdate(
+          req.params.user_id,
 
+          { $set: { community: community.id }}
+
+        ).then(
+          user => res.json({
+            users: { [user.id]: user },
+            communties: { [community.id]: community }
+          }),
+          //Async server issue prevents the updated community from being pulled here
+          err => res.status(400).json(err)
+        )
+      }),
+      err => res.status(400).json(err)
+  }
+);
 
 module.exports = router;
 

@@ -22,6 +22,10 @@ const UserSchema = new Schema({
     type: Number,
     default: 0
   },
+  communityId: {
+    type: String,
+    required: false
+  },
   completedTasks: [],
   date: {
     type: Date,
