@@ -76,8 +76,8 @@ router.patch('/:community_id/user/:user_id/citizens',
           { $set: { community: community.id }}
         ).then(
           user => res.json({
-            users: { [user.id]: user },
-            communties: { [community.id]: community }
+            user: { [user.id]: user },
+            community: { [community.id]: community }
           }),
           //Async server issue prevents the updated community from being pulled here
           err => res.status(400).json(err)
