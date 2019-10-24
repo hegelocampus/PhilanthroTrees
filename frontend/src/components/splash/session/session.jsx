@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import SessionForm from './session_form_container.js';
+import SessionForm from './session_form';
 
 export default (props) => {
-  const [formType, setFormType] = useState("login");
+  const [formType, setFormType] = useState("signup");
 
   const changeForm = (type) => {
     return (e) => {
-      e.preventDefault();
       setFormType(type);
     }
   }
@@ -16,19 +16,27 @@ export default (props) => {
   if (formType === 'login') {
     headerContent = "Sign In";
     footer = (
-      <span>Don't have an account?
-        <button type="button" onClick={changeForm("signup")} >
-          Sign up
-        </button>
+      <span className="switch-form">
+        Don't have an account?
+        <Link
+          to="/home/signup"
+          onClick={changeForm("signup")}
+        >
+          Sign Up
+        </Link>
       </span>
     )
   } else {
     headerContent = "Sign up";
     footer = (
-      <span>Already have an account?
-        <button type="button" onClick={changeForm("login")} >
+      <span className="switch-form">
+        Already have an account?
+        <Link
+          to="/home/login"
+          onClick={changeForm("login")}
+        >
           Sign In
-        </button>
+        </Link>
       </span>
     );
   }
@@ -47,3 +55,4 @@ export default (props) => {
     </div>
   );
 }
+
