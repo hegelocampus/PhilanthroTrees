@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-
+import {fetchProjects} from '../../actions/project_actions';
 import TodoList from './todo_list';
 
 const mapStateToProps = state =>{
