@@ -11,7 +11,7 @@ const tasksReducer = (state= {}, action) => {
     case RECEIVE_ALL_TASKS:
       newState = merge({}, state);
       Object.values(action.tasks).forEach(task =>{
-        newState[task.id]= task
+        newState[task._id]= task
       });
       return newState;
 
