@@ -1,11 +1,99 @@
-@import "app";
-@import "theme";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
 
-body {
-  width: 100%;
+html {
+  font-family: 'Noto Sans', sans-serif;
   height: 100%;
+  width: 100%;
+  background-color: #46A049;
 }
 
 a {
+  cursor: pointer;
 }
 
+a:hover{
+  text-decoration: underline;
+}
+
+.splash-page {
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+}
+
+div.splash-1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+div.about {
+  min-width: 300px;
+  max-width: 50%;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+div.details {
+  text-align: center;
+  min-width: 300px;
+  max-width: 75%;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+/* SESSION FORM */
+
+div.session-content {
+  min-width: 350px;
+  font-family: inherit;
+  max-width: 45%;
+}
+
+div.session-header, form.session-form, div.session-content-secondary {
+  width: 85%;
+  margin: 0 auto;
+}
+
+div.session-content-secondary {
+  margin-top: 5px;
+  text-align: center;
+}
+
+a.switch-form > span {
+  font-weight: 600;
+}
+
+form.session-form > p {
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+}
+
+form.session-form > input {
+  font-family: inherit;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px 0 5px 10px;
+  margin: 10px 0px 10px 0px;
+  border-radius: 1px;
+  border: solid 2px transparent;
+}
+
+button.big-button {
+  font-family: inherit;
+  box-sizing: border-box;
+  margin-top: 5px;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: palevioletred;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  border: 0;
+  border-radius: 2px;
+}
