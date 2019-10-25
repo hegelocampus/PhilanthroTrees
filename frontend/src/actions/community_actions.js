@@ -24,7 +24,7 @@ export const receiveCommunityErrors = (errors) => ({
 export const requestCommunity = (comId) => dispatch => ApiUtil.fetchCommunity(comId)
   .then(
     res => dispatch(receiveCommunity(res.data)),
-    errors => dispatch(receiveCommunityErrors(errors))
+    errors => dispatch(receiveCommunityErrors(errors.response.data))
   );
 
 export const createUserCommunity = (userId, values) => dispatch => ApiUtil.createCommunity(userId, values)
@@ -33,12 +33,12 @@ export const createUserCommunity = (userId, values) => dispatch => ApiUtil.creat
       console.log(res.data);
       dispatch(receiveCommunityAssoc(res.data));
     },
-    errors => dispatch(receiveCommunityErrors(errors))
+    errors => dispatch(receiveCommunityErrors(errors.response.data))
   );
 
 export const addUserToCommunity = (userId, communityId) => dispatch => ApiUtil.addUserToCommunity(userId, communityId)
   .then(
     res => dispatch(receiveCommunityAssoc(res.data)),
-    errors => dispatch(receiveCommunityErrors(errors))
+    errors => dispatch(receiveCommunityErrors(errors.response.data))
   );
 

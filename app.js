@@ -29,6 +29,7 @@ mongoose
 app.use(sassMiddleware({
   src: path.join(__dirname + '/sass'),
   dest: path.join(__dirname + '/frontend/public'),
+  prefix: '%PUBLIC_URL%',
   debug: true,
   outputStyle: 'compressed'
 }));
