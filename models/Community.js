@@ -17,7 +17,17 @@ const CommunitySchema = new Schema({
       required: true
     }
   },
-  citizens: [Object],
+  citizens: [{
+    id: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
+    username: {
+      type: String,
+      required: true
+    }
+  }],
   date: {
     type: Date,
     default: Date.now

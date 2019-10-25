@@ -81,8 +81,17 @@ community.patch('/:community_id/user/:user_id/citizens',
           { $set: { community: community.id }}
         ).then(
           user => res.json({
-            user: { [user.id]: user },
-            community: { [community.id]: community }
+            user: { [user._id]: {
+              id: user._id,
+              username: user.username,
+              communityId: user.communityId
+            }},
+            community: { [community.id]: {
+              id: community._id,
+              name: community.name,
+              citizens: community.citizens,
+              admin: community.admin
+            }}
           }),
           //Async server issue prevents the updated community from being pulled here
           err => res.status(422).json(err)
@@ -120,8 +129,11 @@ community.post("/create",
                 username: user.username,
                 ref: user
               },
-              projects: [],
-              citizens: [{id: user._id, name: user.name}]
+              citizens: [{
+                id: user._id,
+                username: user.username,
+                ref: user
+              }]
             })
 
             newCommunity
@@ -134,11 +146,12 @@ community.post("/create",
                         id: community._id,
                         name: community.name,
                         admin: {
-                          name: user.name,
+                          name: user.username,
                           id: user._id
-                        }
+                        },
+                        citizens: community.citizens
                       },
-                      user: { id: user._id, communityId: community.id }})
+                      user: { id: user.id, communityId: community.id }})
                   })
               })
               .catch(err => res.json(err))

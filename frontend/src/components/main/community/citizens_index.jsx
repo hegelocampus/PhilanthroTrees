@@ -1,34 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
-  useDispatch,
   useSelector
 } from 'react-redux';
 import {
   Link,
   useRouteMatch
 } from 'react-router-dom';
-import { requestCommunityUsers } from '../../../actions/user_actions';
 
 export default (props) => {
   const match = useRouteMatch();
-  const dispatch = useDispatch();
-  const community = useSelector(state => state.entities.community);
-  const citizens = useSelector(state => state.entities.users);
-
-  useEffect(() => {
-    if (community.id) {
-      dispatch(requestCommunityUsers(community.id))
+  const citizens = useSelector(state => {
+    if (state.entities.users) {
+      return  Object.values(state.entities.users);
     }
-  },
-    [dispatch, community.id]
-  )
+  });
 
   let citizensLis;
-  if (citizens.length) {
-    citizensLis = citizens.map(user => (
-      <li key={ user.id }>
-        <Link to={ `${match}/${user.id}` }>
-          <span>{ user.name }</span>
+  if (citizens) {
+    citizensLis = citizens.map(({ id, username }) => (
+      <li key={ id }>
+        <Link to={ `${ match.path }/${ id }` }>
+          <span>{ username }</span>
         </Link>
       </li>
     ));
