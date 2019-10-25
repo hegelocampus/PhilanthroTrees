@@ -120,8 +120,7 @@ community.post("/create",
                 username: user.username,
                 ref: user
               },
-              projects: [],
-              citizens: [{id: user._id, name: user.name}]
+              citizens: [{id: user._id, username: user.name}]
             })
 
             newCommunity
