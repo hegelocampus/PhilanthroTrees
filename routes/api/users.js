@@ -128,6 +128,18 @@ user.get('/:id', (req, res) => {
     );
 });
 
+// Update Experience for a user
+
+user.patch(':/id', (req, res)=> {
+  const userId = req.params.id;
+
+  User.findOneAndUpdate(
+    { _id: userId },
+    { experience: req.body.experience },
+  ).then(user => res.json(user))
+})
+
+
 // Get the community for a user
 user.get('/:id/community', (req, res, next) => {
   User.findById(req.params.id)

@@ -7,7 +7,7 @@ class Task extends React.Component{
     this.state = {
       completed: false
     }
-    
+    this.user = this.props.currentUser;
     this.submitTask = this.submitTask.bind(this);
   }
 
@@ -17,8 +17,12 @@ class Task extends React.Component{
     let project = this.props.project;
     project['projectExp'] = project['projectExp'] + 10;
 
+    let user = this.props.currentUser;
+    user['experience'] = user['experience'] + 20;
+
     this.props.updateTask(this.state);
     this.props.updateProject(project);
+    this.props.updateUser(user);
   }
 
   update(field) {
