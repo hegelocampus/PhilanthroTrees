@@ -69,7 +69,7 @@ community.patch('/:community_id/user/:user_id/citizens',
   (req, res) => {
     Community.findByIdAndUpdate(
       req.params.community_id,
-      { $push: { citizens: { req.params.user_id } }}
+      { $push: { citizens: { id: req.params.user_id, name: '' } }}
     ).then(
       community => {
         User.findByIdAndUpdate(
