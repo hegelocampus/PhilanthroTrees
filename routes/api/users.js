@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
-const communityRouter = express.Router({ mergeParams: true });
+const user = require('express').Router();
+const community = require('./communities');
+//const communityRouter = express.Router({ mergeParams: true });
+//const express = require('express');
 
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
@@ -12,13 +13,12 @@ const Community = require('../../models/Community');
 const keys = require("../../config/keys");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
-const validateCommunity = require('../../validation/create_community');
 
-router.post('/register', (req, res) => {
-  const { errors, isValid } = validateRegisterInput(req.body);
+user.post('/register', (req, res) => {
+  let { errors, isValid } = validateRegisterInput(req.body);
 
   if (!isValid) {
-    return res.status(400).json(errors);
+    return res.status(422).json(errors);
   }
 
   User.findOne({ email: req.body.email })
@@ -26,7 +26,7 @@ router.post('/register', (req, res) => {
       if (user) {
         // Use the validations to send the error
         errors.email = 'Email already exists';
-        return res.status(400).json(errors);
+        return res.status(422).json(errors);
       } else {
         const newUser = new User({
           username: req.body.username,
@@ -41,7 +41,10 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                const payload = { id: user.id, username: user.username };
+                const payload = {
+                  id: user.id,
+                  username: user.username
+                };
 
                 jwt.sign(payload,
                   keys.secretOrKey,
@@ -60,7 +63,7 @@ router.post('/register', (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
+user.post('/login', (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
   if (!isValid) {
@@ -80,7 +83,11 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            const payload = { id: user.id, username: user.username };
+            const payload = {
+              id: user.id,
+              username: user.username,
+              communityId: user.communityId
+            };
 
             jwt.sign(
               payload,
@@ -94,85 +101,65 @@ router.post('/login', (req, res) => {
                 });
               });
           } else {
-            errors.user = 'Wrong email/password combo';
-            return res.status(422).json({ user: 'Wrong email/password combo' });
+            res.status(422).json({errors: { user: 'Wrong email/password combo' }});
           }
         })
     })
 });
 
-router.get('/:id', (req, res) => {
+user.get('/:id', (req, res) => {
   User.findById(req.params.id)
     .then(user => {
       if (!user) {
-        errors.user = 'User not found';
+        res.status(422).json({ errors: { user: 'User not found' }});
       } else {
         res.json({
           id: user.id,
           username: user.username,
           hp: user.hp,
-          exp: user.exp,
+          experience: user.experience,
           communityId: user.communityId,
           email: user.email
         });
       }
     },
       errors => {
-        res.json({errors: {
-          user: errors
-        }});
+        res.json({ errors: { user: errors}});
       }
     );
 });
 
-// Get the community for a specific user
-router.get('/:id/community', (req, res, next) => {
+// Get the community for a user
+user.get('/:id/community', (req, res, next) => {
   User.findById(req.params.id)
     .then(
       user=> {
         if (!user) {
-          errors.user = 'User not found';
+          res.json({ errors: { user: 'User not found' }});
         } else {
           Community.findById(req.params.id)
           res.json(commutities);
         }
       },
       errors => {
-        res.json({errors: {
-          user: errors
-        }});
+        res.json({errors: { user: errors}});
       }
     );
 });
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+user.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-// Community Register Route
-router.use("/:user_id", communityRouter)
-communityRouter.route("/create-community",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    const { isValid, errors } = validateCommunity(req.body);
+/* POST UserCommunity */
+user.use("/:id/community", (req, res, next) => {
+  req.id = req.params.id;
+  console.log(req.body);
+  req.communityData = req.body
+  console.log(req.id);
+  next()
+}, community);
 
-    if (!isValid) {
-      return res.status(400).json(errors);
-    } else {
-      const newCommunity = new Community({
-        name: req.body.name,
-        admin: req.body.admin,
-        projects: [],
-        citizens: []
-      })
-
-      newCommunity
-        .save()
-        .then(community => res.json(community))
-        .catch(err => res.json(err))
-    }
-  })
-
-module.exports = router;
+module.exports = user;
 

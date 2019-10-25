@@ -18,12 +18,12 @@ const UserSchema = new Schema({
     type: Number,
     default: 100
   },
-  exp: {
+  experience: {
     type: Number,
     default: 0
   },
   communityId: {
-    type: String,
+    type: Schema.Types.ObjectId,
     required: false
   },
   completedTasks: [],
@@ -34,3 +34,4 @@ const UserSchema = new Schema({
 })
 
 module.exports = User = mongoose.model('users', UserSchema);
+

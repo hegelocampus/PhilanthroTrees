@@ -14,12 +14,10 @@ export default (props) => {
   return (
     <React.Fragment>
       <Switch>
-        {/* index of community citizens */}
         <Route
           path={ `${ match.path }/citizens` }
           component={ CommunityIndex }
         />
-        {/* community create page */}
         <Route
           path={ `${ match.path }/new` }
           component={ CommunityForm }
@@ -31,7 +29,7 @@ export default (props) => {
           type="patch"
         />
         <Route
-          path="/"
+          path={ `${ match.path }` }
           component={ CommunityDetail }
         />
       </Switch>
