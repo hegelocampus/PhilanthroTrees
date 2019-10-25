@@ -9,57 +9,50 @@ export const deleteProject = project => dispatch =>(
   ProjectApiUtil.deleteProject(project)
   .then(
     project => dispatch(removeProject(project.data)),
-    errors => dispatch(receiveErrors(errors))
+    errors => dispatch(receiveErrors(errors.response.data))
   )
 )
 
-export const removeProject = project => {
-  let projectId = project._id
-  return({
-    type: REMOVE_PROJECT,
-    projectId
-  })
-}
+export const removeProject = project => ({
+  type: REMOVE_PROJECT,
+  projectId: project._id
+});
 
-export const fetchProjects = communityId => dispatch =>(
-  ProjectApiUtil.fetchProjects(communityId)
-  .then(
-    projects => dispatch(receiveProjects(projects.data)),
-    errors => dispatch(receiveErrors(errors))
-  )
-)
+const receiveProject = project => ({
+  type: RECEIVE_PROJECT,
+  project
+});
 
-export const receiveProjects = projects => {
-  return({
-    type: RECEIVE_ALL_PROJECTS,
-    projects 
-  })
-}
+const receiveProjects = projects => ({
+  type: RECEIVE_ALL_PROJECTS,
+  projects
+});
+
+const receiveErrors = (errors) => ({
+  type: RECEIVE_PROJECT_ERRORS,
+  errors
+});
 
 export const fetchProject = project => dispatch => (
   ProjectApiUtil.fetchProject(project)
   .then(
     project => dispatch(receiveProject(project.data)),
-    errors => dispatch(receiveErrors(errors.data))
+    errors => dispatch(receiveErrors(errors.response.data.project))
 ));
+
+export const fetchProjects = communityId => dispatch =>(
+  ProjectApiUtil.fetchProjects(communityId)
+  .then(
+    projects => dispatch(receiveProjects(projects.data)),
+    errors => dispatch(receiveErrors(errors.response.data.project))
+  )
+)
 
 export const updateProject = projectId => dispatch => (
   ProjectApiUtil.updateProject(projectId)
   .then(
     project => dispatch(receiveProject(project.data)),
-    errors => dispatch(receiveErrors(errors.data))
+    errors => dispatch(receiveErrors(errors.response.data))
 ));
 
-export const receiveProject = project => {
-  return({
-    type: RECEIVE_PROJECT,
-    project
-  })
-};
 
-export const receiveErrors = errors => {
-  return({
-    type: RECEIVE_PROJECT_ERRORS,
-    errors
-  })
-};
