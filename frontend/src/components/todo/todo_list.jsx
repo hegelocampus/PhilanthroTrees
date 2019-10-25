@@ -7,14 +7,19 @@ class TodoList extends React.Component{
     super(props);
 
     this.checkNotEmpty = this.checkNotEmpty.bind(this);
-
   }
 
-  componentDidMount(){
-    let communityId = this.props.currentUser.communityId
-    console.log("communityID:", communityId);
-    if (communityId) {
-      this.props.fetchProjects(communityId);
+  componentDidUpdate(){
+    console.log('todo list updated');
+    if (this.checkNotEmpty(this.props.users)) {
+      console.log('at communityId maker');
+      let communityId = this.props.users[this.props.currentUser.id] ?
+        this.props.users[this.props.currentUser.id].communityId : null;
+
+      if (communityId && !this.checkNotEmpty(this.props.projects)) {
+        console.log("communityID:", communityId);
+        this.props.fetchProjects(communityId);
+      }
     }
   }
 
@@ -28,7 +33,7 @@ class TodoList extends React.Component{
 
   render(){
 
-    let projects = <p></p>;
+    let projects = <p>Join a Community to get some Projects!</p>;
 
     if(this.checkNotEmpty(this.props.projects)){
       console.log("The Projects:", this.props.projects)
