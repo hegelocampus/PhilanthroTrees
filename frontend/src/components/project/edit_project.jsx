@@ -10,7 +10,9 @@ class EditProject extends React.Component{
       name: this.props.project.name,
       description: this.props.project.description,
       plant: this.props.project.plant,
-      communityId: this.props.project.communityId
+      communityId: this.props.project.communityId,
+      projectHealth: this.props.project.projectHealth,
+      projectExp: this.props.project.projectExp
     }
 
 
