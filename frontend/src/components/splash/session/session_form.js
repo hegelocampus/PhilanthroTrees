@@ -7,7 +7,6 @@ import { login, signup } from "../../../actions/session_actions";
 export default (props) => {
   const dispatch = useDispatch();
 
-
   return (
     <React.Fragment>
       <RenderErrors />
@@ -75,7 +74,6 @@ export default (props) => {
                 >
                   Sign In
                 </button>
-
                 <button
                   type="button"
                   onClick={(e) => {

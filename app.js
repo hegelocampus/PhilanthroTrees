@@ -43,9 +43,9 @@ if (process.env.NODE_ENV === 'production') {
   //app.set('views', path.join(__dirname, 'views'));
   //app.set('view engine', 'pug');
   //app.use(express.static(path.join(__dirname, 'public')));
-  app.use(express.static('frontend/public'));
+  app.use(express.static(path.join(__dirname, 'frontend/public')));
   app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'frontend', 'pubilc', 'index.html'));
   })
 }
 
