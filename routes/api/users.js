@@ -86,7 +86,6 @@ user.post('/login', (req, res) => {
             const payload = {
               id: user.id,
               username: user.username,
-              communityId: user.communityId
             };
 
             jwt.sign(

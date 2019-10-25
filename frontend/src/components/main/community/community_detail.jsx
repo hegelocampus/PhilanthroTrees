@@ -10,18 +10,24 @@ import CitizenIndex from './citizens_index';
 export default (props) => {
   const match = useRouteMatch();
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.session.user);
+  const currentUser = useSelector(state => {
+    return state.entities.users ? state.entities.users[state.session.user.id] : null
+  });
   const community = useSelector(state => state.entities.community);
 
   useEffect(() => {
-    dispatch(requestCommunity(currentUser.communityId));
+    if (currentUser) {
+      dispatch(requestCommunity(currentUser.communityId));
+    }
   },
     [dispatch, currentUser]
   )
 
+  console.log(currentUser);
+
   return (
     <React.Fragment>
-      { currentUser.communityId ? (
+      { currentUser ? (
         <>
           <h3> { community.name || null } </h3>
           <h3> { community.admin ? community.admin.name : null } </h3>
