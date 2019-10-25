@@ -9,7 +9,7 @@ class Task extends React.Component{
     }
   }
 
-  submitTask(){
+  submitTask(e){
     e.preventDefault();
     this.props.updateTask(this.state);
   }

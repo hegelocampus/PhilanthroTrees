@@ -3,14 +3,11 @@ import {fetchProjects} from '../../actions/project_actions';
 import TodoList from './todo_list';
 
 const mapStateToProps = state =>{
-  let currentUser = state.session && state.session.user;
-
-  if (state.session.user && state.users){
-    currentUser = state.session.user ? state.users[state.session.user.id] : null
-  }
-
+  let currentUser = state.session.user;
+  let users = state.entities.users 
 
   return({
+    users: users,
     currentUser: currentUser,
     projects: state.entities.projects
   })
