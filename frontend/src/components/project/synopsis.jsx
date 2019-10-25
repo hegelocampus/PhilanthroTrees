@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchProject } from '../../actions/project_actions';
 
 export default (props) => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   let { projectId } = useParams();
   const project = useSelector(state => state.entities.projects[projectId]);
 
@@ -14,7 +14,7 @@ export default (props) => {
     [dispatch, projectId]
   )
 
-  return (
+  return project ? ( 
     <div className="project-synopsis">
       <h1 className="project-name">
         {project.name}
@@ -35,6 +35,6 @@ export default (props) => {
 
       <img className="project-plant" src="" alt="" />
     </div>
-  )
+  ) : null
 }
 

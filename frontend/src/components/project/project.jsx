@@ -54,6 +54,10 @@ class Project extends React.Component{
     let showEdit = <p></p>;
     let newEdit = <p></p>;
 
+    synopsis = <Synopsis
+      project={this.props.project}
+    />
+
     //Ensure Project Pops have Populated
     if(this.checkNotEmpty(this.props.project)){
       synopsis = <Synopsis
