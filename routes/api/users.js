@@ -134,7 +134,7 @@ user.patch(':/id', (req, res)=> {
   const userId = req.params.id;
 
   User.findOneAndUpdate(
-    { _id: userId },
+    { id: userId },
     { experience: req.body.experience },
   ).then(user => res.json(user))
 })
