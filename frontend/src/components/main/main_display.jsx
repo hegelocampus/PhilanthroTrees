@@ -27,7 +27,7 @@ export default (props) => {
           />
           <Route path="/projects/:projectId"
           component={ProjectContainer} />
-          {/* <Route path="/" component={ TodoListContainer } /> */}
+          <Route path="/" component={ TodoListContainer } />
         </Switch>
       </div>
     </React.Fragment>

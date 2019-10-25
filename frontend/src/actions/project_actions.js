@@ -24,7 +24,7 @@ export const removeProject = project => {
 export const fetchProjects = communityId => dispatch =>(
   ProjectApiUtil.fetchProjects(communityId)
   .then(
-    projects => dispatch(receiveProjects(projects)),
+    projects => dispatch(receiveProjects(projects.data)),
     errors => dispatch(receiveErrors(errors))
   )
 )

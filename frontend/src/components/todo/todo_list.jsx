@@ -12,6 +12,7 @@ class TodoList extends React.Component{
 
   componentDidMount(){
     let communityId = this.props.currentUser.communityId
+    console.log("communityID:", communityId);
     this.props.fetchProjects(communityId);
   }
 
@@ -28,6 +29,7 @@ class TodoList extends React.Component{
     let projects = <p></p>;
 
     if(this.checkNotEmpty(this.props.projects)){
+      console.log("The Projects:", this.props.projects)
       projects = Object.values(this.props.projects).map(project =>{
         return(
           <li key={project._id}>

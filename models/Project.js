@@ -22,7 +22,7 @@ const ProjectSchema = new Schema({
     type: Number,
     default: 0
   },
-  community: {
+  communityId: {
     type: Schema.Types.ObjectId,
     ref: 'Community'
   },

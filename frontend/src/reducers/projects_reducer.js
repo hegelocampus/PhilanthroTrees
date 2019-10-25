@@ -15,6 +15,7 @@ const projectsReducer = (state ={}, action) =>{
         newState[project._id] = project
       });
       return newState;
+      // return action.projects;
     
     case RECEIVE_PROJECT:
       let project = {[action.project._id]: action.project}
