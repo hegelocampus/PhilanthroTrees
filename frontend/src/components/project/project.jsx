@@ -33,8 +33,6 @@ class Project extends React.Component{
     return false;
   }
 
-  componentDidUpdate(){
-  }
 
   showForm(field){
     return (e) =>{

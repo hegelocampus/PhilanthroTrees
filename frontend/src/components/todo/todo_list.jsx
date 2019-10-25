@@ -6,18 +6,18 @@ class TodoList extends React.Component{
   constructor(props){
     super(props);
 
+    this.projectCheck = 0;
     this.checkNotEmpty = this.checkNotEmpty.bind(this);
   }
 
   componentDidUpdate(){
     console.log('todo list updated');
     if (this.checkNotEmpty(this.props.users)) {
-      console.log('at communityId maker');
       let communityId = this.props.users[this.props.currentUser.id] ?
         this.props.users[this.props.currentUser.id].communityId : null;
 
-      if (communityId && !this.checkNotEmpty(this.props.projects)) {
-        console.log("communityID:", communityId);
+      if (communityId && !this.checkNotEmpty(this.props.projects) && this.projectCheck < 2) {
+        this.projectCheck = this.projectCheck++;
         this.props.fetchProjects(communityId);
       }
     }
