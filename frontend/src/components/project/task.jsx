@@ -7,6 +7,8 @@ class Task extends React.Component{
     this.state = {
       completed: false
     }
+    
+    this.submitTask = this.submitTask.bind(this);
   }
 
   submitTask(e){
@@ -29,16 +31,19 @@ class Task extends React.Component{
 
 
   render(){
-
+    console.log(this.props.updateTask);
     return(
       <li key={this.props.task._id}>
         <form onSubmit={this.submitTask}>
 
           <h4 id="task-title">{this.props.task.title}</h4>
           <p id="task-details">{this.props.task.details}</p>
-          <p value= {this.props.task.completed ? "Done!": "Unfinished"}></p>
+          <p>{this.props.task.completed ? "Done!" : "Unfinished"}</p>
           <label>
-            <input type="radio" value="Completed" onClick = {this.update("completed")} />
+            <input type="radio" value="Completed" 
+            onClick = {this.update("completed")} 
+            checked={this.state.completed}
+            />
             Completed
           </label>
 

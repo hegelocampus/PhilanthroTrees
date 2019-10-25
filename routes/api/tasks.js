@@ -23,7 +23,7 @@ router.patch('/:taskId', (req, res) => {
 
   Task.findOneAndUpdate(
     { _id: taskId },
-    { completed: true },
+    { completed: req.body.completed },
     { new: true }
   ).then(task => res.json(task))
 });
