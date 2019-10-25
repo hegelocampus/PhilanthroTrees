@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
-  useDispatch,
   useSelector
 } from 'react-redux';
 import {
@@ -10,8 +9,6 @@ import {
 
 export default (props) => {
   const match = useRouteMatch();
-  const dispatch = useDispatch();
-  const community = useSelector(state => state.entities.community);
   const citizens = useSelector(state => {
     if (state.entities.users) {
       return  Object.values(state.entities.users);
