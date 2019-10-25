@@ -20,8 +20,8 @@ const tasksReducer = (state= {}, action) => {
       newState = merge({}, state, task);
       return newState;
 
-    case RECEIVE_TASK_ERRORS:
-      return state;
+    // case RECEIVE_TASK_ERRORS:
+    //   return {};
 
     default:
       return state;

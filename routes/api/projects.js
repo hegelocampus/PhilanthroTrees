@@ -68,19 +68,22 @@ taskRouter.post('/create', (req, res) => {
   const { errors, isValid } = validateTask(req.body);
 
   if (!isValid) {
+    console.log('invalid TASK AYE!')
     return res.status(422).json(errors);
-  }
+  }else{
 
-  const newTask = new Task({
-    project: projectId,
-    title: req.body.title,
-    details: req.body.details
-  });
-
-  newTask
+    
+    const newTask = new Task({
+      project: projectId,
+      title: req.body.title,
+      details: req.body.details
+    });
+    
+    newTask
     .save()
     .then(task => res.json(task))
     .catch(err => res.status(400).json(errors))
+  }
 });
 
 module.exports = projectRouter;

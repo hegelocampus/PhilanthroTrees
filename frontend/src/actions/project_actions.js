@@ -25,7 +25,7 @@ export const fetchProjects = communityId => dispatch =>(
   ProjectApiUtil.fetchProjects(communityId)
   .then(
     projects => dispatch(receiveProjects(projects)),
-    errors => dispatch(receiveErrors(errors.data))
+    errors => dispatch(receiveErrors(errors))
   )
 )
 

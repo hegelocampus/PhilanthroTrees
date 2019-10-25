@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 
-import { RECEIVE_PROJECT, RECEIVE_ALL_PROJECTS, REMOVE_PROJECT } from '../actions/project_actions';
+import { RECEIVE_PROJECT, RECEIVE_ALL_PROJECTS, REMOVE_PROJECT, RECEIVE_PROJECT_ERRORS } from '../actions/project_actions';
 
 
 const projectsReducer = (state ={}, action) =>{
@@ -25,6 +25,10 @@ const projectsReducer = (state ={}, action) =>{
       newState = merge({}, state);
       delete newState[action.projectId];
       return newState;
+
+    case RECEIVE_PROJECT_ERRORS:
+      return state;
+      
 
     default:
       return state;
