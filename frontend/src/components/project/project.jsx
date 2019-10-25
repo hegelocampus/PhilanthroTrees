@@ -62,10 +62,11 @@ class Project extends React.Component{
 
       showCreate = <button onClick={this.showForm("taskCreate")}>New Task!</button>
 
+     
+
       newTask = this.state.taskCreate ? <CreateTask
       projectId={this.props.match.params.projectId}
-      createTask={this.props.createTask}
-      updateTask={this.props.updateTask}/> : <p></p>;
+      createTask={this.props.createTask}/> : <p></p>;
 
 
       showEdit = <button onClick={this.showForm("projectUpdate")}>Edit Project!</button>
@@ -77,8 +78,12 @@ class Project extends React.Component{
     }
 
     if(this.checkNotEmpty(this.props.tasks)){
-      tasks = Object.values(this.props.tasks).map(task => <Task task={task} />)
-    }
+      console.log(this.props.updateTask);
+      tasks = Object.values(this.props.tasks).map(task =>(
+         <Task task={task} 
+         updateTask={this.props.updateTask} />)
+
+      )}
 
 
     return(

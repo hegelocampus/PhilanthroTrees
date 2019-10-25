@@ -20,6 +20,14 @@ export const createTask = (projectId, task) => dispatch => (
   )
 )
 
+export const updateTask = task => dispatch => (
+  TaskApiUtil.updateTask(task._id, task)
+  .then(
+    task => dispatch(receiveTask(task.data)),
+    errors => dispatch(receiveErrors(errors.response.data))
+  )
+)
+
 export const receiveTask = task => {
   return({
     type: RECEIVE_TASK,
