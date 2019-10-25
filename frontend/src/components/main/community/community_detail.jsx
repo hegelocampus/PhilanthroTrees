@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {
   useDispatch,
-  useSelector
+  useSelector,
 } from 'react-redux';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { requestCommunity } from '../../../actions/community_actions';
@@ -10,24 +10,23 @@ import CitizenIndex from './citizens_index';
 export default (props) => {
   const match = useRouteMatch();
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => {
-    return state.entities.users ? state.entities.users[state.session.user.id] : null
+  const currentUserId = useSelector(state => state.session.user.id);
+  const comId = useSelector(state => {
+    return state.entities.users[currentUserId] ? state.entities.users[currentUserId].communityId : null
   });
   const community = useSelector(state => state.entities.community);
 
   useEffect(() => {
-    if (currentUser) {
-      dispatch(requestCommunity(currentUser.communityId));
+    if (comId) {
+      dispatch(requestCommunity(comId));
     }
   },
-    [dispatch, currentUser]
+    [comId, dispatch]
   )
-
-  console.log(currentUser);
 
   return (
     <React.Fragment>
-      { currentUser ? (
+      { comId ? (
         <>
           <h3> { community.name || null } </h3>
           <h3> { community.admin ? community.admin.name : null } </h3>
