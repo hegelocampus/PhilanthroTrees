@@ -19,17 +19,17 @@ export default (props) => {
       <h1 className="project-name">
         {project.name}
       </h1>
-      
+
       <p className="project-desc">
         {project.description}
       </p>
 
       <p className="project-health">
-        HEALTH: {this.state.projectHealth}
+        HEALTH: {project.projectHealth}
       </p>
 
       <p className="project-exp">
-        EXP: {this.state.projectExp}
+        EXP: {project.projectExp}
       </p>
     
 
