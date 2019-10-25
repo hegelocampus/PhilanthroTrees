@@ -34,7 +34,6 @@ class Project extends React.Component{
   }
 
   componentDidUpdate(){
-    
   }
 
   showForm(field){
@@ -54,7 +53,6 @@ class Project extends React.Component{
     let newTask= <p></p>
     let showEdit = <p></p>;
     let newEdit = <p></p>;
-    
 
     //Ensure Project Pops have Populated
     if(this.checkNotEmpty(this.props.project)){

@@ -13,7 +13,9 @@ class TodoList extends React.Component{
   componentDidMount(){
     let communityId = this.props.currentUser.communityId
     console.log("communityID:", communityId);
-    this.props.fetchProjects(communityId);
+    if (communityId) {
+      this.props.fetchProjects(communityId);
+    }
   }
 
   checkNotEmpty(object) {
