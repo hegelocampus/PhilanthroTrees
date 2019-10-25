@@ -1,38 +1,24 @@
-/* Build a Material theme */
-// To begin customizing your theme, modify these variables. By default each theme starts off with our baseline values, so you can easily swap them out.
-
-
 /*  Typography */
-// To change your theme's typography, we recommend importing a font from Google Fonts and setting the global font-family https://fonts.google.com
-
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 $font-family: unquote("Roboto, sans-serif");
 
 
 /* Shape */
-// The shapes of small, medium, and large components can be themed by overriding the default values. We recommend using our shape customization tool to help you pick your radius values. https://material.io/design/shape/about-shape.html#shape-customization-tool
-
 $small-component-radius: 4px;
 $medium-component-radius: 4px;
 $large-component-radius: 0px;
 
 
 /* Color */
-// To change your theme's color scheme, replace the existing HEX color values with custom HEX color values. Use our color palette generator to help come up with pairings and check your color contrast. https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+$primary:           #46a049;
+$primary-dark:      #00600f;
+$primary-light:     #6abf69;
 
+$secondary:         #f8bbd0;
+$secondary-dark:    #c48b9f;
+$secondary-light:   #ffeeff;
 
-$primary: #6200ee;
-$secondary: #018786;
+$surface:           #ffffff;
+$background:        #ffffff;
 
-$surface: #ffffff;
-$background: #ffffff;
-// $mdc-theme-error: #b00020;
-
-
-// “On-” colors define how text, icons, and strokes are colored in relation to the surface on which they appear. If you are updating these manually, be sure to consider accessible color contrast for the value pairs.
-
-// $mdc-theme-on-primary: #ffffff;
-// $mdc-theme-on-secondary: #ffffff;
-// $mdc-theme-on-error: #ffffff;
-// $mdc-theme-on-surface: #000000;
 

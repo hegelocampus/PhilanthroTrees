@@ -24,8 +24,10 @@
     "debug": "~2.6.9",
     "express": "^4.17.1",
     "http-errors": "~1.6.3",
+    "husky": "^4.0.0-beta.5",
     "jsonwebtoken": "^8.5.1",
     "jstransformer": "^1.0.0",
+    "lint-staged": "^9.4.2",
     "mongo-seeding": "^3.4.0-alpha.0",
     "mongoose": "^5.7.6",
     "morgan": "~1.9.1",
@@ -34,8 +36,24 @@
     "nodemon": "^1.19.4",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "prettier": "^1.18.2",
     "pug": "^2.0.4",
+    "sass": "^1.23.1",
     "typescript": "^3.6.4",
     "validator": "^11.1.0"
+  },
+  "devDependencies": {
+    "pretty-quick": "^2.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

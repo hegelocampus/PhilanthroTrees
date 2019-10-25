@@ -1,13 +1,20 @@
 @import "splash";
+@import "main-nav";
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
 
-html {
+html, body {
   font-family: 'Noto Sans', sans-serif;
   height: 100%;
-
   width: 100%;
-  background-color: #46A049;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
 
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 
 a {
