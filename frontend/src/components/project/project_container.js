@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import { fetchProject, updateProject } from '../../actions/project_actions';
-import { fetchTasks } from '../../actions/task_actions';
+import { fetchTasks, createTask } from '../../actions/task_actions';
 import Project from './project';
 
 const mapStateToProps = (state,ownProps) =>{
@@ -19,7 +19,8 @@ const mapDispatchToProps = dispatch =>{
   return({
     fetchProject: (projectId) => dispatch(fetchProject(projectId)),
     fetchTasks: (projectId) => dispatch(fetchTasks(projectId)),
-    updateProject: (projectId) => dispatch(updateProject(projectId))
+    updateProject: (project) => dispatch(updateProject(project)),
+    createTask: (projectId, task) => dispatch(createTask(projectId, task))
   })
 }
 

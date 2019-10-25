@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 
-import { RECEIVE_ALL_TASKS } from '../actions/task_actions';
+import { RECEIVE_ALL_TASKS, RECEIVE_TASK, RECEIVE_TASK_ERRORS } from '../actions/task_actions';
 
 const tasksReducer = (state= {}, action) => {
   Object.freeze(state);
@@ -14,6 +14,14 @@ const tasksReducer = (state= {}, action) => {
         newState[task._id]= task
       });
       return newState;
+    
+    case RECEIVE_TASK:
+      let task = { [action.task._id]: action.task }
+      newState = merge({}, state, task);
+      return newState;
+
+    // case RECEIVE_TASK_ERRORS:
+    //   return {};
 
     default:
       return state;

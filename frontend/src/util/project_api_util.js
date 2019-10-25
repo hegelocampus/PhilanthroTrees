@@ -11,3 +11,7 @@ export const fetchProject = projectId => {
 export const updateProject = project => {
   return axios.patch(`api/projects/${project._id}`, project);
 }
+
+export const deleteProject = project => {
+  return axios.delete(`api/projects/${project._id}`, project);
+}

@@ -8,6 +8,7 @@ import TopBar from './top_bar/top_bar';
 import UserDetail from './user/user_detail';
 import ProjectContainer from '../project/project_container';
 import Community from './community/community';
+import TodoListContainer from '../todo/todo_list_container';
 
 export default (props) => {
   return (
@@ -26,9 +27,7 @@ export default (props) => {
           />
           <Route path="/projects/:projectId"
           component={ProjectContainer} />
-          {/* Tasks will be displayed on the root page
-          <Route path="/" component={ Tasks } />
-          */}
+          <Route path="/" component={ TodoListContainer } />
         </Switch>
       </div>
     </React.Fragment>

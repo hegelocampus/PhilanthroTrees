@@ -16,12 +16,16 @@ community.use('/:communityId/projects', projectRouter)
 
 projectRouter.get('/', (req, res) => {
   const communityId = req.params.communityId;
+  console.log("The community:", communityId);
 
-  Project.find({ community: communityId })
-    .then(projects => res.json(projects))
+  Project.find({ communityId: communityId })
+    .then(projects => {
+      console.log( "The Projects:", projects)
+      return res.json(projects)
+    })
     .catch(err =>
       res.status(404).json({
-        project: 'No projects found'
+        project: err
       })
     );
 });
