@@ -27,6 +27,17 @@ const UserSchema = new Schema({
     required: false
   },
   completedTasks: [],
+  pendingInvitations: [{
+    id:{
+      type: Schema.Types.ObjectId, 
+      ref: 'Community',
+      required: false
+    },
+    name:{
+      type: String,
+      required: false
+    }
+  }],
   date: {
     type: Date,
     default: Date.now
