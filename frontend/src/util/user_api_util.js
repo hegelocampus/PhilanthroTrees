@@ -11,3 +11,7 @@ export const fetchUser = userId => {
 export const updateUser = (user) => {
   return axios.patch(`/api/users/${user.id}`, user);
 }
+
+export const userInvite = (emailAddress, pendingInvite) =>{
+  return axios.patch(`/api/users/invite/${emailAddress}`, pendingInvite);
+}

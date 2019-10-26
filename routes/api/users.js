@@ -142,6 +142,23 @@ user.patch('/:id', (req, res)=> {
     return res.json(user)})
 })
 
+// Update User Invites
+
+user.patch('/invite/:emailAddress', (req, res)=>{
+  const emailAddress = req.params.emailAddress
+
+  User.findOneAndUpdate(
+    { email: emailAddress},
+    { $push: { pendingInvites:
+      {id: req.body.id,
+       name: req.body.name}
+     }})
+    .then(user => res.json(user))
+    .catch(err => res.status(404)
+    .json({ invite: 'That user was not found.  Please enter a valid email.'}))
+
+})
+
 
 // Get the community for a user
 user.get('/:id/community', (req, res, next) => {
