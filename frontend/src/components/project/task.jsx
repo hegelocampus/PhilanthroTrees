@@ -17,7 +17,10 @@ class Task extends React.Component{
     let project = this.props.project;
     project['projectExp'] = project['projectExp'] + 10;
 
-    let user = this.props.currentUser;
+    let user = this.props.users[this.props.currentUser.id];
+
+    console.log('Found the User:', user)
+
     user['experience'] = user['experience'] + 20;
 
     this.props.updateTask(this.state);
@@ -40,7 +43,6 @@ class Task extends React.Component{
 
 
   render(){
-    console.log(this.props.updateTask);
     return(
       <li key={this.props.task._id}>
         <form onSubmit={this.submitTask}>

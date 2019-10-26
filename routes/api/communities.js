@@ -20,7 +20,6 @@ projectRouter.get('/', (req, res) => {
 
   Project.find({ communityId: communityId })
     .then(projects => {
-      console.log( "The Projects:", projects)
       return res.json(projects)
     })
     .catch(err =>

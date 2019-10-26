@@ -130,13 +130,16 @@ user.get('/:id', (req, res) => {
 
 // Update Experience for a user
 
-user.patch(':/id', (req, res)=> {
+user.patch('/:id', (req, res)=> {
   const userId = req.params.id;
+  console.log('The Incoming UserID:', userId);
 
   User.findOneAndUpdate(
-    { id: userId },
+    { _id: userId },
     { experience: req.body.experience },
-  ).then(user => res.json(user))
+  ).then(user =>{
+    console.log(user);
+    return res.json(user)})
 })
 
 

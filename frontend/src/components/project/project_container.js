@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import { fetchProject, updateProject } from '../../actions/project_actions';
 import { fetchTasks, createTask, updateTask } from '../../actions/task_actions';
+import { updateUser } from '../../actions/user_actions';
 import Project from './project';
 
 const mapStateToProps = (state,ownProps) =>{
@@ -8,6 +9,8 @@ const mapStateToProps = (state,ownProps) =>{
   let project = state.entities.projects && state.entities.projects[projectId]
 
   return({
+    users: state.entities.users,
+    currentUser: state.session.user,
     project: project,
     tasks: state.entities.tasks,
     errors: state.errors
@@ -21,7 +24,8 @@ const mapDispatchToProps = dispatch =>{
     fetchTasks: (projectId) => dispatch(fetchTasks(projectId)),
     updateProject: (project) => dispatch(updateProject(project)),
     createTask: (projectId, task) => dispatch(createTask(projectId, task)),
-    updateTask: (task) => dispatch(updateTask(task))
+    updateTask: (task) => dispatch(updateTask(task)),
+    updateUser: (user) => dispatch(updateUser(user))
   })
 }
 

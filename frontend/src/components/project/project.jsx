@@ -79,14 +79,17 @@ class Project extends React.Component{
        /> : <p></p>;
     }
 
-    if(this.checkNotEmpty(this.props.tasks)){
+    if (this.checkNotEmpty(this.props.tasks) && this.checkNotEmpty(this.props.users)){
       tasks = Object.values(this.props.tasks).map(task => {
         if (!task.completed) {
          return ( 
          <Task task={task} 
+          users = {this.props.users}
+          currentUser={this.props.currentUser}
           project={this.props.project}
           updateTask={this.props.updateTask}
           updateProject={this.props.updateProject} 
+          updateUser ={this.props.updateUser}
           />
           )
         }
