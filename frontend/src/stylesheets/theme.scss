@@ -1,0 +1,24 @@
+/*  Typography */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+$font-family: unquote("Roboto, sans-serif");
+
+
+/* Shape */
+$small-component-radius: 4px;
+$medium-component-radius: 4px;
+$large-component-radius: 0px;
+
+
+/* Color */
+$primary:           #46a049;
+$primary-dark:      #00600f;
+$primary-light:     #6abf69;
+
+$secondary:         #f8bbd0;
+$secondary-dark:    #c48b9f;
+$secondary-light:   #ffeeff;
+
+$surface:           #F5F5F6;
+$background:        #E1E2E1;
+
+

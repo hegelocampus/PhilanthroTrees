@@ -7,7 +7,7 @@ export default (props) => {
       <ul>
         <li>
           <Link to="/">
-            Projects To Do 
+            Projects To Do
           </Link>
         </li>
         <li>

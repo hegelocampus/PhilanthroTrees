@@ -9,11 +9,9 @@ import Splash from './splash/splash';
 
 export default () => (
   <React.Fragment>
-    <main>
-      <Switch>
-        <AuthRoute authComponent={ Splash } protectedComponent={ MainDisplay } />
-      </Switch>
-    </main>
+    <Switch>
+      <AuthRoute authComponent={ Splash } protectedComponent={ MainDisplay } />
+    </Switch>
   </React.Fragment>
 );
 

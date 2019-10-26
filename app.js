@@ -28,17 +28,17 @@ mongoose
 
 app.use(sassMiddleware({
   src: path.join(__dirname + '/sass'),
-  dest: path.join(__dirname + '/frontend/public'),
-  prefix: '%PUBLIC_URL%',
+  dest: path.join(__dirname + '/frontend/src'),
   debug: true,
-  outputStyle: 'compressed'
+  outputStyle: 'compressed',
+  force: true
 }));
 
 // view engine setup
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
   app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
   })
 } else {
   //app.set('views', path.join(__dirname, 'views'));
@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === 'production') {
   //app.use(express.static(path.join(__dirname, 'public')));
   app.use(express.static(path.join(__dirname, 'frontend/public')));
   app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'pubilc', 'index.html'));
+    res.sendFile(path.join(__dirname, 'frontend', 'pubilc', 'index.html'));
   })
 }
 
