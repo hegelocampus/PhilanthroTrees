@@ -33,4 +33,11 @@ export const requestCommunityUsers = (comId) => dispatch => fetchCommunityUsers(
 export const updateUser = user => dispatch => ApiUtil.updateUser(user).then(
   res => dispatch(receiveUser(res.data)),
   errors => dispatch(receiveErrors(errors.response.data))
-)
+);
+
+
+export const userInvite = (emailAddress, pendingInvite) => dispatch => ApiUtil.userInvite(emailAddress, pendingInvite)
+.then(
+  res => dispatch(receiveUser(res.data)),
+  errors => dispatch(receiveErrors(errors.response.data))
+);
