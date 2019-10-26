@@ -20,7 +20,7 @@ export default (props) => {
       <button className="top-menu-user-menu"
         onClick={ () => visable ? setVisable(false) : setVisable(true) }
       >
-        user menu placeholder text
+        User
       </button>
       { visable ? (
         <ul className="top-menu-user-menu-list">
@@ -29,17 +29,6 @@ export default (props) => {
               { currentUser.username }
             </Link>
           </li>
-          {/*
-          <li>
-            <Link
-              to={`/profile/${currentUser.id}`}
-              onClick={ () => setVisable(false) }
-              className="user-menu-link"
-            >
-              My account
-            </Link>
-          </li>
-          */}
           <li>
             <button onClick={ () => dispatch(logout()) } className="user-menu-link">
               Sign Out

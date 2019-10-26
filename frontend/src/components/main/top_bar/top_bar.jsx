@@ -6,12 +6,15 @@ export default (props) => {
   return (
     <header className="top-bar">
       <nav>
-        <div className="top-bar-nav-container">
+        <div className="top-bar-nav-container top-bar-el-container">
           <MainNav />
         </div>
-        <div className="top-bar-search-container">
+        <div className="top-bar-search-container top-bar-el-container">
         </div>
-        <div className="top-bar-user-menu-container">
+        <div className="top-bar-user-menu-container top-bar-el-container">
+          <div className="user-menu-notification-container">
+            Inbox
+          </div>
           <UserMenu />
         </div>
       </nav>

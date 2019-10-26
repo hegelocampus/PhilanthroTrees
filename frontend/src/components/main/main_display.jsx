@@ -3,6 +3,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import '../../stylesheets/main_container.scss';
 
 import TopBar from './top_bar/top_bar';
 import UserDetail from './user/user_detail';
