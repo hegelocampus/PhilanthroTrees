@@ -30,4 +30,7 @@ export const requestCommunityUsers = (comId) => dispatch => fetchCommunityUsers(
     errors => dispatch(receiveErrors(errors))
   );
 
-
+export const updateUser = user => dispatch => ApiUtil.updateUser(user).then(
+  res => dispatch(receiveUser(res.data)),
+  errors => dispatch(receiveErrors(errors.response.data))
+)
