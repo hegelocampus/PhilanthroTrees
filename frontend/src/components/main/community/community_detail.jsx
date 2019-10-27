@@ -6,6 +6,7 @@ import {
 import { Link, useRouteMatch } from 'react-router-dom';
 import { requestCommunity } from '../../../actions/community_actions';
 import CitizenIndex from './citizens_index';
+import InvitationContainer from '../user/invitation_container';
 
 export default (props) => {
   const match = useRouteMatch();
@@ -31,6 +32,7 @@ export default (props) => {
           <h3> { community.name || null } </h3>
           <h3> { community.admin ? community.admin.name : null } </h3>
           <CitizenIndex />
+          <InvitationContainer/>
         </>
       ):(
         <>

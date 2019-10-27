@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Invite extends React.Component{
+class Invite extends React.Component {
 
   constructor(props){
     super(props);
@@ -8,6 +8,7 @@ class Invite extends React.Component{
     this.state ={
       email: "",
     }
+    this.submitInvite = this.submitInvite.bind(this);
   }
 
   submitInvite(e){
@@ -27,7 +28,7 @@ class Invite extends React.Component{
 
     let invite = <p></p>;
 
-    if(this.checkNotEmpty(this.props.community)){
+    
 
      invite = <form onSubmit={this.submitInvite}>
 
@@ -39,7 +40,7 @@ class Invite extends React.Component{
 
         <input type="submit" value="Send Invite"/>
       </form>
-    }
+    
 
     return(
       <React.Fragment>
@@ -50,10 +51,6 @@ class Invite extends React.Component{
 }
 
 export default Invite;
-
-
-
-
 
 
 
