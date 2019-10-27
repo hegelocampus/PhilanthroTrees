@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 
 import {
   RECEIVE_USER,
-  RECEIVE_USERS
+  RECEIVE_USERS,
 } from '../actions/user_actions.js';
 
 import {
@@ -27,7 +27,8 @@ export default (state = {}, action) => {
       });
       return merge({}, users, state)
     case RECEIVE_USERS:
-      return merge({}, action.users)
+      return merge({}, action.users);
+
     default:
       return state;
   }

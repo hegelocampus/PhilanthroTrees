@@ -153,9 +153,9 @@ user.patch('/invite/:emailAddress', (req, res)=>{
       {id: req.body.id,
        name: req.body.name}
      }})
-    .then(user => res.json(user))
+    .then(user => res.json({msg: 'Invite sent!'}))
     .catch(err => res.status(404)
-    .json({ invite: 'That user was not found.  Please enter a valid email.'}))
+    .json({ msg: 'That user was not found.  Please enter a valid email.'}))
 
 })
 

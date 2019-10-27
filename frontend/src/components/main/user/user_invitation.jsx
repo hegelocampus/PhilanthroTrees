@@ -9,6 +9,7 @@ class Invite extends React.Component {
       email: "",
     }
     this.submitInvite = this.submitInvite.bind(this);
+    this.checkNotEmpty = this.checkNotEmpty.bind(this);
   }
 
   submitInvite(e){
@@ -24,13 +25,22 @@ class Invite extends React.Component {
     }
   }
 
+  checkNotEmpty(object) {
+    for (const key in object) {
+      if (object.hasOwnProperty(key))
+        return true;
+    }
+    return false;
+  }
+
   render(){
 
-    let invite = <p></p>;
+    let inviteForm = <p></p>;
 
+    let invite = <p></p>;
     
 
-     invite = <form onSubmit={this.submitInvite}>
+     inviteForm = <form onSubmit={this.submitInvite}>
 
         <p>Enter the Email of the member you would like to invite:</p>
         <label htmlFor="">
@@ -42,9 +52,14 @@ class Invite extends React.Component {
       </form>
     
 
+    if (this.checkNotEmpty(this.props.invite)){
+      invite = <p>{this.props.invite.msg}</p>
+    }
+    
     return(
       <React.Fragment>
-        {invite}
+        {inviteForm}
+        {/* {invite} */}
       </React.Fragment>
     )
   }
