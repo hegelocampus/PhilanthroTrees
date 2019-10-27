@@ -10,7 +10,7 @@ import UserDetail from './user/user_detail';
 import ProjectContainer from '../project/project_container';
 import Community from './community/community';
 import TodoListContainer from '../todo/todo_list_container';
-import Invite from '../main/user/user_invitation';
+
 
 export default (props) => {
   return (
@@ -30,7 +30,6 @@ export default (props) => {
           <Route path="/projects/:projectId"
           component={ProjectContainer} />
           <Route path="/" component={ TodoListContainer } />
-          <Route path="/invite" component={Invite} />
         </Switch>
       </div>
     </React.Fragment>
