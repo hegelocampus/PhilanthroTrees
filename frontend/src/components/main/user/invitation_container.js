@@ -5,7 +5,8 @@ import Invite from './user_invitation';
 
 const mapStateToProps = state =>{
 return({
-  community: state.entities.community
+  community: state.entities.community,
+  invite: state.entities.invite
 })
 }
 
