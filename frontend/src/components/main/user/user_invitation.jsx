@@ -59,7 +59,7 @@ class Invite extends React.Component {
     return(
       <React.Fragment>
         {inviteForm}
-        {/* {invite} */}
+        {invite}
       </React.Fragment>
     )
   }

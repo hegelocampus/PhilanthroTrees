@@ -15,12 +15,6 @@ export default (props) => {
             Community
           </Link>
         </li>
-        <li>
-          <Link to="/community/invite">
-            Invite
-          </Link>
-        </li>
-
       </ul>
     </nav>
   )
