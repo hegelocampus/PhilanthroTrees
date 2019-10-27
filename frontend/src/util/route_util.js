@@ -6,20 +6,16 @@ const useLoggedIn = () => {
   return useSelector(state => state.session.isAuthenticated);
 }
 
-export const AuthRoute = ({
-  authComponent: AuthComponent,
-  protectedComponent: ProtectedComponent,
-  ...rest
-}) => {
+export const AuthRoute = ({ component: Component, ...rest }) => {
   const loggedIn = useLoggedIn();
   return (
     <Route
       {...rest}
       render={routeProps =>
         loggedIn ? (
-          <ProtectedComponent {...routeProps} />
+          <Redirect to="/" />
         ) : (
-          <AuthComponent />
+          <Component {...routeProps} />
         )
       }
     />

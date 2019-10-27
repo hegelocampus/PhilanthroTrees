@@ -19,7 +19,7 @@ export default (props) => {
         {/* User Profile is always displayed at the top, right under the nav bar */}
         <UserDetail />
         <Switch>
-          <Route path={'/profile/:userId'}>
+          <Route path={'/user/:userId'}>
             <h1>User show page</h1>
           </Route>
           <Route
