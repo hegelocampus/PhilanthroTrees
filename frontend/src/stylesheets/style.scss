@@ -14,12 +14,15 @@ html, body {
   height: 100%;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
+  background-color: $background;
 }
 
 a {
+  text-decoration: none;
   cursor: pointer;
 }
 
 a:hover{
   text-decoration: underline;
 }
+

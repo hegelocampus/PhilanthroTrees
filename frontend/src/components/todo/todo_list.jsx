@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
+import '../../stylesheets/todo.scss';
+
 class TodoList extends React.Component{
 
   constructor(props){
@@ -41,8 +43,9 @@ class TodoList extends React.Component{
     if(this.checkNotEmpty(this.props.projects)){
       projects = Object.values(this.props.projects).map(project =>{
         return(
-          <li key={project._id}>
-            <Link to={`/projects/${project._id}`}>
+          <li 
+           key={project._id}>
+            <Link className="todo-link" to={`/projects/${project._id}`}>
             {project.name}
             </Link>
           </li>
@@ -52,7 +55,9 @@ class TodoList extends React.Component{
 
     return(
       <React.Fragment>
+        <ul className="todo">
         {projects}
+        </ul>
       </React.Fragment>
     )
   }

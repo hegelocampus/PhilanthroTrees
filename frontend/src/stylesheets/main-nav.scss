@@ -26,12 +26,13 @@ nav {
   flex-wrap: nowrap;
   height: 100%;
   width: 150px;
+  color: #ffeeff;
   div {
-    border-right: 1px solid black;
+    border-right: 1px solid #ffeeff;
     width: 50%;
   }
   .user-menu-notification-container {
-    border-left: 1px solid black;
+    border-left: 1px solid#ffeeff;
     text-align: center;
     vertical-align: middle;
     line-height: 60px;
@@ -42,6 +43,7 @@ nav {
     background-color: $primary;
     border: none;
     padding: 0;
+    color: #ffeeff;
     &:active {
     }
   }
@@ -67,5 +69,10 @@ nav {
       background-color: $surface;
     }
   }
+}
+
+.main-nav a{
+  color:   #ffeeff;
+  font-weight: 600;
 }
 
