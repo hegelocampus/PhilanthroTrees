@@ -15,3 +15,4 @@ export const updateProject = project => {
 export const deleteProject = project => {
   return axios.delete(`api/projects/${project._id}`, project);
 }
+

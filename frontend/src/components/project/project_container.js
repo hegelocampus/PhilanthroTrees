@@ -3,6 +3,7 @@ import { fetchProject, updateProject } from '../../actions/project_actions';
 import { fetchTasks, createTask, updateTask } from '../../actions/task_actions';
 import { updateUser } from '../../actions/user_actions';
 import Project from './project';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state,ownProps) =>{
   let projectId = ownProps.match.params.projectId
@@ -29,4 +30,5 @@ const mapDispatchToProps = dispatch =>{
   })
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Project);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Project));
+

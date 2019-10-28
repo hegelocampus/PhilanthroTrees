@@ -37,14 +37,14 @@ export const fetchProject = project => dispatch => (
   ProjectApiUtil.fetchProject(project)
   .then(
     project => dispatch(receiveProject(project.data)),
-    errors => dispatch(receiveErrors(errors.response.data.project))
+    errors => dispatch(receiveErrors(errors.response.data))
 ));
 
 export const fetchProjects = communityId => dispatch =>(
   ProjectApiUtil.fetchProjects(communityId)
   .then(
     projects => dispatch(receiveProjects(projects.data)),
-    errors => dispatch(receiveErrors(errors.response.data.project))
+    errors => dispatch(receiveErrors(errors.response.data))
   )
 )
 

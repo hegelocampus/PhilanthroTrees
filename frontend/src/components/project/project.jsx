@@ -9,7 +9,6 @@ class Project extends React.Component{
   constructor(props){
     super(props);
 
-
     this.state = {
       taskCreate: false,
       projectUpdate: false
@@ -21,8 +20,11 @@ class Project extends React.Component{
 
   componentDidMount(){
     let projectId = this.props.match.params.projectId;
-    this.props.fetchProject(projectId);
-    this.props.fetchTasks(projectId);
+    console.log(projectId);
+    if (projectId) {
+      this.props.fetchProject(projectId);
+      this.props.fetchTasks(projectId);
+    }
   }
 
   checkNotEmpty(object) {
@@ -33,7 +35,6 @@ class Project extends React.Component{
     return false;
   }
 
-
   showForm(field){
     return (e) =>{
     // e.preventDefault();
@@ -42,9 +43,7 @@ class Project extends React.Component{
     }
   }
 
-
   render(){
-
     let synopsis = <p></p>;
     let tasks =<p></p>;
     let showCreate = <p></p>;
@@ -64,12 +63,9 @@ class Project extends React.Component{
 
       showCreate = <button onClick={this.showForm("taskCreate")}>New Task!</button>
 
-     
-
       newTask = this.state.taskCreate ? <CreateTask
       projectId={this.props.match.params.projectId}
       createTask={this.props.createTask}/> : <p></p>;
-
 
       showEdit = <button onClick={this.showForm("projectUpdate")}>Edit Project!</button>
 
@@ -82,19 +78,18 @@ class Project extends React.Component{
     if (this.checkNotEmpty(this.props.tasks) && this.checkNotEmpty(this.props.users)){
       tasks = Object.values(this.props.tasks).map(task => {
         if (!task.completed) {
-         return ( 
-         <Task task={task} 
+         return (
+         <Task task={task}
           users = {this.props.users}
           currentUser={this.props.currentUser}
           project={this.props.project}
           updateTask={this.props.updateTask}
-          updateProject={this.props.updateProject} 
+          updateProject={this.props.updateProject}
           updateUser ={this.props.updateUser}
           />
           )
         }
       })}
-
 
     return(
       <React.Fragment>
@@ -113,3 +108,4 @@ class Project extends React.Component{
 }
 
 export default Project;
+

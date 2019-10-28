@@ -16,14 +16,14 @@ const validateTask = require('../../validation/valid-task');
 projectRouter.get('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
-  Project.findOne({_id: projectId})
+  return Project.findOne({_id: projectId})
     .then(project => {
       if (!project){
-        res.status(404).json({
+        return res.status(404).json({
           project: 'Project not found'
         })
       } else {
-        res.json(project);
+        return res.json(project);
       }
     });
 });
