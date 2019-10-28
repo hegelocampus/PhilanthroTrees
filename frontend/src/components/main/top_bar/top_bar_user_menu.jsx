@@ -30,9 +30,9 @@ export default (props) => {
             </Link>
           </li>
           <li>
-            <button onClick={ () => dispatch(logout()) } className="user-menu-link">
+            <Link to='/sign-out' onClick={ () => dispatch(logout()) } className="user-menu-link">
               Sign Out
-            </button>
+            </Link>
           </li>
         </ul>
       ) : (

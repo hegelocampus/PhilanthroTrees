@@ -4,7 +4,11 @@ import {
   useSelector
 } from 'react-redux';
 import { requestUser } from '../../../actions/user_actions';
-import ProgressBar from './progress_bar';
+//import ProgressBar from './progress_bar';
+import { Line } from 'rc-progress';
+
+import '../../../stylesheets/user.scss';
+
 
 export default (props) => {
   const dispatch = useDispatch();
@@ -22,21 +26,33 @@ export default (props) => {
 
   return (
     <React.Fragment>
-      { currentUser && currentUser.health ? (
+      { currentUser && currentUser.hp ? (
         <div className="user-detail-container">
           <ul className="user-stats-ul">
             <li className="user-stats-li user-detail-username-li">
+              <s>Username:</s>
               <h3>{ currentUser.username }</h3>
-              <div>
-                {/* lowest user level is 1, user level is determined by exp */}
-                <span>Level { Math.floor((currentUser.exp + 100) / 100) }</span>
-              </div>
+            </li>
+            <li>
+              {/* lowest user level is 1, user level is determined by exp */}
+              <s>Level: </s>
+              <h4>{ Math.floor((currentUser.experience + 50) / 50) }</h4>
             </li>
             <li className="user-stats-li">
-              <ProgressBar percentage={ currentUser.hp } type='hp' />
+              <Line
+                percent={ currentUser.hp }
+                strokeColor='#a04946'
+                className="health-bar"
+              />
+              <span>{ `${ currentUser.hp } / 100` }</span>
             </li>
             <li className="user-stats-li">
-              <ProgressBar percentage={ currentUser.exp % 100 } type='exp' />
+              <Line
+                percent={ ((currentUser.experience + 50) % 50) * 2 }
+                strokeColor='#4946a0'
+                className="experience-bar"
+              />
+              <span>{ `${ currentUser.experience } / 50` }</span>
             </li>
           </ul>
         </div>
