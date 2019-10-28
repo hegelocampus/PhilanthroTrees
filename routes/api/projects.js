@@ -44,7 +44,9 @@ projectRouter.patch('/:projectId', (req, res) => {
     {
       name: req.body.name,
       description: req.body.description,
-      plant: req.body.plant
+      plant: req.body.plant,
+      projectHealth: req.body.projectHealth,
+      projectExp: req.body.projectExp
     }, {new: true}
   ).then(project => res.json(project));
 });

@@ -7,6 +7,7 @@ import {
 import CommunityIndex from './community_index';
 import CommunityForm from './community_form';
 import CommunityDetail from './community_detail';
+import InviteContainer from '../user/invitation_container';
 
 export default (props) => {
   const match = useRouteMatch();
@@ -29,8 +30,13 @@ export default (props) => {
           type="patch"
         />
         <Route
-          path={ `${ match.path }` }
+          path={ `${ match.path }/` }
           component={ CommunityDetail }
+        />
+        <Route
+          path={ `${ match.path }/invite` }
+          component={ InviteContainer}
+          type="put"
         />
       </Switch>
     </React.Fragment>

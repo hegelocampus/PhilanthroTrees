@@ -33,8 +33,6 @@ class Project extends React.Component{
     return false;
   }
 
-  componentDidUpdate(){
-  }
 
   showForm(field){
     return (e) =>{
@@ -54,6 +52,10 @@ class Project extends React.Component{
     let showEdit = <p></p>;
     let newEdit = <p></p>;
 
+    synopsis = <Synopsis
+      project={this.props.project}
+    />
+
     //Ensure Project Pops have Populated
     if(this.checkNotEmpty(this.props.project)){
       synopsis = <Synopsis
@@ -61,6 +63,8 @@ class Project extends React.Component{
        />
 
       showCreate = <button onClick={this.showForm("taskCreate")}>New Task!</button>
+
+     
 
       newTask = this.state.taskCreate ? <CreateTask
       projectId={this.props.match.params.projectId}
@@ -75,9 +79,21 @@ class Project extends React.Component{
        /> : <p></p>;
     }
 
-    if(this.checkNotEmpty(this.props.tasks)){
-      tasks = Object.values(this.props.tasks).map(task => <Task task={task} />)
-    }
+    if (this.checkNotEmpty(this.props.tasks) && this.checkNotEmpty(this.props.users)){
+      tasks = Object.values(this.props.tasks).map(task => {
+        if (!task.completed) {
+         return ( 
+         <Task task={task} 
+          users = {this.props.users}
+          currentUser={this.props.currentUser}
+          project={this.props.project}
+          updateTask={this.props.updateTask}
+          updateProject={this.props.updateProject} 
+          updateUser ={this.props.updateUser}
+          />
+          )
+        }
+      })}
 
 
     return(

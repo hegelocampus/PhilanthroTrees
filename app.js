@@ -34,6 +34,18 @@ app.use(sassMiddleware({
   force: true
 }));
 
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+
+app.use('/api/users', usersRouter);
+app.use('/api/projects', projectsRouter);
+app.use('/api/communities', communitiesRouter);
+app.use('/api/tasks', tasksRouter);
+
 // view engine setup
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
@@ -50,16 +62,6 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-
-app.use('/api/users', usersRouter);
-app.use('/api/projects', projectsRouter);
-app.use('/api/communities', communitiesRouter);
-app.use('/api/tasks', tasksRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

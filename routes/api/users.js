@@ -128,6 +128,38 @@ user.get('/:id', (req, res) => {
     );
 });
 
+// Update Experience for a user
+
+user.patch('/:id', (req, res)=> {
+  const userId = req.params.id;
+  console.log('The Incoming UserID:', userId);
+
+  User.findOneAndUpdate(
+    { _id: userId },
+    { experience: req.body.experience },
+  ).then(user =>{
+    console.log(user);
+    return res.json(user)})
+})
+
+// Update User Invites
+
+user.patch('/invite/:emailAddress', (req, res)=>{
+  const emailAddress = req.params.emailAddress
+
+  User.findOneAndUpdate(
+    { email: emailAddress},
+    { $push: { pendingInvites:
+      {id: req.body.id,
+       name: req.body.name}
+     }})
+    .then(user => res.json({msg: 'Invite sent!'}))
+    .catch(err => res.status(404)
+    .json({ msg: 'That user was not found.  Please enter a valid email.'}))
+
+})
+
+
 // Get the community for a user
 user.get('/:id/community', (req, res, next) => {
   User.findById(req.params.id)
