@@ -33,7 +33,7 @@ export default (props) => {
               <s>Username:</s>
               <h3>{ currentUser.username }</h3>
             </li>
-            <li>
+            <li className="user-stats-li">
               {/* lowest user level is 1, user level is determined by exp */}
               <s>Level: </s>
               <h4>{ Math.floor((currentUser.experience + 50) / 50) }</h4>
