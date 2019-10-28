@@ -23,16 +23,16 @@ class PendingInvites extends React.Component {
   }
 
 
+  componentDidMount(){
+    this.props.requestUser(this.props.currentUser.id);
+  }
+
+
   componentDidUpdate(){
     if (this.checkNotEmpty(this.props.users)) {
 
-      console.log('The users', this.props.users);
-      console.log('The current user', this.props.users[this.props.currentUser.id]);
-
       let pendingInvites = this.props.users[this.props.currentUser.id] ?
         this.props.users[this.props.currentUser.id].pendingInvites : null;
-        
-        console.log('Updates pendingInvites:', pendingInvites);
 
       if (pendingInvites) {
         this.state['pendingInvites'] = pendingInvites;
@@ -43,13 +43,11 @@ class PendingInvites extends React.Component {
   render(){
 
     let pending;
-    console.log(this.state.pendingInvites)
     pending =  this.state.pendingInvites ? 
       <ul>
       {Object.values(this.state.pendingInvites).map(pending=>{
-        console.log('Invite passed to Item', pending);
-        console.log('User passed to Item', this.props.users[this.props.currentUser.id]);
-        return(
+        if(pending)
+        {return(
           <InviteItem
           key={pending.id}
           currentUser = {this.props.users[this.props.currentUser.id]}
@@ -57,7 +55,7 @@ class PendingInvites extends React.Component {
           updateUser={this.props.updateUser}
           addUserToCommunity={this.props.addUserToCommunity}
           />
-        )
+        )}
       })}
     </ul> : <p>You have no pending invitations.</p>
     

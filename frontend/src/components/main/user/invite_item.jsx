@@ -20,7 +20,13 @@ class InviteItem extends React.Component{
 
       user['pendingInvites'].forEach((invite, idx) => {
         if (invite.id === this.props.pending.id) {
-          user['pendingInvites'].splice(idx, 1, null)
+          if (idx === 0) {
+            user['pendingInvites'].shift();
+          } else {
+            user['pendingInvites'].slice(idx).concat(
+              user['pendingInvites'].slice(idx + 1)
+            )
+          }
         }
       });
 
@@ -29,9 +35,17 @@ class InviteItem extends React.Component{
     }
     else{
       let user = this.props.currentUser;
+      
       user['pendingInvites'].forEach((invite, idx) => {
         if (invite.id === this.props.pending.id) {
-          user['pendingInvites'].splice(idx, 1, null)
+
+          if (idx===0){
+            user['pendingInvites'].shift();
+          }else{
+            user['pendingInvites'].slice(idx).concat(
+              user['pendingInvites'].slice(idx + 1)
+              )
+          }
         }
       });
 
