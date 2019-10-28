@@ -6,4 +6,6 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.get('/favicon.ico', (req, res) => res.status(204));
+
 module.exports = router;

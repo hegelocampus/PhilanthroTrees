@@ -1,6 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 
 //import TopBar from './top_bar/top_bar';
@@ -9,9 +8,8 @@ import Splash from './splash/splash';
 
 export default () => (
   <React.Fragment>
-    <Switch>
-      <AuthRoute authComponent={ Splash } protectedComponent={ MainDisplay } />
-    </Switch>
+    <AuthRoute component={ Splash } />
+    <ProtectedRoute component={ MainDisplay } />
   </React.Fragment>
 );
 
