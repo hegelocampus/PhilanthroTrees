@@ -5,7 +5,6 @@ export const fetchProjects = communityId => {
 };
 
 export const fetchProject = projectId => {
-  debugger
   return axios.get(`api/projects/${projectId}`);
 }
 

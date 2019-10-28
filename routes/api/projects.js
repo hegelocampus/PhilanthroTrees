@@ -14,19 +14,15 @@ const validateTask = require('../../validation/valid-task');
 //Project Show
 
 projectRouter.get('/:projectId', (req, res) => {
-  debugger
   const projectId = req.params.projectId;
-  debugger
 
   return Project.findOne({_id: projectId})
     .then(project => {
       if (!project){
-        debugger
         return res.status(404).json({
           project: 'Project not found'
         })
       } else {
-        debugger
         return res.json(project);
       }
     });
