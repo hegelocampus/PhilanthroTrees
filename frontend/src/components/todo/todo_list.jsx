@@ -46,7 +46,7 @@ class TodoList extends React.Component{
             <Link to={`/projects/${project._id}`}>
             {project.name}
             </Link>
-          </li> 
+          </li>
         )
       })
     }
