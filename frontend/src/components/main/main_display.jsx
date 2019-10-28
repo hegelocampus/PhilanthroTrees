@@ -11,7 +11,6 @@ import ProjectContainer from '../project/project_container';
 import Community from './community/community';
 import TodoListContainer from '../todo/todo_list_container';
 
-
 export default (props) => {
   return (
     <React.Fragment>
