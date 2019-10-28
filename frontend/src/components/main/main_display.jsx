@@ -10,6 +10,7 @@ import UserDetail from './user/user_detail';
 import ProjectContainer from '../project/project_container';
 import Community from './community/community';
 import TodoList from '../todo/todo_list_container';
+import PendingInviteContainer from './user/pending_container';
 
 export default (props) => {
   return (
@@ -19,6 +20,7 @@ export default (props) => {
         {/* User Profile is always displayed at the top, right under the nav bar */}
         <UserDetail />
         <TodoList />
+        <PendingInviteContainer/>
         <Switch>
           <Route path={'/user/:userId'}>
             <h1>User show page</h1>

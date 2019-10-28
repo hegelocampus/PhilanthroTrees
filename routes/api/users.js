@@ -118,7 +118,8 @@ user.get('/:id', (req, res) => {
           hp: user.hp,
           experience: user.experience,
           communityId: user.communityId,
-          email: user.email
+          email: user.email,
+          pendingInvites: user.pendingInvites
         });
       }
     },

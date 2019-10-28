@@ -83,7 +83,8 @@ community.patch('/:community_id/user/:user_id/citizens',
             user: { [user._id]: {
               id: user._id,
               username: user.username,
-              communityId: user.communityId
+              communityId: user.communityId,
+              pendingInvites: user.pendingInvites
             }},
             community: { [community.id]: {
               id: community._id,
