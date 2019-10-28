@@ -4,7 +4,7 @@ import TodoList from './todo_list';
 
 const mapStateToProps = state =>{
   let currentUser = state.session.user;
-  let users = state.entities.users 
+  let users = state.entities.users
 
   return({
     users: users,

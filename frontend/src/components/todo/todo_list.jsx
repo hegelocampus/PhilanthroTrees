@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
 class TodoList extends React.Component{
 
@@ -13,15 +13,14 @@ class TodoList extends React.Component{
   }
 
   componentDidUpdate(){
-    
     if (this.checkNotEmpty(this.props.users)) {
       let communityId = this.props.users[this.props.currentUser.id] ?
         this.props.users[this.props.currentUser.id].communityId : null;
 
       if (communityId &&
-         !this.checkNotEmpty(this.props.projects) 
+         !this.checkNotEmpty(this.props.projects)
          && (this.state.projectCheck < 2)) {
-        this.state['projectCheck'] = this.state['projectCheck'] + 1 
+        this.state['projectCheck'] = this.state['projectCheck'] + 1
         this.props.fetchProjects(communityId);
       }
     }
@@ -51,7 +50,6 @@ class TodoList extends React.Component{
       })
     }
 
-
     return(
       <React.Fragment>
         {projects}
@@ -61,3 +59,4 @@ class TodoList extends React.Component{
 }
 
 export default TodoList;
+
