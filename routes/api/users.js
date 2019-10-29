@@ -130,6 +130,7 @@ user.get('/:id', (req, res) => {
 });
 
 // Update Experience for a user
+
 user.patch('/:id', (req, res)=> {
   const userId = req.params.id;
   console.log('The Incoming UserID:', userId);
@@ -147,6 +148,7 @@ user.patch('/:id', (req, res)=> {
 })
 
 // Update User Invites
+
 user.patch('/invite/:emailAddress', (req, res)=>{
   const emailAddress = req.params.emailAddress
 
@@ -181,10 +183,17 @@ user.get('/:id/community', (req, res, next) => {
     );
 });
 
+/* GET users listing. */
+user.get('/', function(req, res, next) {
+  res.send('respond with a resource');
+});
+
 /* POST UserCommunity */
 user.use("/:id/community", (req, res, next) => {
   req.id = req.params.id;
+  console.log(req.body);
   req.communityData = req.body
+  console.log(req.id);
   next()
 }, community);
 

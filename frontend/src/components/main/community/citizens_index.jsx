@@ -17,16 +17,14 @@ export default (props) => {
   });
 
   let citizensLis;
-  if (citizens.length) {
-    citizensLis = citizens.map((user) => {
-      let { id, username } = user;
-      return (
+  if (citizens) {
+    citizensLis = citizens.map(({ id, username }) => (
       <li key={ id }>
         <Link className="citizen" to={ `${ match.path }/${ id }` }>
           <span>{ username }</span>
         </Link>
       </li>
-    )});
+    ));
   }
   return (
     <React.Fragment>

@@ -15,6 +15,9 @@ export default (props) => {
     plantLvl = Math.floor((project.projectExp + 50) / 50);
   }
 
+  console.log(plantLvl);
+  console.log(project);
+
   return project ? (
     <div className="project-synopsis">
       {/* <h1 className="project-name">
@@ -39,6 +42,7 @@ export default (props) => {
         <span>{`${project.projectHealth} / 100`}</span>
       </div>
 
+    
       <div className="project-stats-li">
         <p className="project-exp">
           EXP:
