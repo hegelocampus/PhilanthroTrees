@@ -49,7 +49,7 @@ app.use('/api/tasks', tasksRouter);
 // view engine setup
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
-  app.get('/', (req, res) => {
+  app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
   })
 } else {
@@ -57,7 +57,7 @@ if (process.env.NODE_ENV === 'production') {
   //app.set('view engine', 'pug');
   //app.use(express.static(path.join(__dirname, 'public')));
   app.use(express.static(path.join(__dirname, 'frontend/public')));
-  app.get('/', (req, res) => {
+  app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend', 'pubilc', 'index.html'));
   })
 }
