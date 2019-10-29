@@ -76,7 +76,7 @@ class Project extends React.Component{
       createTask={this.props.createTask}/> : <p></p>;
 
       showEdit = <button onClick={this.showForm("projectUpdate")}>Edit Project!</button>
-
+        console.log('The current project', this.props.project)
        newEdit = this.state.projectUpdate ? <EditProject
        project={this.props.project}
        updateProject={this.props.updateProject}
