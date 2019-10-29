@@ -47,7 +47,7 @@ class EditProject extends React.Component{
           <option id="project-option-3" value="plant3">Plant 3 Image</option>
       </select>/>
 
-      <button id="update-button" type="submit">UPDATE!</button>
+      <button id="update-button-edit" type="submit">UPDATE!</button>
  
     </form>
     )

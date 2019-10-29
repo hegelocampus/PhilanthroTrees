@@ -40,7 +40,7 @@ class CreateTask extends React.Component {
           value={this.state.details} onChange={this.update('details')} />
         </label>
 
-        <button id="update-button" type="submit">Create Task!</button>
+        <button id="update-button-create" type="submit">Create Task!</button>
 
       </form>
     )
