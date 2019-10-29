@@ -4,6 +4,7 @@ import Task from './task';
 import Synopsis from './synopsis';
 import EditProject from './edit_project';
 import CreateTask from './create_task';
+import '../../stylesheets/project_form.scss';
 
 class Project extends React.Component{
   constructor(props){
@@ -18,14 +19,23 @@ class Project extends React.Component{
     this.showForm = this.showForm.bind(this);
   }
 
+  
   componentDidMount(){
     let projectId = this.props.match.params.projectId;
-
+    
     if (projectId) {
       this.props.fetchProject(projectId);
       this.props.fetchTasks(projectId);
     }
   }
+
+  // componentDidUpdate(){
+  //   let projectId = this.props.match.params.projectId;
+  //   if(!this.checkNotEmpty(this.props.project)){
+  //     this.props.fetchProject(projectId);
+  //   }
+  // }
+
 
   checkNotEmpty(object) {
     for (const key in object) {
@@ -37,7 +47,7 @@ class Project extends React.Component{
 
   showForm(field){
     return (e) =>{
-    // e.preventDefault();
+    e.preventDefault();
     let set = this.state[field] ? false : true;
     this.setState({[field]: set });
     }
@@ -65,7 +75,7 @@ class Project extends React.Component{
         />
       )
 
-      showCreate = <button onClick={this.showForm("taskCreate")}>New Task!</button>
+      showCreate = <button id="show-button-create" onClick={this.showForm("taskCreate")}>New Task!</button>
 
       newTask = this.state.taskCreate ? (
         <CreateTask
@@ -86,6 +96,7 @@ class Project extends React.Component{
       ) : (
         <p></p>
       )
+
     }
 
     if (this.checkNotEmpty(this.props.tasks) && this.checkNotEmpty(this.props.users)){

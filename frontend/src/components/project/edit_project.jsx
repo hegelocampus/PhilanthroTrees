@@ -41,13 +41,13 @@ class EditProject extends React.Component{
       <input className="description" type="text"
        value={this.state.description} onChange={this.update('description')}/>
 
-      <select className="plant" onChange={this.update('plant')}>
-        <option value="plant1">Plant 1 Image</option>
-        <option value="plant2">Plant 2 Image</option>
-        <option value="plant3">Plant 3 Image</option>
+      <select id="plant" onChange={this.update('plant')}>
+        <option id="project-option-1" value="plant1">Plant 1 Image</option>
+          <option id="project-option-2" value="plant2">Plant 2 Image</option>
+          <option id="project-option-3" value="plant3">Plant 3 Image</option>
       </select>/>
 
-      <button type="submit">UPDATE!</button>
+      <button id="update-button-edit" type="submit">UPDATE!</button>
  
     </form>
     )
