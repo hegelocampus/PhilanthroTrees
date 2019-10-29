@@ -144,6 +144,7 @@ user.patch('/:id', (req, res)=> {
   ).then(user =>{
     console.log(user);
     return res.json(user)})
+    .catch(errors=> res.status(404).json({msg: 'Citizen not updated, please check your entry and try again.'}))
 })
 
 // Update User Invites
