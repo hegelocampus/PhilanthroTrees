@@ -27,7 +27,7 @@ projectRouter.get('/:projectId', (req, res) => {
     //   }
     // })
     .then(project => res.json(project))
-    .catch(err => res.status(400).json(errors))
+    .catch(errors => res.status(400).json(errors))
 });
 
 
@@ -84,7 +84,7 @@ taskRouter.post('/create', (req, res) => {
     newTask
     .save()
     .then(task => res.json(task))
-    .catch(err => res.status(400).json(errors))
+    .catch(errors => res.status(400).json(errors))
   }
 });
 
