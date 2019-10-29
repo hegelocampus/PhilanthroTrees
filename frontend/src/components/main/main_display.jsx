@@ -3,14 +3,14 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import '../../stylesheets/main_container.scss';
-
 import TopBar from './top_bar/top_bar';
 import UserDetail from './user/user_detail';
 import ProjectContainer from '../project/project_container';
 import Community from './community/community';
 import TodoList from '../todo/todo_list_container';
 import PendingInviteContainer from './user/pending_container';
+
+import '../../stylesheets/main_container.scss';
 
 export default (props) => {
   return (
