@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '../../stylesheets/task_card.scss';
+
 class Task extends React.Component{
   constructor(props){
     super(props);
@@ -49,16 +51,16 @@ class Task extends React.Component{
 
           <h4 id="task-title">{this.props.task.title}</h4>
           <p id="task-details">{this.props.task.details}</p>
-          <p>{this.props.task.completed ? "Done!" : "Unfinished"}</p>
+          <p>Task status: {this.state.completed ? "Done!" : "Unfinished"}</p>
           <label>
-            <input type="radio" value="Completed" 
+            <input type="radio" value="Completed"
             onClick = {this.update("completed")} 
             checked={this.state.completed}
             />
             Completed
           </label>
 
-          <input type="submit"  value="Done!"/>
+          <input id="task-submit-button" type="submit"  value="Done!"/>
 
         </form>
       </li>

@@ -7,6 +7,8 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { requestCommunity } from '../../../actions/community_actions';
 import CitizenIndex from './citizens_index';
 import InvitationContainer from '../user/invitation_container';
+import '../../../stylesheets/community_details.scss';
+
 
 export default (props) => {
   const match = useRouteMatch();
@@ -29,8 +31,8 @@ export default (props) => {
     <React.Fragment>
       { comId ? (
         <>
-          <h3> { community.name || null } </h3>
-          <h3> { community.admin ? community.admin.name : null } </h3>
+          <h3 className="community-name" > { community.name || null } </h3>
+          <h3 className="community-admin"> { community.admin ? community.admin.name : null } </h3>
           <CitizenIndex />
           <InvitationContainer/>
         </>

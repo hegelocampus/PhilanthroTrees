@@ -4,6 +4,7 @@ import Task from './task';
 import Synopsis from './synopsis';
 import EditProject from './edit_project';
 import CreateTask from './create_task';
+import '../../stylesheets/project_form.scss';
 
 class Project extends React.Component{
   constructor(props){
@@ -18,14 +19,22 @@ class Project extends React.Component{
     this.showForm = this.showForm.bind(this);
   }
 
+  
   componentDidMount(){
     let projectId = this.props.match.params.projectId;
-    console.log(projectId);
     if (projectId) {
       this.props.fetchProject(projectId);
       this.props.fetchTasks(projectId);
     }
   }
+
+  // componentDidUpdate(){
+  //   let projectId = this.props.match.params.projectId;
+  //   if(!this.checkNotEmpty(this.props.project)){
+  //     this.props.fetchProject(projectId);
+  //   }
+  // }
+
 
   checkNotEmpty(object) {
     for (const key in object) {
@@ -37,7 +46,7 @@ class Project extends React.Component{
 
   showForm(field){
     return (e) =>{
-    // e.preventDefault();
+    e.preventDefault();
     let set = this.state[field] ? false : true;
     this.setState({[field]: set });
     }
@@ -57,18 +66,18 @@ class Project extends React.Component{
 
     //Ensure Project Pops have Populated
     if(this.checkNotEmpty(this.props.project)){
-      synopsis = <Synopsis
-       project={this.props.project}
-       />
+      // synopsis = <Synopsis
+      //  project={this.props.project}
+      //  />
 
-      showCreate = <button onClick={this.showForm("taskCreate")}>New Task!</button>
+      showCreate = <button id="show-button-create" onClick={this.showForm("taskCreate")}>New Task!</button>
 
       newTask = this.state.taskCreate ? <CreateTask
       projectId={this.props.match.params.projectId}
       createTask={this.props.createTask}/> : <p></p>;
 
-      showEdit = <button onClick={this.showForm("projectUpdate")}>Edit Project!</button>
-
+      showEdit = <button id="show-button-edit" onClick={this.showForm("projectUpdate")}>Edit Project!</button>
+        console.log('The current project', this.props.project)
        newEdit = this.state.projectUpdate ? <EditProject
        project={this.props.project}
        updateProject={this.props.updateProject}
