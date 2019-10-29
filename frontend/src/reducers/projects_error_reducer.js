@@ -6,6 +6,7 @@ export default (state = {}, action) => {
   switch(action.type){
     case RECEIVE_PROJECT_ERRORS:
       return action.errors;
+      // return { msg:'Uh oh. Please contact the app administrator'};
     default:
       return state;
   }

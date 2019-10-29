@@ -1,7 +1,19 @@
 @import 'theme';
 
 .main-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   height: 100%;
-  background-color: $background;
+  // background-color: $background;
+  background-color: #ffeeff;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+}
+
+.form-errors-container{
+  color: #c48b9f;
+  font-weight: bold;
 }
 

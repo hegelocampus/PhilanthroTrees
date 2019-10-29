@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../../stylesheets/community_details.scss';
 
 class Invite extends React.Component {
 
@@ -40,15 +41,15 @@ class Invite extends React.Component {
     let invite = <p></p>;
     
 
-     inviteForm = <form onSubmit={this.submitInvite}>
+     inviteForm = <form className="invite-form" onSubmit={this.submitInvite}>
 
         <p>Enter the Email of the member you would like to invite:</p>
-        <label htmlFor="">
+        <label id="email-address">
           Email:
-        <input type="text" value={this.state.email} onChange={this.update('email')}/>
         </label>
+        <input type="text" value={this.state.email} onChange={this.update('email')}/>
 
-        <input type="submit" value="Send Invite"/>
+        <input id="invite-button-send" type="submit" value="Send Invite"/>
       </form>
     
 

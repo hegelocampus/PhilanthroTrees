@@ -6,6 +6,7 @@ import {
   Link,
   useRouteMatch
 } from 'react-router-dom';
+import '../../../stylesheets/community_details.scss';
 
 export default (props) => {
   const match = useRouteMatch();
@@ -19,7 +20,7 @@ export default (props) => {
   if (citizens) {
     citizensLis = citizens.map(({ id, username }) => (
       <li key={ id }>
-        <Link to={ `${ match.path }/${ id }` }>
+        <Link className="citizen" to={ `${ match.path }/${ id }` }>
           <span>{ username }</span>
         </Link>
       </li>
@@ -27,8 +28,8 @@ export default (props) => {
   }
   return (
     <React.Fragment>
-      <h5>Citizens:</h5>
-      <ul>
+      <h5 className='citizens-header' >Citizens:</h5>
+      <ul className='citizen-list'>
         { citizensLis }
       </ul>
     </React.Fragment>

@@ -1,0 +1,50 @@
+.project-synopsis{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #6abf69;
+  background-color: #00600f;
+  border-radius: 10px;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-transform: none;
+}
+
+.project-synopsis div{
+  padding: .1em;
+}
+
+.project-synopsis h2{
+  font-size: 20px;
+  color: #ffeeff;
+  font-weight: bold;
+  padding: .25em;
+}
+
+.project-synopsis p{
+  font-size: 16px;
+  color: #ffeeff;
+  font-weight: bold;
+  padding: .25em;
+}
+
+.project-synopsis s{
+  font-size: 16px;
+  color: #ffeeff;
+  font-weight: bold;
+  padding: .25em;
+}
+
+.project-synopsis span{
+  font-size: 16px;
+  color: #ffeeff;
+  font-weight: bold;
+  padding: .25em;
+}
+
+.rc-progress-line {
+  width: 200px;
+  height: 12px;
+  border: 1px solid #6abf69;
+  border-radius: 5px;
+}
