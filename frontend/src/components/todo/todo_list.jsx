@@ -14,22 +14,25 @@ class TodoList extends React.Component{
 
   componentDidUpdate(){
     if (this.checkNotEmpty(this.props.users)) {
-      let communityId = this.props.users[this.props.currentUser.id] ?
-        this.props.users[this.props.currentUser.id].communityId : null;
-
-      if (communityId &&
-         !this.checkNotEmpty(this.props.projects)
-         && (this.state.projectCheck < 2)) {
-        this.state['projectCheck'] = this.state['projectCheck'] + 1
-        this.props.fetchProjects(communityId);
+      let communityId
+      if (this.props.users[this.props.currentUser.id]) {
+        communityId = this.props.users[this.props.currentUser.id].communityId;
       }
+
+      if (communityId
+        && !this.checkNotEmpty(this.props.projects)
+        && (this.state.projectCheck < 2)) {
+          this.state['projectCheck'] = this.state['projectCheck'] + 1
+          this.props.fetchProjects(communityId);
+        }
     }
   }
 
   checkNotEmpty(object) {
     for (const key in object) {
-      if (object.hasOwnProperty(key))
+      if (object.hasOwnProperty(key)) {
         return true;
+      }
     }
     return false;
   }
