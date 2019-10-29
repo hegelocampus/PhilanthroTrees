@@ -9,6 +9,6 @@ export default (state={}, action)=>{
       return action.invite;
 
     default:
-      return state;
+      return {} ;
   }
 }

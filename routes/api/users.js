@@ -85,7 +85,7 @@ user.post('/login', (req, res) => {
           if (isMatch) {
             const payload = {
               id: user.id,
-              username: user.username,
+              username: user.username
             };
 
             jwt.sign(
@@ -118,7 +118,8 @@ user.get('/:id', (req, res) => {
           hp: user.hp,
           experience: user.experience,
           communityId: user.communityId,
-          email: user.email
+          email: user.email,
+          pendingInvites: user.pendingInvites
         });
       }
     },
@@ -136,7 +137,10 @@ user.patch('/:id', (req, res)=> {
 
   User.findOneAndUpdate(
     { _id: userId },
-    { experience: req.body.experience },
+    { experience: req.body.experience,
+      pendingInvites: req.body.pendingInvites,
+      communityId: req.body.communityId
+     },
   ).then(user =>{
     console.log(user);
     return res.json(user)})

@@ -1,7 +1,7 @@
 import React from 'react';
 import MainNav from './main-nav';
 import UserMenu from './top_bar_user_menu';
-
+// <PendingInviteContainer/> from user/pending_container
 export default (props) => {
   return (
     <header className="top-bar">

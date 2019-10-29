@@ -11,21 +11,41 @@ class InviteItem extends React.Component{
     this.submit = this.submit.bind(this);
   }
 
-  submit(){
+  submit(e){
     e.preventDefault();
 
     if (this.state.accept){
       let user = this.props.currentUser;
       user['communityId'] = this.props.pending.id;
 
+      user['pendingInvites'].forEach((invite, idx) => {
+        if (invite.id === this.props.pending.id) {
+          if (idx === 0) {
+            user['pendingInvites'].shift();
+          } else {
+            user['pendingInvites'].slice(idx).concat(
+              user['pendingInvites'].slice(idx + 1)
+            )
+          }
+        }
+      });
+
       this.props.updateUser(user);
       this.props.addUserToCommunity(this.props.currentUser.id, this.props.pending.id);
     }
     else{
       let user = this.props.currentUser;
-      user['pendingInvites'].forEach(invite => {
-        if(invite.id === this.props.pending.id){
-          delete invite;
+      
+      user['pendingInvites'].forEach((invite, idx) => {
+        if (invite.id === this.props.pending.id) {
+
+          if (idx===0){
+            user['pendingInvites'].shift();
+          }else{
+            user['pendingInvites'].slice(idx).concat(
+              user['pendingInvites'].slice(idx + 1)
+              )
+          }
         }
       });
 
@@ -35,7 +55,7 @@ class InviteItem extends React.Component{
 
   update(field){
     return(e)=>{
-      this.setState({accept: field},()=> this.submit())
+      this.setState({accept: field},()=> this.submit(e))
     }
   }
 
@@ -58,3 +78,5 @@ class InviteItem extends React.Component{
     )
   }
 }
+
+export default InviteItem;
