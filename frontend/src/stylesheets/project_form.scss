@@ -1,0 +1,117 @@
+#show-button{
+  background-color: #ffeeff;
+  text-transform: none;
+  text-decoration: none;
+  padding: .25em;
+  border: 2px solid #00600f;
+  border-radius: 5px;
+  color: #00600f;
+  margin-bottom: 1em;
+}
+
+#show-button:hover {
+  background-color: #00600f;
+  text-transform: none;
+  text-decoration: none;
+  padding: .25em;
+  border: 2px solid #ffeeff;
+  border-radius: 5px;
+  color: #ffeeff;
+  margin-bottom: 1em;
+}
+
+.project-edit{
+  display: flex;
+  flex-direction: column;
+  color: #ffeeff;
+  font-weight: 500;
+  padding: .25em;
+}
+
+.project-edit input[type="text"]{
+  margin-bottom: .25em;
+  border: 1px solid #00600f;
+  border-radius: 3px;
+  background-color: #00600f;
+  text-transform: none;
+  text-decoration: none;
+  padding: .25em;
+  border: 2px solid #00600f;
+  border-radius: 5px;
+  color: #ffeeff;
+  margin-bottom: 1em;
+}
+
+#project-option{
+  margin-bottom: .25em;
+  border: 1px solid #00600f;
+  border-radius: 3px;
+  background-color: #ffeeff;
+  text-transform: none;
+  text-decoration: none;
+  padding: .25em;
+  border: 2px solid #00600f;
+  border-radius: 5px;
+  color: #00600f;
+  margin-bottom: 1em;
+}
+
+#plant{
+  margin-bottom: .25em;
+  border: 1px solid #00600f;
+  border-radius: 3px;
+  background-color: #ffeeff;
+  text-transform: none;
+  text-decoration: none;
+  padding: .25em;
+  border: 2px solid #00600f;
+  border-radius: 5px;
+  color: #00600f;
+  margin-bottom: 1em;
+}
+
+
+
+#update-button {
+  background-color: #ffeeff;
+  text-transform: none;
+  text-decoration: none;
+  padding: .25em;
+  border: 2px solid #00600f;
+  border-radius: 5px;
+  color: #00600f;
+  margin-bottom: 1em;
+}
+
+#update-button:hover {
+  background-color: #00600f;
+  text-transform: none;
+  text-decoration: none;
+  padding: .25em;
+  border: 2px solid #ffeeff;
+  border-radius: 5px;
+  color: #ffeeff;
+  margin-bottom: 1em;
+}
+
+.create-task{
+  display: flex;
+  flex-direction: column;
+  color: #00600f;
+  font-weight: 500;
+  padding: .25em;
+}
+
+.create-task input[type="text"]{
+  border: 1px solid #00600f;
+  border-radius: 3px;
+  background-color: #00600f;
+  text-transform: none;
+  text-decoration: none;
+  padding: .25em;
+  border: 2px solid #00600f;
+  border-radius: 5px;
+  color: #ffeeff;
+  margin-bottom: 1em;
+  margin-left: 1em;
+}

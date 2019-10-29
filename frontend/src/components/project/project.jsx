@@ -4,6 +4,7 @@ import Task from './task';
 import Synopsis from './synopsis';
 import EditProject from './edit_project';
 import CreateTask from './create_task';
+import '../../stylesheets/project_form.scss';
 
 class Project extends React.Component{
   constructor(props){
@@ -69,13 +70,13 @@ class Project extends React.Component{
       //  project={this.props.project}
       //  />
 
-      showCreate = <button onClick={this.showForm("taskCreate")}>New Task!</button>
+      showCreate = <button id="show-button" onClick={this.showForm("taskCreate")}>New Task!</button>
 
       newTask = this.state.taskCreate ? <CreateTask
       projectId={this.props.match.params.projectId}
       createTask={this.props.createTask}/> : <p></p>;
 
-      showEdit = <button onClick={this.showForm("projectUpdate")}>Edit Project!</button>
+      showEdit = <button id="show-button" onClick={this.showForm("projectUpdate")}>Edit Project!</button>
         console.log('The current project', this.props.project)
        newEdit = this.state.projectUpdate ? <EditProject
        project={this.props.project}

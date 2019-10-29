@@ -20,10 +20,9 @@ export default (props) => {
         {project.description}
       </h2>
 
-      <s>Level: </s>
-      <p>{Math.floor((project.projectExp + 50) / 50)}</p>
+      <s>Level: {Math.floor((project.projectExp + 50) / 50)} </s>
 
-      <li>
+      <div>
         <p className="project-health">
           HP:
         </p>
@@ -33,10 +32,10 @@ export default (props) => {
           className="health-bar"
         />
         <span>{`${project.projectHealth} / 100`}</span>
-      </li>
+      </div>
 
     
-      <li className="project-stats-li">
+      <div className="project-stats-li">
         <p className="project-exp">
           EXP:
         </p>
@@ -46,7 +45,7 @@ export default (props) => {
           className="experience-bar"
         />
         <span>{`${project.projectExp % 100} / 100`}</span>
-      </li>
+      </div>
 
 
 
