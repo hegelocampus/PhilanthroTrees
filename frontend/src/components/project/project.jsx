@@ -86,7 +86,7 @@ class Project extends React.Component{
         <p></p>
       );
 
-      showEdit = <button onClick={this.showForm("projectUpdate")}>Edit Project!</button>
+      showEdit = <button id="show-button-edit" onClick={this.showForm("projectUpdate")}>Edit Project!</button>
 
       newEdit = this.state.projectUpdate ? (
         <EditProject
