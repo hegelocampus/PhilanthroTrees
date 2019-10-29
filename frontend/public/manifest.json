@@ -3,8 +3,6 @@
   "name": "PhilanthroTrees",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "icons": [
-  ]
+  "theme_color": "#2e7d32",
+  "background_color": "#E1E2E1"
 }

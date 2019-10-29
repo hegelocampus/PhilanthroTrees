@@ -28,8 +28,13 @@ nav {
   width: 150px;
   color: #ffeeff;
   div {
-    border-right: 1px solid #c48b9f;
+    font-weight: 800;
+    border-right: 1px solid black;
+
     width: 50%;
+    button {
+      font-weight: 800;
+    }
   }
   .user-menu-notification-container {
     border-left: 1px solid#c48b9f;
