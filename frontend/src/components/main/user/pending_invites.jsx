@@ -1,6 +1,8 @@
 import React from 'react'
 import InviteItem from './invite_item';
 
+
+
 class PendingInvites extends React.Component {
   constructor(props){
     super(props)

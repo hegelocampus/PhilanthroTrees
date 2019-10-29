@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import '../../../stylesheets/community_details.scss';
 
 class InviteItem extends React.Component{
   constructor(props){
@@ -63,14 +64,16 @@ class InviteItem extends React.Component{
   render(){
 
     return(
-      <form>
+      <form className="invite-form">
 
         <p>Accept this Invite?</p>
 
-        <input type="submit" value="Accept"
+        <input id="invite-button"
+         type="submit" value="Accept"
           onClick={this.update(true)}
         />
-        <input type="submit" value="Decline"
+        <input id="invite-button"
+         type="submit" value="Decline"
             onClick={this.update(false)}
         />
 
