@@ -70,13 +70,13 @@ class Project extends React.Component{
       //  project={this.props.project}
       //  />
 
-      showCreate = <button id="show-button" onClick={this.showForm("taskCreate")}>New Task!</button>
+      showCreate = <button id="show-button-create" onClick={this.showForm("taskCreate")}>New Task!</button>
 
       newTask = this.state.taskCreate ? <CreateTask
       projectId={this.props.match.params.projectId}
       createTask={this.props.createTask}/> : <p></p>;
 
-      showEdit = <button id="show-button" onClick={this.showForm("projectUpdate")}>Edit Project!</button>
+      showEdit = <button id="show-button-edit" onClick={this.showForm("projectUpdate")}>Edit Project!</button>
         console.log('The current project', this.props.project)
        newEdit = this.state.projectUpdate ? <EditProject
        project={this.props.project}

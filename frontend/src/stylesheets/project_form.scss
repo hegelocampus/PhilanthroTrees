@@ -1,4 +1,14 @@
-#show-button{
+#show-button-create{
+  background-color: #ffeeff;
+  text-transform: none;
+  text-decoration: none;
+  padding: .25em;
+  border: 2px solid #00600f;
+  border-radius: 5px;
+  color: #00600f;
+  margin-bottom: 1em;
+}
+#show-button-edit{
   background-color: #ffeeff;
   text-transform: none;
   text-decoration: none;
@@ -9,7 +19,17 @@
   margin-bottom: 1em;
 }
 
-#show-button:hover {
+#show-button-create:hover {
+  background-color: #00600f;
+  text-transform: none;
+  text-decoration: none;
+  padding: .25em;
+  border: 2px solid #ffeeff;
+  border-radius: 5px;
+  color: #ffeeff;
+  margin-bottom: 1em;
+}
+#show-button-edit:hover {
   background-color: #00600f;
   text-transform: none;
   text-decoration: none;
