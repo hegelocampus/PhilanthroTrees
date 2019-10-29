@@ -29,7 +29,7 @@ const UserSchema = new Schema({
   completedTasks: [],
   pendingInvites: [{
     id:{
-      type: String, 
+      type: String,
       required: false
     },
     name:{

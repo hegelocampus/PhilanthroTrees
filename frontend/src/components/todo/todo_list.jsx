@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
+import '../../stylesheets/todo.scss';
+
 class TodoList extends React.Component{
 
   constructor(props){
@@ -14,22 +16,25 @@ class TodoList extends React.Component{
 
   componentDidUpdate(){
     if (this.checkNotEmpty(this.props.users)) {
-      let communityId = this.props.users[this.props.currentUser.id] ?
-        this.props.users[this.props.currentUser.id].communityId : null;
-
-      if (communityId &&
-         !this.checkNotEmpty(this.props.projects)
-         && (this.state.projectCheck < 2)) {
-        this.state['projectCheck'] = this.state['projectCheck'] + 1
-        this.props.fetchProjects(communityId);
+      let communityId
+      if (this.props.users[this.props.currentUser.id]) {
+        communityId = this.props.users[this.props.currentUser.id].communityId;
       }
+
+      if (communityId
+        && !this.checkNotEmpty(this.props.projects)
+        && (this.state.projectCheck < 2)) {
+          this.state['projectCheck'] = this.state['projectCheck'] + 1
+          this.props.fetchProjects(communityId);
+        }
     }
   }
 
   checkNotEmpty(object) {
     for (const key in object) {
-      if (object.hasOwnProperty(key))
+      if (object.hasOwnProperty(key)) {
         return true;
+      }
     }
     return false;
   }
@@ -41,8 +46,9 @@ class TodoList extends React.Component{
     if(this.checkNotEmpty(this.props.projects)){
       projects = Object.values(this.props.projects).map(project =>{
         return(
-          <li key={project._id}>
-            <Link to={`/projects/${project._id}`}>
+          <li 
+           key={project._id}>
+            <Link className="todo-link" to={`/projects/${project._id}`}>
             {project.name}
             </Link>
           </li>
@@ -52,7 +58,9 @@ class TodoList extends React.Component{
 
     return(
       <React.Fragment>
+        <ul className="todo">
         {projects}
+        </ul>
       </React.Fragment>
     )
   }
