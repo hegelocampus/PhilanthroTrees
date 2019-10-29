@@ -4,7 +4,6 @@ import {
   useSelector
 } from 'react-redux';
 import { requestUser } from '../../../actions/user_actions';
-//import ProgressBar from './progress_bar';
 import { Line } from 'rc-progress';
 import Sprite from '../sprites/sprite';
 
@@ -25,8 +24,7 @@ export default (props) => {
   useEffect(() => {
     dispatch(requestUser(currentUserId));
   },
-  //May have to include something else here to make it so user updates after task
-  //completeion, perhaps a subscription
+  //May have to include something else here to make it so user updates after task completeion, perhaps a subscription
   [currentUserId, dispatch]
   );
 
@@ -71,3 +69,4 @@ export default (props) => {
     </React.Fragment>
   );
 }
+
