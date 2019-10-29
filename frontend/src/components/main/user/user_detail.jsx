@@ -18,7 +18,7 @@ export default (props) => {
   const currentUser = useSelector(state => state.entities.users[currentUserId]);
 
   let userLevel;
-  if (currentUser && currentUser.experience) {
+  if (currentUser && currentUser.hp) {
     userLevel = Math.floor((currentUser.experience + 50) / 50);
   }
 
@@ -61,7 +61,7 @@ export default (props) => {
                 strokeColor='#4946a0'
                 className="experience-bar"
               />
-              <span>{ `${ currentUser.experience } / 50` }</span>
+              <span>{ `${ ((currentUser.experience + 50) % 50) } / 50` }</span>
             </li>
           </ul>
         </div>

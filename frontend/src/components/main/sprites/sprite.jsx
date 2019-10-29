@@ -1,16 +1,27 @@
 import React from 'react';
+import sprites from './sprite_pngs';
+import '../../../stylesheets/sprite.scss';
 
 export default ({ level, type }) => {
   type = (type ? type : 'sprout');
-  let parsedLvl = String(level);
-  if (parsedLvl.length < 2) {
-    parsedLvl = '0'.concat(parsedLvl);
+  level = (level ? level : 1);
+
+  let sprite;
+  for (let i = level; i > 0; i--){
+    if (sprite) {
+      break
+    }
+    let parsedLvl = String(i).padStart(2, '0');
+    sprite = sprites[`./${type}/${type}_${parsedLvl}.png`];
   }
 
-  let parsedImgLocation = `../../../images/sprites/${ type }/${ type }_${ parsedLvl }.png`
   return (
-    <div className="sprite">
-      <img src={ parsedImgLocation } alt={ `${ type } sprite at level ${ level }` } />
+    <div className="sprite-container">
+      <img
+        className="sprite-img"
+        src={ sprite }
+        alt={ `${ type } sprite at level ${ level }` }
+      />
     </div>
   );
 }
