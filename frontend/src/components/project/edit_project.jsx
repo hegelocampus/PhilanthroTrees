@@ -42,9 +42,9 @@ class EditProject extends React.Component{
        value={this.state.description} onChange={this.update('description')}/>
 
       <select id="plant" onChange={this.update('plant')}>
-        <option id="project-option" value="plant1">Plant 1 Image</option>
-          <option id="project-option" value="plant2">Plant 2 Image</option>
-          <option id="project-option" value="plant3">Plant 3 Image</option>
+        <option id="project-option-1" value="plant1">Plant 1 Image</option>
+          <option id="project-option-2" value="plant2">Plant 2 Image</option>
+          <option id="project-option-3" value="plant3">Plant 3 Image</option>
       </select>/>
 
       <button id="update-button" type="submit">UPDATE!</button>
