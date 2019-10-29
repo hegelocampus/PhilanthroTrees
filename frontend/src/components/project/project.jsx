@@ -22,6 +22,7 @@ class Project extends React.Component{
   
   componentDidMount(){
     let projectId = this.props.match.params.projectId;
+    
     if (projectId) {
       this.props.fetchProject(projectId);
       this.props.fetchTasks(projectId);
@@ -53,56 +54,71 @@ class Project extends React.Component{
   }
 
   render(){
-    let synopsis = <p></p>;
-    let tasks =<p></p>;
-    let showCreate = <p></p>;
-    let newTask= <p></p>
-    let showEdit = <p></p>;
-    let newEdit = <p></p>;
+    let synopsis=   <p></p>;
+    let tasks=      <p></p>;
+    let showCreate= <p></p>;
+    let newTask=    <p></p>;
+    let showEdit=   <p></p>;
+    let newEdit=    <p></p>;
 
-    synopsis = <Synopsis
-      project={this.props.project}
-    />
+    synopsis = (
+      <Synopsis
+        project={this.props.project}
+      />
+    )
 
     //Ensure Project Pops have Populated
     if(this.checkNotEmpty(this.props.project)){
-      // synopsis = <Synopsis
-      //  project={this.props.project}
-      //  />
+      synopsis = (
+        <Synopsis
+          project={this.props.project}
+        />
+      )
 
       showCreate = <button id="show-button-create" onClick={this.showForm("taskCreate")}>New Task!</button>
 
-      newTask = this.state.taskCreate ? <CreateTask
-      projectId={this.props.match.params.projectId}
-      createTask={this.props.createTask}/> : <p></p>;
+      newTask = this.state.taskCreate ? (
+        <CreateTask
+          projectId={this.props.match.params.projectId}
+          createTask={this.props.createTask}
+        />
+      ) : (
+        <p></p>
+      );
 
-      showEdit = <button id="show-button-edit" onClick={this.showForm("projectUpdate")}>Edit Project!</button>
-        console.log('The current project', this.props.project)
-       newEdit = this.state.projectUpdate ? <EditProject
-       project={this.props.project}
-       updateProject={this.props.updateProject}
-       /> : <p></p>;
+      showEdit = <button onClick={this.showForm("projectUpdate")}>Edit Project!</button>
+
+      newEdit = this.state.projectUpdate ? (
+        <EditProject
+           project={this.props.project}
+           updateProject={this.props.updateProject}
+         />
+      ) : (
+        <p></p>
+      )
+
     }
 
     if (this.checkNotEmpty(this.props.tasks) && this.checkNotEmpty(this.props.users)){
       tasks = Object.values(this.props.tasks).map(task => {
-        if (!task.completed) {
-         return (
-         <Task task={task}
-          users = {this.props.users}
-          currentUser={this.props.currentUser}
-          project={this.props.project}
-          updateTask={this.props.updateTask}
-          updateProject={this.props.updateProject}
-          updateUser ={this.props.updateUser}
+        return task.completed ? (
+          null
+        ) : (
+          <Task task={task}
+            key={task._id}
+            users= {this.props.users}
+            currentUser={this.props.currentUser}
+            project={this.props.project}
+            updateTask={this.props.updateTask}
+            updateProject={this.props.updateProject}
+            updateUser ={this.props.updateUser}
           />
-          )
-        }
-      })}
+        )
+      })
+    }
 
     return(
       <React.Fragment>
-        <RenderErrors/>
         {synopsis}
         <ul className="project-tasks">
           {tasks}
@@ -111,6 +127,7 @@ class Project extends React.Component{
         {newTask}
         {showEdit}
         {newEdit}
+        <RenderErrors/>
       </React.Fragment>
     )
   }

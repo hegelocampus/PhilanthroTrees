@@ -38,11 +38,10 @@ class Task extends React.Component{
         _id: this.props.task._id,
         title: this.props.task.title,
         details: this.props.task.details,
-        [field]: set 
+        [field]: set
         });
     }
   }
-
 
   render(){
     return(
@@ -53,9 +52,12 @@ class Task extends React.Component{
           <p id="task-details">{this.props.task.details}</p>
           <p>Task status: {this.state.completed ? "Done!" : "Unfinished"}</p>
           <label>
-            <input type="radio" value="Completed"
-            onClick = {this.update("completed")} 
-            checked={this.state.completed}
+            <input
+              type="radio"
+              value="Completed"
+              onClick={this.update("completed")}
+              checked={this.state.completed}
+
             />
             Completed
           </label>

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Line } from 'rc-progress';
 import '../../stylesheets/synopsis.scss'
-// import { fetchProject } from '../../actions/project_actions';
 
 export default (props) => {
   // const dispatch = useDispatch();

@@ -12,7 +12,6 @@ const validateTask = require('../../validation/valid-task');
 
 
 //Project Show
-
 projectRouter.get('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
@@ -32,7 +31,6 @@ projectRouter.get('/:projectId', (req, res) => {
 
 
 //Project Update
-
 projectRouter.patch('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
