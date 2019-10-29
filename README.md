@@ -3,16 +3,16 @@
 PhilanthroTrees is a community-based volunteer task tracker that is inspired by Habitica. It is designed to encourage good service habits with a plant based reward and punishment motivation system. Each user's progress is represented with a tree which is grown through completing tasks and gaining experience. To hold users accountable, plant health can also be lost if tasks are not completed frequently enough, which might lead to a loss in progress. Group managers can also assign tasks to grow other plants in a Community Garden -- a visual representation of the group's volunteer progress.
 
 ### PHILANTHROTREES
-| Table of Contents            |
-| ---------------------------- |
-| [Overview][OVERVIEW]         |
-| [Technologies][TECHNOLOGIES] |
-| [Features][FEATURES]         |
-| [Upcoming Features][]        |
-| [Code examples][]            |
+| Table of Contents                       |
+| --------------------------------------- |
+| [Overview](#overview)                   |
+| [Technologies](#technologies)           |
+| [Features](#features)                   |
+| [Upcoming Features](#upcoming-features) |
+| [Code examples](#code-examples)         |
 
 ### OVERVIEW
-[The PhilanthroTrees Demo Site](https://philanthrotrees.herokuapp.com/ “PhilanthroTrees Demo” )
+[The PhilanthroTrees Demo Site](https://philanthrotrees.herokuapp.com/)
 
 PhilanthroTrees is a Habitica inspired community-volunteer tracker, designed to promote a sense of accomplishment among the communities citizens, as well as provide an aid in the administration of community works for teams, businesses, and organizations looking to better their society.  
 A Community’s citizens can invite other guests, and complete tasks to grow the plant in their care as well as contribute to the growth of each community project, both tangible and virtual!
@@ -54,11 +54,11 @@ Allows for rapid modular updating to specific Schema and provides an accessible 
 - Users gain experience, leveling up at each new threshold and providing nourishment to their plant Avatar.
 
 ### UPCOMING FEATURES
-#### Multi-Community Access for citizens wishing to participate in other communities
-#### More Citizen Avatars to choose from
-#### Projects will display highest contributing citizens
-#### Community Garden, displaying all the various projects, their current growth, as well as citizens and their current growth
-### CODING EXAMPLES
+- Multi-Community Access for citizens wishing to participate in other communities
+- More Citizen Avatars to choose from
+- Projects will display highest contributing citizens
+- Community Garden, displaying all the various projects, their current growth, as well as citizens and their current growth
+### CODE EXAMPLES
 ##### Sprite image determination and importing:
 In the following code we had to import an entire directory of subdirectories that contained all of the sprites for a particular plant. This was achieved through using webpack to import all of the png files into a single object within `sprite_pngs.js` which we then import into `sprite.js` where we were able to key into it using the desired plant type and level to render the exact plant sprite that we needed.   
 An additional challenge here was fetching the highest level sprite that existed if the desired level for the sprite was above the maximum existing sprite level. This was a particularly challenging problem because the types of sprites varied in their available levels, so for different sprite types there could be between 13 and 24 available pngs. This challenge was overcome by using a for loop to decrease the level that we are attempting to find for a particular sprite until we are able to find an existing sprite.
