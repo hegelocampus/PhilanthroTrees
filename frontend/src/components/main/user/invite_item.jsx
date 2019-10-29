@@ -68,11 +68,11 @@ class InviteItem extends React.Component{
 
         <p>Accept this Invite?</p>
 
-        <input id="invite-button"
+        <input id="invite-button-accept"
          type="submit" value="Accept"
           onClick={this.update(true)}
         />
-        <input id="invite-button"
+        <input id="invite-button-decline"
          type="submit" value="Decline"
             onClick={this.update(false)}
         />

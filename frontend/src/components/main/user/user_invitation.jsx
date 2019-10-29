@@ -49,7 +49,7 @@ class Invite extends React.Component {
         </label>
         <input type="text" value={this.state.email} onChange={this.update('email')}/>
 
-        <input id="invite-button" type="submit" value="Send Invite"/>
+        <input id="invite-button-send" type="submit" value="Send Invite"/>
       </form>
     
 
