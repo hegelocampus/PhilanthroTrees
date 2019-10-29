@@ -16,6 +16,7 @@ class Task extends React.Component{
   submitTask(e){
     e.preventDefault();
 
+     if(this.state.completed) {
     let project = this.props.project;
     project['projectExp'] = project['projectExp'] + 10;
 
@@ -27,7 +28,10 @@ class Task extends React.Component{
 
     this.props.updateTask(this.state);
     this.props.updateProject(project);
-    this.props.updateUser(user);
+    this.props.updateUser(user);}
+    else{
+      return;
+    }
   }
 
   update(field) {
