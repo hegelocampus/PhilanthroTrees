@@ -27,8 +27,12 @@ nav {
   height: 100%;
   width: 150px;
   div {
+    font-weight: 800;
     border-right: 1px solid black;
     width: 50%;
+    button {
+      font-weight: 800;
+    }
   }
   .user-menu-notification-container {
     border-left: 1px solid black;
