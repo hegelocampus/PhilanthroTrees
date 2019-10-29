@@ -1,4 +1,5 @@
 # PhilanthroTrees
+**[The PhilanthroTrees Demo Site](https://philanthrotrees.herokuapp.com/)**
 ### Background and Overview
 PhilanthroTrees is a community-based volunteer task tracker that is inspired by Habitica. It is designed to encourage good service habits with a plant based reward and punishment motivation system. Each user's progress is represented with a tree which is grown through completing tasks and gaining experience. To hold users accountable, plant health can also be lost if tasks are not completed frequently enough, which might lead to a loss in progress. Group managers can also assign tasks to grow other plants in a Community Garden -- a visual representation of the group's volunteer progress.
 
@@ -12,7 +13,6 @@ PhilanthroTrees is a community-based volunteer task tracker that is inspired by 
 | **[Code examples](#code-examples)**         |
 
 ### OVERVIEW
-**[The PhilanthroTrees Demo Site](https://philanthrotrees.herokuapp.com/)**
 
 PhilanthroTrees is a Habitica inspired community-volunteer tracker, designed to promote a sense of accomplishment among the communities citizens, as well as provide an aid in the administration of community works for teams, businesses, and organizations looking to better their society.  
 A Community’s citizens can invite other guests, and complete tasks to grow the plant in their care as well as contribute to the growth of each community project, both tangible and virtual!
