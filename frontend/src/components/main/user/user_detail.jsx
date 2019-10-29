@@ -6,6 +6,7 @@ import {
 import { requestUser } from '../../../actions/user_actions';
 //import ProgressBar from './progress_bar';
 import { Line } from 'rc-progress';
+import Sprite from '../sprites/sprite';
 
 import '../../../stylesheets/user.scss';
 
@@ -15,6 +16,11 @@ export default (props) => {
 
   const currentUserId = useSelector(state => state.session.user.id);
   const currentUser = useSelector(state => state.entities.users[currentUserId]);
+
+  let userLevel;
+  if (currentUser && currentUser.hp) {
+    userLevel = Math.floor((currentUser.experience + 50) / 50);
+  }
 
   useEffect(() => {
     dispatch(requestUser(currentUserId));
@@ -28,6 +34,9 @@ export default (props) => {
     <React.Fragment>
       { currentUser && currentUser.hp ? (
         <div className="user-detail-container">
+          <aside className="user-stats-sprite-container">
+            <Sprite level={ userLevel } type={ currentUser.type } />
+          </aside>
           <ul className="user-stats-ul">
             <li className="user-stats-li user-detail-username-li">
               <s>Username:</s>
@@ -36,7 +45,7 @@ export default (props) => {
             <li className="user-stats-li">
               {/* lowest user level is 1, user level is determined by exp */}
               <s>Level: </s>
-              <h4>{ Math.floor((currentUser.experience + 50) / 50) }</h4>
+              <h4>{ userLevel }</h4>
             </li>
             <li className="user-stats-li">
               <Line
@@ -52,7 +61,7 @@ export default (props) => {
                 strokeColor='#4946a0'
                 className="experience-bar"
               />
-              <span>{ `${ currentUser.experience } / 50` }</span>
+              <span>{ `${ ((currentUser.experience + 50) % 50) } / 50` }</span>
             </li>
           </ul>
         </div>
