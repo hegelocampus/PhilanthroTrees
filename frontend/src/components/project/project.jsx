@@ -18,14 +18,22 @@ class Project extends React.Component{
     this.showForm = this.showForm.bind(this);
   }
 
+  
   componentDidMount(){
     let projectId = this.props.match.params.projectId;
-    console.log(projectId);
     if (projectId) {
       this.props.fetchProject(projectId);
       this.props.fetchTasks(projectId);
     }
   }
+
+  // componentDidUpdate(){
+  //   let projectId = this.props.match.params.projectId;
+  //   if(!this.checkNotEmpty(this.props.project)){
+  //     this.props.fetchProject(projectId);
+  //   }
+  // }
+
 
   checkNotEmpty(object) {
     for (const key in object) {
@@ -37,7 +45,7 @@ class Project extends React.Component{
 
   showForm(field){
     return (e) =>{
-    // e.preventDefault();
+    e.preventDefault();
     let set = this.state[field] ? false : true;
     this.setState({[field]: set });
     }
@@ -57,9 +65,9 @@ class Project extends React.Component{
 
     //Ensure Project Pops have Populated
     if(this.checkNotEmpty(this.props.project)){
-      synopsis = <Synopsis
-       project={this.props.project}
-       />
+      // synopsis = <Synopsis
+      //  project={this.props.project}
+      //  />
 
       showCreate = <button onClick={this.showForm("taskCreate")}>New Task!</button>
 

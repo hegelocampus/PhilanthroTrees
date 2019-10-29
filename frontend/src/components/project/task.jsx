@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '../../stylesheets/task_card.scss';
+
 class Task extends React.Component{
   constructor(props){
     super(props);
@@ -51,7 +53,7 @@ class Task extends React.Component{
           <p id="task-details">{this.props.task.details}</p>
           <p>{this.props.task.completed ? "Done!" : "Unfinished"}</p>
           <label>
-            <input type="radio" value="Completed" 
+            <input type="radio" value="Completed"
             onClick = {this.update("completed")} 
             checked={this.state.completed}
             />

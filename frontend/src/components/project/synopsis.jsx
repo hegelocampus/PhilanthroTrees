@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchProject } from '../../actions/project_actions';
+import { Line } from 'rc-progress';
+// import { fetchProject } from '../../actions/project_actions';
 
 export default (props) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   let { projectId } = useParams();
   const project = useSelector(state => state.entities.projects[projectId]);
 
@@ -14,17 +15,39 @@ export default (props) => {
         {project.name}
       </h1>
 
-      <p className="project-desc">
+      <h2 className="project-desc">
         {project.description}
-      </p>
+      </h2>
 
-      <p className="project-health">
-        HEALTH: {project.projectHealth}
-      </p>
+      <s>Level: </s>
+      <p>{Math.floor((project.projectExp + 50) / 50)}</p>
 
-      <p className="project-exp">
-        EXP: {project.projectExp}
-      </p>
+      <li>
+        <p className="project-health">
+          HP:
+        </p>
+        <Line
+          percent={project.projectHealth}
+          strokeColor='#a04946'
+          className="health-bar"
+        />
+        <span>{`${project.projectHealth} / 100`}</span>
+      </li>
+
+    
+      <li className="project-stats-li">
+        <p className="project-exp">
+          EXP:
+        </p>
+        <Line
+          percent={((project.projectExp + 50) % 50) * 2}
+          strokeColor='#4946a0'
+          className="experience-bar"
+        />
+        <span>{`${project.projectExp % 100} / 100`}</span>
+      </li>
+
+
 
       <img className="project-plant" src="" alt="" />
     </div>

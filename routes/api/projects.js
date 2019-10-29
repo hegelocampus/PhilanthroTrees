@@ -17,15 +17,17 @@ projectRouter.get('/:projectId', (req, res) => {
   const projectId = req.params.projectId;
 
   return Project.findOne({_id: projectId})
-    .then(project => {
-      if (!project){
-        return res.status(404).json({
-          project: 'Project not found'
-        })
-      } else {
-        return res.json(project);
-      }
-    });
+    // .then(project => {
+    //   if (!project){
+    //     return res.status(404).json({
+    //       project: 'Project not found'
+    //     })
+    //   } else {
+    //     return res.json(project);
+    //   }
+    // })
+    .then(project => res.json(project))
+    .catch(err => res.status(400).json(errors))
 });
 
 

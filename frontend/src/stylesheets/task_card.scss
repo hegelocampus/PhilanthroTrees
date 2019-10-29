@@ -1,0 +1,20 @@
+.project-tasks {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c48b9f; 
+  background-color: #00600f;
+  border-radius: 5px;
+}
+
+.project-tasks li {
+  text-decoration: none;
+  // text-transform: none;
+  text-align: justify;
+  font-size: 24px;
+  color: #ffeeff;
+  font-weight: bold;
+}
+
+.project-tasks button{
+  
+}
