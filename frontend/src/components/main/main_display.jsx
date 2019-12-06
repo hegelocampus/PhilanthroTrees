@@ -17,21 +17,23 @@ export default (props) => {
     <React.Fragment>
       <TopBar />
       <div className="main-container">
-        {/* User Profile is always displayed at the top, right under the nav bar */}
-        <UserDetail />
         <TodoList />
-        <PendingInviteContainer/>
-        <Switch>
-          <Route path={'/user/:userId'}>
-            <h1>User show page</h1>
-          </Route>
-          <Route
-            path='/community'
-            component={ Community }
-          />
-          <Route path="/projects/:projectId"
-          component={ProjectContainer} />
-        </Switch>
+        {/* User Profile is always displayed at the top, right under the nav bar */}
+        <div>
+          <UserDetail />
+          <PendingInviteContainer/>
+          <Switch>
+            <Route path={'/user/:userId'}>
+              <h1>User show page</h1>
+            </Route>
+            <Route
+              path='/community'
+              component={ Community }
+            />
+            <Route path="/projects/:projectId"
+            component={ProjectContainer} />
+          </Switch>
+        </div>
       </div>
     </React.Fragment>
   )

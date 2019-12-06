@@ -1,15 +1,19 @@
 @import 'theme';
 
 .main-container {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr 10%;
+  grid-column-gap: 10px;
+  grid-template-areas:
+    "sidebar main"
+    "sidebar main"
+    "sidebar footer";
   height: 100%;
   // background-color: $background;
   background-color: #ffeeff;
-  margin-left: 10%;
   margin-right: 10%;
-  width: 80%;
+  width: 90%;
 }
 
 .form-errors-container{

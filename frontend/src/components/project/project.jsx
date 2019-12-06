@@ -19,10 +19,10 @@ class Project extends React.Component{
     this.showForm = this.showForm.bind(this);
   }
 
-  
+
   componentDidMount(){
     let projectId = this.props.match.params.projectId;
-    
+
     if (projectId) {
       this.props.fetchProject(projectId);
       this.props.fetchTasks(projectId);
