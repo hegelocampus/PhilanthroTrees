@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    container_name: philanthrotrees
+    image: hegelocampus/philanthrotrees
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: node index.js
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+
