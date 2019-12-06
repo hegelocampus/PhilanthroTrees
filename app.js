@@ -1,7 +1,6 @@
 const express = require('express');
 const createError = require('http-errors');
 const path = require('path');
-const sassMiddleware = require('node-sass-middleware');
 const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
 const cookieParser = require('cookie-parser');
@@ -25,15 +24,6 @@ mongoose
   })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
-
-app.use(sassMiddleware({
-  src: path.join(__dirname + '/sass'),
-  dest: path.join(__dirname + '/frontend/src'),
-  debug: true,
-  outputStyle: 'compressed',
-  force: true
-}));
-
 
 app.use(logger('dev'));
 app.use(express.json());
