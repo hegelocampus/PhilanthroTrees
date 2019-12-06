@@ -46,7 +46,7 @@ class TodoList extends React.Component{
     if(this.checkNotEmpty(this.props.projects)){
       projects = Object.values(this.props.projects).map(project =>{
         return(
-          <li 
+          <li
            key={project._id}>
             <Link className="todo-link" to={`/projects/${project._id}`}>
             {project.name}
@@ -57,11 +57,11 @@ class TodoList extends React.Component{
     }
 
     return(
-      <React.Fragment>
+      <div className="todo-container">
         <ul className="todo">
-        {projects}
+          {projects}
         </ul>
-      </React.Fragment>
+      </div>
     )
   }
 }
