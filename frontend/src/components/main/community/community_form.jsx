@@ -1,10 +1,12 @@
 import React from 'react';
 import { createUserCommunity } from '../../../actions/community_actions';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 export default (props) => {
   const currentUserId = useSelector(state => state.session.user.id);
+  const history = useHistory();
   const dispatch = useDispatch();
 
   return (
@@ -28,6 +30,7 @@ export default (props) => {
           dispatch(createUserCommunity(currentUserId, values)).then(
             () => {
               setSubmitting(false);
+              history.push('/');
             }
           );
         }}
