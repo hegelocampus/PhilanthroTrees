@@ -22,8 +22,6 @@ class Task extends React.Component{
 
     let user = this.props.users[this.props.currentUser.id];
 
-    console.log('Found the User:', user)
-
     user['experience'] = user['experience'] + 20;
 
     this.props.updateTask(this.state);

@@ -133,7 +133,6 @@ user.get('/:id', (req, res) => {
 
 user.patch('/:id', (req, res)=> {
   const userId = req.params.id;
-  console.log('The Incoming UserID:', userId);
 
   User.findOneAndUpdate(
     { _id: userId },
@@ -142,7 +141,6 @@ user.patch('/:id', (req, res)=> {
       communityId: req.body.communityId
      },
   ).then(user =>{
-    console.log(user);
     return res.json(user)})
     .catch(errors=> res.status(404).json({msg: 'Citizen not updated, please check your entry and try again.'}))
 })
@@ -191,9 +189,7 @@ user.get('/', function(req, res, next) {
 /* POST UserCommunity */
 user.use("/:id/community", (req, res, next) => {
   req.id = req.params.id;
-  console.log(req.body);
   req.communityData = req.body
-  console.log(req.id);
   next()
 }, community);
 

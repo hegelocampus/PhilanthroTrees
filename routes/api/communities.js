@@ -16,7 +16,6 @@ community.use('/:communityId/projects', projectRouter)
 
 projectRouter.get('/', (req, res) => {
   const communityId = req.params.communityId;
-  console.log("The community:", communityId);
 
   Project.find({ communityId: communityId })
     .then(projects => {

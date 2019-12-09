@@ -30,7 +30,6 @@ export const requestCommunity = (comId) => dispatch => ApiUtil.fetchCommunity(co
 export const createUserCommunity = (userId, values) => dispatch => ApiUtil.createCommunity(userId, values)
   .then(
     res => {
-      console.log(res.data);
       dispatch(receiveCommunityAssoc(res.data));
     },
     errors => dispatch(receiveCommunityErrors(errors.response.data))

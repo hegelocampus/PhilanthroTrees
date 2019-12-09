@@ -70,7 +70,6 @@ taskRouter.post('/create', (req, res) => {
   const { errors, isValid } = validateTask(req.body);
 
   if (!isValid) {
-    console.log('invalid TASK AYE!')
     return res.status(422).json(errors);
 
   } else {
