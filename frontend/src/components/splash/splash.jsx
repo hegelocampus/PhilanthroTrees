@@ -1,5 +1,6 @@
 import React from 'react';
 import SessionForm from './session/session';
+import logo from '../../images/philanthrotrees_logo.png'
 import '../../stylesheets/splash.scss';
 
 export default (props) => {
@@ -8,6 +9,7 @@ export default (props) => {
     <div className="splash-page">
       <div className="splash-1">
         <div className="about">
+          <img src={logo}></img>
           <h2>Grow good habits and improve your community.</h2>
           <p>Making a difference doesn't have to be hard. It's time to have fun when you do good. 
             Join members of your community today to make a better world both online and offline.
