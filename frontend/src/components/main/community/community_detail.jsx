@@ -39,7 +39,7 @@ export default (props) => {
       ):(
         <>
           <h3>You don't belong to a community yet!</h3>
-          <Link to={ `${ match.path }/new` }>
+          <Link to='/community/new'>
             Click here to create a new community!
           </Link>
         </>
