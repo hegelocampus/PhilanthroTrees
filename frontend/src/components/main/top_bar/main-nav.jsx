@@ -3,15 +3,11 @@ import { Link } from 'react-router-dom';
 
 export default (props) => {
   return (
-    <nav className="main-nav">
-      <ul>
-        <li>
-          <Link to="/community">
-            Community
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <div className="top-menu-user-menu-wrapper">
+      <Link className="top-menu-item" to="/community">
+        Community
+      </Link>
+    </div>
   )
 }
 

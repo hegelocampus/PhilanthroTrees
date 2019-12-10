@@ -13,19 +13,20 @@ export default (props) => {
  
 
   if (currentUser) {
-   inbox = currentUser.pendingInvites.length ? "Pending Invites" : "No New Mail"
-    inviteLink = currentUser.pendingInvites.length ? <Link to={`/pending`} className="user-menu-invites">{inbox}</Link> : <a href="" className="user-menu-invites" >{inbox}</a>
+   inbox = currentUser.pendingInvites.length ? "Pending Invites" : "No Invites"
+    inviteLink = currentUser.pendingInvites.length ? <Link to={`/pending`} className="top-menu-item">{inbox}</Link> : <a href="" className="top-menu-item" >{inbox}</a>
   }
   return (
     <header className="top-bar">
       <nav>
         <div className="top-bar-nav-container top-bar-el-container">
-          <MainNav />
+          
         </div>
         <div className="top-bar-search-container top-bar-el-container">
         </div>
         <div className="top-bar-user-menu-container top-bar-el-container">
-          <div className="user-menu-notification-container">
+          <MainNav />
+          <div className="top-menu-user-menu-wrapper">
             {inviteLink}
           </div>
           <UserMenu />

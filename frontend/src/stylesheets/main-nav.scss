@@ -24,56 +24,32 @@ nav {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: space-between;
   height: 100%;
-  width: 150px;
+  width: 300px;
   color: #ffeeff;
   div {
     font-weight: 800;
     border-right: 1px solid black;
 
-    width: 50%;
     button {
       font-weight: 800;
     }
   }
-  .user-menu-notification-container {
-    border-left: 1px solid black;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 60px;
+  .top-menu-user-menu-wrapper{
+    padding-top: 1em;
   }
-  .top-menu-user-menu {
-    height: 100%;
-    width: 100%;
-    background-color: $primary;
+  .top-menu-user-menu-wrapper-last{
+    padding-top: 1em;
     border: none;
-    padding: 0;
-    color: #ffeeff;
-    &:active {
-    }
   }
-}
-
-.top-menu-user-menu-list {
-  // background-color: $surface;
-  background-color: #ffeeff;
-  width: 120px;
-  position: absolute;
-  right: 2.5%;
-  li {
-    width: 100%;
-    padding: 5px 2px 2px 2px;
-    * {
-      display: block;
-      width: 100%;
-      padding: .1em 0 .25em .25em;
-    }
-    button {
-      border-radius: none;
-      max-width: 100%;
-      border: none;
-      background-color: $surface;
-    }
+  .top-menu-item {
+    justify-content: center;
+    height: fit-content;
+    width: fit-content;
+    padding: 1em 15px 0px 0px;
+    line-height: normal;
+    color: #ffeeff;
   }
 }
 
@@ -98,26 +74,4 @@ nav {
   border-radius: 5px;
 }
 
-
-// .user-menu-link{
-//     text-transform: none;
-//   text-decoration: none;
-//   color: #46a049;
-// }
-.user-menu-link{
-  background-color: #46a049;
-  text-transform: none;
-  text-decoration: none;
-  padding: 12em;
-  border: 2px solid #c48b9f;
-  border-radius: 5px;
-  color: #ffeeff;
-  margin-bottom: 1em;
-}
-
-.user-menu-link:hover {
-  background-color: #6abf69;
-  border: 2px solid #f8bbd0;
-  border-radius: 5px;
-}
 
