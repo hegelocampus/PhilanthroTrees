@@ -35,6 +35,7 @@ export default ({ users, currentUser, project, task, updateTask, updateUser, upd
           <label>
             <Field
               name="completed"
+              placeholder="completed"
               type="checkbox"
               value="Completed"
             />
