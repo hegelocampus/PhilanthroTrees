@@ -20,11 +20,6 @@ export default (props) => {
     <header className="top-bar">
       <nav>
         <div className="top-bar-nav-container top-bar-el-container">
-          {/* <MainNav />
-          <div className="user-menu-notification-container">
-            {inviteLink}
-          </div>
-          <UserMenu /> */}
           
         </div>
         <div className="top-bar-search-container top-bar-el-container">

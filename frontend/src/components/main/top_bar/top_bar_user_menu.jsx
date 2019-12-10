@@ -21,33 +21,7 @@ export default (props) => {
       <Link to='/sign-out' onClick={() => dispatch(logout())} className="top-menu-item">
         Sign Out
         </Link>
-      {/* <button className="top-menu-user-menu"
-        onClick={ () => visable ? setVisable(false) : setVisable(true) }
-      >
-        User
-      </button> */}
-      {/* { visable ? (
-        <ul className="top-menu-user-menu-list">
-          <li>
-            <Link to={ `/user/${ currentUser.id }` } className="display-name">
-              { currentUser.username }
-            </Link>
-          </li>
-          <li>
-            <div className="user-menu-link">
-              {inviteLink}
-            </div>
-          </li>
-          <li>
-            <Link to='/sign-out' onClick={ () => dispatch(logout()) } className="user-menu-link">
-              Sign Out
-            </Link>
-          </li>
-        </ul>
-      ) : (
-        null
-      )
-    } */}
+     
     </div>
   )
 }
