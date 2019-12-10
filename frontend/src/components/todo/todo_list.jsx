@@ -1,70 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../../stylesheets/todo.scss';
 
-class TodoList extends React.Component{
-
-  constructor(props){
-    super(props);
-
-    this.state = {
-      projectCheck: 0
+export default ({ users, currentUser, projects, fetchProjects })=> {
+  useEffect(() => {
+    let communityId;
+    if (users[currentUser.id]) {
+      communityId = users[currentUser.id].communityId;
     }
-    this.checkNotEmpty = this.checkNotEmpty.bind(this);
-  }
+    fetchProjects(communityId);
+  },
+    [users, currentUser, fetchProjects]
+  )
 
-  componentDidUpdate(){
-    if (this.checkNotEmpty(this.props.users)) {
-      let communityId
-      if (this.props.users[this.props.currentUser.id]) {
-        communityId = this.props.users[this.props.currentUser.id].communityId;
-      }
-
-      if (communityId
-        && !this.checkNotEmpty(this.props.projects)
-        && (this.state.projectCheck < 2)) {
-          this.state['projectCheck'] = this.state['projectCheck'] + 1
-          this.props.fetchProjects(communityId);
-        }
-    }
-  }
-
-  checkNotEmpty(object) {
-    for (const key in object) {
-      if (object.hasOwnProperty(key)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  render(){
-
-    let projects = <p>Join a Community to get some Projects!</p>;
-
-    if(this.checkNotEmpty(this.props.projects)){
-      projects = Object.values(this.props.projects).map(project =>{
-        return(
-          <li
-           key={project._id}>
-            <Link className="todo-link" to={`/projects/${project._id}`}>
-            {project.name}
-            </Link>
-          </li>
-        )
-      })
-    }
-
-    return(
-      <div className="todo-container">
+  console.log(projects);
+  return(
+    <div className="todo-container">
+      {Object.values(projects).length ? (
         <ul className="todo">
-          {projects}
+          {Object.values(projects).map(project => (
+            <li
+             key={project._id}>
+              <Link className="todo-link" to={`/projects/${project._id}`}>
+              {project.name}
+              </Link>
+            </li>
+          ))}
         </ul>
-      </div>
-    )
-  }
+      ) : (
+        <span>Join a community in order to start completing tasks</span>
+      )}
+    </div>
+  )
 }
-
-export default TodoList;
 
