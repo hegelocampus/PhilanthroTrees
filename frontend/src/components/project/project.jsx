@@ -67,7 +67,7 @@ export default ({
       ) : (
         <span>Loading...</span>
       )}
-      <RenderErrors/>
+      <RenderErrors />
     </React.Fragment>
   )
 }
