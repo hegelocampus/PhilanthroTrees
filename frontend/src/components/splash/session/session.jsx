@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SessionForm from './session_form';
 
 export default (props) => {
-  const [formType, setFormType] = useState("signup");
+  const [formType, setFormType] = useState("login");
 
   const changeForm = (type) => {
     return (e) => {
