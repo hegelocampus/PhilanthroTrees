@@ -1,6 +1,9 @@
 import merge from 'lodash/merge';
 
+import { RECEIVE_USER_LOGOUT } from "../actions/session_actions";
 import { RECEIVE_ALL_TASKS, RECEIVE_TASK } from '../actions/task_actions';
+
+const _nullTasks = {};
 
 const tasksReducer = (state= {}, action) => {
   Object.freeze(state);
@@ -17,6 +20,8 @@ const tasksReducer = (state= {}, action) => {
       let task = { [action.task._id]: action.task }
       newState = merge({}, state, task);
       return newState;
+    case RECEIVE_USER_LOGOUT:
+      return _nullTasks;
     default:
       return state;
   }
