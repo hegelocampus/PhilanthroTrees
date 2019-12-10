@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
-import {
-  useDispatch,
-  useSelector,
-} from 'react-redux';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { useDispatch, useSelector, } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { requestCommunity } from '../../../actions/community_actions';
 import CitizenIndex from './citizens_index';
 import InvitationContainer from '../user/invitation_container';
@@ -11,7 +8,6 @@ import '../../../stylesheets/community_details.scss';
 
 
 export default (props) => {
-  const match = useRouteMatch();
   const dispatch = useDispatch();
   const currentUserId = useSelector(state => state.session.user.id);
   const comId = useSelector(state => {
