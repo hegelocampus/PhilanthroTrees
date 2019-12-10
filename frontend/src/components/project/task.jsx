@@ -1,75 +1,55 @@
 import React from 'react'
-
+import { Formik, Form, Field } from 'formik';
 import '../../stylesheets/task_card.scss';
 
-class Task extends React.Component{
-  constructor(props){
-    super(props);
+export default ({ users, currentUser, project, task, updateTask, updateUser, updateProject }) => (
+  <li>
+    <h4 id="task-title">{task.title}</h4>
+    <p id="task-details">{task.details}</p>
+    <p>Task status: {task.completed ? "Done!" : "Unfinished"}</p>
+    <Formik
+      initialValues={{
+        completed: task.completed
+      }}
+      onSubmit={values => {
+        project['projectExp'] = project['projectExp'] + 10;
 
-    this.state = {
-      completed: false
-    }
-    this.user = this.props.currentUser;
-    this.submitTask = this.submitTask.bind(this);
-  }
+        let user = users[currentUser.id];
 
-  submitTask(e){
-    e.preventDefault();
+        user['experience'] += 20;
 
-     if(this.state.completed) {
-    let project = this.props.project;
-    project['projectExp'] = project['projectExp'] + 10;
-
-    let user = this.props.users[this.props.currentUser.id];
-
-    user['experience'] = user['experience'] + 20;
-
-    this.props.updateTask(this.state);
-    this.props.updateProject(project);
-    this.props.updateUser(user);}
-    else{
-      return;
-    }
-  }
-
-  update(field) {
-    return (e) => {
-      // e.preventDefault();
-      let set = this.state[field] ? false : true;
-      this.setState({
-        _id: this.props.task._id,
-        title: this.props.task.title,
-        details: this.props.task.details,
-        [field]: set
-        });
-    }
-  }
-
-  render(){
-    return(
-      <li key={this.props.task._id}>
-        <form onSubmit={this.submitTask}>
-
-          <h4 id="task-title">{this.props.task.title}</h4>
-          <p id="task-details">{this.props.task.details}</p>
-          <p>Task status: {this.state.completed ? "Done!" : "Unfinished"}</p>
+        updateTask({ ...task, completed: true });
+        updateProject(project);
+        updateUser(user);
+      }}
+      validate={values => {
+        const errors = {};
+        if (values.completed === false) {
+          errors.completed = "Please confirm confim before submitting";
+        }
+        return errors;
+      }}
+    >
+      {({values}) => (
+        <Form>
           <label>
-            <input
-              type="radio"
+            <Field
+              name="completed"
+              placeholder="completed"
+              type="checkbox"
               value="Completed"
-              onClick={this.update("completed")}
-              checked={this.state.completed}
-
             />
             Completed
           </label>
+          <button
+            type="submit"
+            id="task-submit-button"
+            value="Done!"
+            disabled={!values.completed}
+          />
+        </Form>
+      )}
+    </Formik >
+  </li>
+)
 
-          <input id="task-submit-button" type="submit"  value="Done!"/>
-
-        </form>
-      </li>
-    )
-  }
-}
-
-export default Task;
