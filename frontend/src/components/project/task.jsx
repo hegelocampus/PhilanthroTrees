@@ -41,7 +41,7 @@ export default ({ users, currentUser, project, task, updateTask, updateUser, upd
             />
             Completed
           </label>
-          <input
+          <button
             type="submit"
             id="task-submit-button"
             value="Done!"
