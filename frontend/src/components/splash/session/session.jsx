@@ -43,9 +43,9 @@ export default (props) => {
   return (
     <div className="session-content">
       <div className="session-header">
-        <h3 className="session-header-title">
-          <h2>{headerContent}</h2>
-        </h3>
+        <h2 className="session-header-title">
+          {headerContent}
+        </h2>
       </div>
       <SessionForm formType={formType} />
       <div className="session-content-secondary">
