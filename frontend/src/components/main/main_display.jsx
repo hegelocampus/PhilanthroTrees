@@ -19,7 +19,7 @@ export default (props) => {
       <div className="main-container">
         <TodoList />
         {/* User Profile is always displayed at the top, right under the nav bar */}
-        <div>
+        <div className="body-container">
           <UserDetail />
           {/* <PendingInviteContainer/> */}
           <Switch>
