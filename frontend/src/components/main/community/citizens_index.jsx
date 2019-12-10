@@ -20,9 +20,9 @@ export default (props) => {
   if (citizens) {
     citizensLis = citizens.map(({ id, username }) => (
       <li key={ id }>
-        <Link className="citizen" to={ `${ match.path }/${ id }` }>
+        {/* <Link className="citizen" to={ `${ match.path }/${ id }` }> */}
           <span>{ username }</span>
-        </Link>
+        {/* </Link> */}
       </li>
     ));
   }
