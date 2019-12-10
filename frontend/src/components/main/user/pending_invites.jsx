@@ -1,11 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
 import InviteItem from './invite_item';
 
 
-export default ({currentUser, requestUser, updateUser, users, addUserToCommunity}) => {
-  const dispatch = useDispatch();
+export default ({currentUser, updateUser, users, addUserToCommunity}) => {
 
   let pendingInvites = users[currentUser.id] ?
     users[currentUser.id].pendingInvites : null;
