@@ -9,11 +9,14 @@
     "sidebar main"
     "sidebar main"
     "sidebar footer";
-  height: 100%;
-  // background-color: $background;
-  background-color: #ffeeff;
+  background-color: $background;
   margin-right: 10%;
-  width: 90%;
+  height: 100%;
+  width: 100%;
+}
+
+.body-container {
+  margin: 1em 2em;
 }
 
 .form-errors-container{
