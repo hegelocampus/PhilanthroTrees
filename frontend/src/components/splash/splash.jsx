@@ -13,7 +13,7 @@ export default (props) => {
   //More stuff should go here in the future
   return (
     <div className="splash-page">
-      <div class="header">
+      <div className="header">
           <img src={logo}></img>
       </div>
 
