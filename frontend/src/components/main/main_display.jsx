@@ -25,7 +25,10 @@ export default (props) => {
           <Switch>
             <Route
              path={'/user/:userId'}/>
-      
+            <Route
+              path={'/pending'}
+              component={PendingInviteContainer}
+              />
             <Route
               path='/community'
               component={ Community }
