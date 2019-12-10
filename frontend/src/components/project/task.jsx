@@ -43,10 +43,11 @@ export default ({ users, currentUser, project, task, updateTask, updateUser, upd
           </label>
           <button
             type="submit"
-            id="task-submit-button"
-            value="Done!"
+            class="task-submit-button"
             disabled={!values.completed}
-          />
+          >
+            "Done!"
+          </button>
         </Form>
       )}
     </Formik >
