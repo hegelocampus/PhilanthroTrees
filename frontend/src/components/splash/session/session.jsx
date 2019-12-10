@@ -44,7 +44,7 @@ export default (props) => {
     <div className="session-content">
       <div className="session-header">
         <h3 className="session-header-title">
-          {headerContent}
+          <h2>{headerContent}</h2>
         </h3>
       </div>
       <SessionForm formType={formType} />
