@@ -62,9 +62,12 @@ class InviteItem extends React.Component{
 
 
   render(){
-
+    console.log(this.props.pending.name)
+    console.log(this.props.currentUser)
     return(
       <form className="invite-form">
+
+        <p>You have an invite to {this.props.pending.name}</p>
 
         <p>Accept this Invite?</p>
 
