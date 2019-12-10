@@ -1,137 +1,64 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import RenderErrors from '../../util/render_errors';
 import Task from './task';
+import { useParams } from 'react-router-dom';
 import Synopsis from './synopsis';
-import EditProject from './edit_project';
-import CreateTask from './create_task';
+import ToggleTaskForm from './toggle_task_form_button';
+import ToggleProjectForm from './toggle_project_form_button';
 import '../../stylesheets/project_form.scss';
 
-class Project extends React.Component{
-  constructor(props){
-    super(props);
+export default ({
+  project,
+  tasks,
+  users,
+  currentUser,
+  fetchProject,
+  updateProject,
+  fetchTasks,
+  updateTask,
+  updateUser
+}) => {
+  const { projectId } = useParams();
 
-    this.state = {
-      taskCreate: false,
-      projectUpdate: false
-    }
-
-    this.checkNotEmpty = this.checkNotEmpty.bind(this);
-    this.showForm = this.showForm.bind(this);
-  }
-
-
-  componentDidMount(){
-    let projectId = this.props.match.params.projectId;
-
+  useEffect(() => {
     if (projectId) {
-      this.props.fetchProject(projectId);
-      this.props.fetchTasks(projectId);
+      fetchProject(projectId);
+      fetchTasks(projectId);
     }
-  }
+  },
+    [projectId, fetchProject, fetchTasks]
+  );
 
-  // componentDidUpdate(){
-  //   let projectId = this.props.match.params.projectId;
-  //   if(!this.checkNotEmpty(this.props.project)){
-  //     this.props.fetchProject(projectId);
-  //   }
-  // }
-
-
-  checkNotEmpty(object) {
-    for (const key in object) {
-      if (object.hasOwnProperty(key))
-        return true;
-    }
-    return false;
-  }
-
-  showForm(field){
-    return (e) =>{
-    e.preventDefault();
-    let set = this.state[field] ? false : true;
-    this.setState({[field]: set });
-    }
-  }
-
-  render(){
-    let synopsis=   <p></p>;
-    let tasks=      <p></p>;
-    let showCreate= <p></p>;
-    let newTask=    <p></p>;
-    let showEdit=   <p></p>;
-    let newEdit=    <p></p>;
-
-    synopsis = (
-      <Synopsis
-        project={this.props.project}
-      />
-    )
-
-    //Ensure Project Pops have Populated
-    if(this.checkNotEmpty(this.props.project)){
-      synopsis = (
-        <Synopsis
-          project={this.props.project}
-        />
-      )
-
-      showCreate = <button id="show-button-create" onClick={this.showForm("taskCreate")}>New Task!</button>
-
-      newTask = this.state.taskCreate ? (
-        <CreateTask
-          projectId={this.props.match.params.projectId}
-          createTask={this.props.createTask}
-        />
-      ) : (
-        <p></p>
-      );
-
-      showEdit = <button id="show-button-edit" onClick={this.showForm("projectUpdate")}>Edit Project!</button>
-
-      newEdit = this.state.projectUpdate ? (
-        <EditProject
-           project={this.props.project}
-           updateProject={this.props.updateProject}
-         />
-      ) : (
-        <p></p>
-      )
-
-    }
-
-    if (this.checkNotEmpty(this.props.tasks) && this.checkNotEmpty(this.props.users)){
-      tasks = Object.values(this.props.tasks).map(task => {
-        return task.completed ? (
-          null
-        ) : (
-          <Task task={task}
-            key={task._id}
-            users= {this.props.users}
-            currentUser={this.props.currentUser}
-            project={this.props.project}
-            updateTask={this.props.updateTask}
-            updateProject={this.props.updateProject}
-            updateUser ={this.props.updateUser}
+  return(
+    <React.Fragment>
+      {(project) ? (
+        <>
+          <Synopsis
+            project={project}
           />
-        )
-      })
-    }
-
-    return(
-      <React.Fragment>
-        {synopsis}
-        <ul className="project-tasks">
-          {tasks}
-        </ul>
-        {showCreate}
-        {newTask}
-        {showEdit}
-        {newEdit}
-        <RenderErrors/>
-      </React.Fragment>
-    )
-  }
+          <ul className="project-tasks">
+            {Object.values(tasks).map(task => task.completed ? (
+              null
+            ) : (
+              <Task task={task}
+                key={task._id}
+                users= {users}
+                currentUser={currentUser}
+                project={project}
+                updateTask={updateTask}
+                updateProject={updateProject}
+                updateUser ={updateUser}
+              />
+            ))}
+          </ul>
+          <ToggleTaskForm />
+          <ToggleProjectForm project={project} />
+        </>
+      ) : (
+        <span>Loading...</span>
+      )}
+      <RenderErrors/>
+    </React.Fragment>
+  )
 }
-
-export default Project;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Sprite from '../main/sprites/sprite';
 import { Line } from 'rc-progress';
@@ -7,7 +7,6 @@ import '../../stylesheets/synopsis.scss'
 
 
 export default (props) => {
-  // const dispatch = useDispatch();
   let { projectId } = useParams();
   const project = useSelector(state => state.entities.projects[projectId]);
   let plantLvl

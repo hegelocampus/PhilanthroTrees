@@ -1,50 +1,38 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { Formik, Form, Field } from 'formik';
+import { createTask } from '../../actions/task_actions';
 
-class CreateTask extends React.Component {
+export default ({ setShowForm }) => {
+  const dispatch = useDispatch();
+  const { projectId } = useParams();
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      title: "",
-      details: "",
-    }
-    this.submit = this.submit.bind(this);
-  }
-
-  submit(e) {
-    e.preventDefault();
-    let projectId = this.props.projectId;
-    this.props.createTask(projectId, this.state);
-  }
-
-  update(field) {
-    return (e) => {
-      this.setState({ [field]: e.target.value })
-    }
-  }
-
-  render() {
-    return (
-      <form className="create-task" onSubmit={this.submit}>
-
-        <label>
-        Task Title
-        <input className="title" type="text"
-          value={this.state.title} onChange={this.update('title')} />
-        </label>
-
-        <label>
-        Task Description
-        <input className="details" type="text"
-          value={this.state.details} onChange={this.update('details')} />
-        </label>
-
-        <button id="update-button-create" type="submit">Create Task!</button>
-
-      </form>
-    )
-  }
+  return (
+    <Formik
+      initialValues={{ title: '', details: '' }}
+      onSubmit={values => dispatch(createTask(projectId, values)).then(() => {
+        setShowForm(false)
+      })}
+    >
+      <Form className="create-task">
+        <Field
+          name='title'
+          className='title'
+          type='text'
+          placeholder='Task Title'
+        />
+        <Field
+          name='details'
+          className='details'
+          type='text'
+          placeholder='Task Description'
+        />
+        <button type='submit' id='update-button-create'>
+          Create Task!
+        </button>
+      </Form>
+    </Formik >
+  )
 }
 
-export default CreateTask;
