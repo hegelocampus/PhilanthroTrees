@@ -17,7 +17,7 @@ export default (props) => {
   useActionOnOutsideClick(dropDown, () => setVisable(false));
 
   return (
-    <div className="top-menu-user-menu-wrapper" ref={ dropDown }>
+    <div className="top-menu-user-menu-wrapper-last" ref={ dropDown }>
       <Link to='/sign-out' onClick={() => dispatch(logout())} className="top-menu-item">
         Sign Out
         </Link>

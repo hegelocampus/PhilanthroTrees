@@ -41,12 +41,16 @@ nav {
   .top-menu-user-menu-wrapper{
     padding-top: 1em;
   }
+  .top-menu-user-menu-wrapper-last{
+    padding-top: 1em;
+    border: none;
+  }
   .top-menu-item {
     // align-content: center;
     justify-content: center;
     height: fit-content;
     width: fit-content;
-    background-color: $primary;
+    // background-color: $primary;
     padding: 1em 15px 0px 0px;
     line-height: normal;
     color: #ffeeff;
