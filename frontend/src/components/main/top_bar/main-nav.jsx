@@ -6,11 +6,6 @@ export default (props) => {
     <nav className="main-nav">
       <ul>
         <li>
-          <Link to="/">
-            Projects To Do
-          </Link>
-        </li>
-        <li>
           <Link to="/community">
             Community
           </Link>

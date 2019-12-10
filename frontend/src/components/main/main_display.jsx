@@ -23,9 +23,9 @@ export default (props) => {
           <UserDetail />
           <PendingInviteContainer/>
           <Switch>
-            <Route path={'/user/:userId'}>
-              <h1>User show page</h1>
-            </Route>
+            <Route
+             path={'/user/:userId'}/>
+      
             <Route
               path='/community'
               component={ Community }

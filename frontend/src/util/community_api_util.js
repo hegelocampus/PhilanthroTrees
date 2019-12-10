@@ -13,7 +13,6 @@ export const addUserToCommunity = (userId, communityId) => (
 );
 
 export const createCommunity = (userId, data) => {
-  console.log(data);
   return axios.post(`/api/users/${ userId }/community/create`, data)
 };
 
