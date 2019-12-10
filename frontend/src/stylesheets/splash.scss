@@ -2,10 +2,41 @@
 
 .splash-page {
   width: 100%;
-  height: 100%;
   margin: 0 auto;
   color: white;
+  font-size: 1.15em;
   background-color: $primary;
+}
+
+.splash-page h2 {
+  margin-bottom: 1.5em;
+  font-size: 1.5em;
+}
+
+div.plant-sprites {
+  display:flex;
+  justify-content: space-around;
+  margin-top: 1.5em;
+  background-color:#ffeeff;
+}
+
+div.header {
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+  background-image: linear-gradient(210deg, lightpink, green, darkgreen);
+  border: 20px solid darkgreen;
+}
+
+div.footer {
+  display: flex;
+  padding: 3.5em;
+  justify-content: center;
+  background-color: darkgreen;
+}
+
+div.footer li {
+  margin-right: 2em;
 }
 
 div.splash-1 {
@@ -14,14 +45,17 @@ div.splash-1 {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding-top: 2em;
+  margin-bottom: 5em;
 }
 
 div.about {
   min-width: 300px;
-  max-width: 50%;
+  max-width: 45%;
   border-radius: 10px;
   margin: 0 auto;
 }
+
 
 div.details {
   text-align: center;
@@ -29,12 +63,14 @@ div.details {
   max-width: 75%;
   border-radius: 10px;
   margin: 0 auto;
+  margin-bottom: 5em;
 }
 
 
 /* SESSION FORM */
 
 div.session-content {
+  margin-top: 2.5em;
   min-width: 350px;
   font-family: inherit;
   max-width: 45%;
@@ -50,7 +86,8 @@ div.session-content-secondary {
   text-align: center;
 }
 
-a.switch-form > span {
+span.switch-form a {
+  margin-left: .5em;
   font-weight: 600;
 }
 
