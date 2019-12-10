@@ -59,6 +59,7 @@ class TodoList extends React.Component{
     return(
       <div className="todo-container">
         <ul className="todo">
+          <h2>Current Projects</h2>
           {projects}
         </ul>
       </div>
