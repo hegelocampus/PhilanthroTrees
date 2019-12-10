@@ -2,9 +2,9 @@ import React from 'react';
 import sprites from './sprite_pngs';
 import '../../../stylesheets/sprite.scss';
 
-export default ({ level, type }) => {
+export default ({ level = 7, type }) => {
   type = (type ? type : 'sprout');
-  level = (level ? level : 1);
+  level = Math.max(level, 7);
 
   let sprite;
   for (let i = level; i > 0; i--){
