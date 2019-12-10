@@ -14,7 +14,7 @@ export default (props) => {
   return (
     <div className="splash-page">
       <div className="header">
-          <img src={logo}></img>
+          <img src={logo} alt="site logo"></img>
       </div>
 
       <div className="splash-1">
@@ -24,7 +24,7 @@ export default (props) => {
             Join members of your community today to make a better world both online and offline.
           </p>
           <div className="plant-sprites">
-            <img src={cactus1}></img> <img src={cactus2}></img> <img src={cactus1}></img>
+            <img src={cactus1} alt="pixel cactus image"></img> <img src={cactus2} alt="pixel cactus image"></img> <img src={cactus1} alt="pixel cactus image"></img>
           </div>
         </div>
 
@@ -41,7 +41,7 @@ export default (props) => {
            consequences.
         </p>
         <div className="plant-sprites">
-          <img src={violet}></img> <img src={rose}></img> <img src={violet}></img>
+          <img src={violet} alt="pixel violet image"></img> <img src={rose} alt="pixel rose image"></img> <img src={violet} alt="pixel violet image"></img>
         </div>
       </div>
 
