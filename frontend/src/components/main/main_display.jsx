@@ -21,7 +21,7 @@ export default (props) => {
         {/* User Profile is always displayed at the top, right under the nav bar */}
         <div>
           <UserDetail />
-          <PendingInviteContainer/>
+          {/* <PendingInviteContainer/> */}
           <Switch>
             <Route
              path={'/user/:userId'}/>
