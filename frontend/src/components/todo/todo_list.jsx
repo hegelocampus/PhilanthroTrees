@@ -27,6 +27,7 @@ export default ({ users, currentUser, projects, fetchProjects })=> {
               </Link>
             </li>
           ))}
+
         </ul>
       ) : (
         <span>Join a community in order to start completing tasks</span>
