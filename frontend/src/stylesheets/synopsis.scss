@@ -1,13 +1,17 @@
+@import 'theme';
+
 .project-synopsis{
   display: flex;
   flex-direction: column;
-  border: 1px solid #6abf69;
-  background-color: #00600f;
-  border-radius: 10px;
+  border: 1px solid $primary;
+  background-color: $surface;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,.1);
   padding: 1em;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 1em 0em;
   text-transform: none;
+  .sprite-container {
+    margin-top: 10px;
+  }
 }
 
 .project-synopsis div{
@@ -16,28 +20,24 @@
 
 .project-synopsis h2{
   font-size: 20px;
-  color: #ffeeff;
   font-weight: bold;
   padding: .25em;
 }
 
 .project-synopsis p{
   font-size: 16px;
-  color: #ffeeff;
   font-weight: bold;
   padding: .25em;
 }
 
 .project-synopsis s{
   font-size: 16px;
-  color: #ffeeff;
   font-weight: bold;
   padding: .25em;
 }
 
 .project-synopsis span{
   font-size: 16px;
-  color: #ffeeff;
   font-weight: bold;
   padding: .25em;
 }
@@ -46,5 +46,4 @@
   width: 200px;
   height: 12px;
   border: 1px solid #6abf69;
-  border-radius: 5px;
 }

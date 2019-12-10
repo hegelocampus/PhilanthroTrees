@@ -1,12 +1,19 @@
+@import 'theme';
+
 .sprite-img {
   height: 60px;
   width: 60px;
   object-fit: cover;
-  margin: 10px 20px;
+  margin: 0px 20px 10px 20px;
 }
 
 .sprite-container {
-  height: 90px;
-  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
 }
 
