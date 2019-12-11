@@ -5,6 +5,7 @@ import {
 } from 'react-redux';
 import MainNav from './main-nav';
 import UserMenu from './top_bar_user_menu';
+import logo from "../../../images/philanthrotrees_logo.png";
 
 export default (props) => {
   let inbox;
@@ -19,20 +20,17 @@ export default (props) => {
   return (
     <header className="top-bar">
       <nav>
-        <div className="top-bar-nav-container top-bar-el-container">
-          
-        </div>
-        <div className="top-bar-search-container top-bar-el-container">
-        </div>
+        <img className="logo" src={logo} alt="site logo"></img>
+
+        <div className="top-bar-nav-container top-bar-el-container"></div>
+        <div className="top-bar-search-container top-bar-el-container"></div>
         <div className="top-bar-user-menu-container top-bar-el-container">
           <MainNav />
-          <div className="top-menu-user-menu-wrapper">
-            {inviteLink}
-          </div>
+          <div className="top-menu-user-menu-wrapper">{inviteLink}</div>
           <UserMenu />
         </div>
       </nav>
     </header>
-  )
+  );
 };
 

@@ -16,6 +16,7 @@ export default ({ users, currentUser, projects, fetchProjects })=> {
 
   return(
     <div className="todo-container">
+      <h2>Current Projects</h2>
       {Object.values(projects).length ? (
         <ul className="todo">
           {Object.values(projects).map(project => (
