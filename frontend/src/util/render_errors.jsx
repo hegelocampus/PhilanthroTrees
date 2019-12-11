@@ -13,9 +13,9 @@ export default (props) => {
   let errors = useSelector(({ errors }) => {
     if (errors) {
       return Object.values(errors).map((error, idx) => {
-        let errorArr = Object.values(error)
-        if (errorArr) {
-          return <p key={idx}>{[0].toString()}</p>
+        let errorArr = Array.isArray(error) ? error : Object.values(error);
+        if (errorArr[0]) {
+          return <p key={idx}>{error[0].toString()}</p>
         } else {
           return null;
         }
