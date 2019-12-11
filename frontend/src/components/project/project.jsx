@@ -21,8 +21,10 @@ export default ({
   const { projectId } = useParams();
 
   useEffect(() => {
-    fetchProject(projectId);
-    fetchTasks(projectId);
+    if (projectId !== undefined) {
+      fetchProject(projectId);
+      fetchTasks(projectId);
+    }
   },
     [projectId, fetchProject, fetchTasks]
   );
