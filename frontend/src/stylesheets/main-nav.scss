@@ -1,9 +1,16 @@
 @import 'theme';
 
 header {
+  align-content: center;
+  padding: 10px;
   width: 100%;
+  min-height: 80px;
   height: 60px;
   background-color: darkgreen;
+}
+
+img.logo {
+  object-fit: cover;
 }
 
 nav {
@@ -17,7 +24,8 @@ nav {
 }
 
 .top-bar-el-container {
-  height: 100%;
+  margin-top: 1em;
+  max-height: 50%;
 }
 
 .top-bar-user-menu-container {
@@ -30,25 +38,24 @@ nav {
   color: #ffeeff;
   div {
     font-weight: 800;
-    border-right: 1px solid black;
+    border-right: 2px solid darkolivegreen;
 
     button {
       font-weight: 800;
     }
   }
   .top-menu-user-menu-wrapper{
-    padding-top: 1em;
+    padding-top: .5em;
   }
   .top-menu-user-menu-wrapper-last{
-    padding-top: 1em;
+    padding-top: .5em;
     border: none;
   }
   .top-menu-item {
     justify-content: center;
     height: fit-content;
     width: fit-content;
-    padding: 1em 15px 0px 0px;
-    line-height: normal;
+    padding: 1em 1em 0 0;
     color: #ffeeff;
   }
 }
