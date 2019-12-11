@@ -1,17 +1,19 @@
 import merge from 'lodash/merge';
 
+import { RECEIVE_USER_LOGOUT } from "../actions/session_actions";
 import {
   RECEIVE_PROJECT,
   RECEIVE_ALL_PROJECTS,
   REMOVE_PROJECT,
 } from '../actions/project_actions';
 
+const _nullProjects = {};
 
 const projectsReducer = (state = {}, action) =>{
   Object.freeze(state);
   let newState;
 
-  switch(action.type){
+  switch(action.type) {
     case RECEIVE_ALL_PROJECTS:
       newState = merge({}, state);
       Object.values(action.projects).forEach(project=>{
@@ -27,6 +29,8 @@ const projectsReducer = (state = {}, action) =>{
       newState = merge({}, state);
       delete newState[action.projectId];
       return newState;
+    case RECEIVE_USER_LOGOUT:
+      return _nullProjects;
     default:
       return state;
   }

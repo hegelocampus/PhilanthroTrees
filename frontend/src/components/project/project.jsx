@@ -21,10 +21,8 @@ export default ({
   const { projectId } = useParams();
 
   useEffect(() => {
-    if (projectId) {
-      fetchProject(projectId);
-      fetchTasks(projectId);
-    }
+    fetchProject(projectId);
+    fetchTasks(projectId);
   },
     [projectId, fetchProject, fetchTasks]
   );
@@ -36,10 +34,10 @@ export default ({
           <Synopsis
             project={project}
           />
+          <ToggleTaskForm />
+          <ToggleProjectForm project={project} />
           <ul className="project-tasks">
-            {Object.values(tasks).map(task => task.completed ? (
-              null
-            ) : (
+            {Object.values(tasks).map(task => !task.completed && (
               <Task task={task}
                 key={task._id}
                 users= {users}
@@ -51,13 +49,25 @@ export default ({
               />
             ))}
           </ul>
-          <ToggleTaskForm />
-          <ToggleProjectForm project={project} />
+          <h3 className="completed-tasks">Completed Tasks:</h3>
+          <ul className="project-tasks">
+            {Object.values(tasks).map(task => task.completed && (
+              <Task task={task}
+                key={task._id}
+                users= {users}
+                currentUser={currentUser}
+                project={project}
+                updateTask={updateTask}
+                updateProject={updateProject}
+                updateUser ={updateUser}
+              />
+            ))}
+          </ul>
         </>
       ) : (
         <span>Loading...</span>
       )}
-      <RenderErrors/>
+      <RenderErrors />
     </React.Fragment>
   )
 }

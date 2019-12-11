@@ -2,10 +2,18 @@
 
 .todo-container {
   grid-area: sidebar;
-  background-color: $secondary;
+  background-color: $primary;
   min-width: 130px;
   width: 100%;
   height: 100%;
+  padding-top: 2rem;
+}
+
+.todo > h2 {
+  font-weight: 600;
+  font-size: 1.2em;
+  padding-left: .5em;
+  padding-bottom: .5em;
 }
 
 .todo {
@@ -24,7 +32,7 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   font-size: 16px;
-  color: $primary-dark;
+  color: white;
   font-weight: 800;
   &:hover {
     text-decoration: none;
@@ -36,9 +44,14 @@
   height: 45px;
   min-height: 20px;
   display: block;
+  border-top: 1px solid darkslategray;
   transition: background-color 0.3s;
   &:hover {
     transition: background-color 0.5s;
     background-color: $secondary-dark;
   }
+}
+
+.todo li:last-child {
+  border-bottom: 1px solid darkslategray;
 }
