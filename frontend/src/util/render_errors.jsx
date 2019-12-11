@@ -14,8 +14,9 @@ export default (props) => {
     if (errors) {
       return Object.values(errors).map((error, idx) => {
         let errorArr = Array.isArray(error) ? error : Object.values(error);
+        console.log(errorArr);
         if (errorArr[0]) {
-          return <p key={idx}>{error[0].toString()}</p>
+          return <p key={idx}>{errorArr[0].toString()}</p>
         } else {
           return null;
         }
