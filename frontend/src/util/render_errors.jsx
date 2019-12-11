@@ -10,10 +10,15 @@ export default (props) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  let errors = useSelector(state => {
-    if (state.errors) {
-      return Object.values(state.errors).map((error, idx) => {
-        return <p key={idx}>{Object.values(error)[0]}</p>
+  let errors = useSelector(({ errors }) => {
+    if (errors) {
+      return Object.values(errors).map((error, idx) => {
+        let errorArr = Object.values(error)
+        if (errorArr) {
+          return <p key={idx}>{[0].toString()}</p>
+        } else {
+          return null;
+        }
       });
     }
   });

@@ -14,7 +14,6 @@ export default ({ users, currentUser, projects, fetchProjects })=> {
     [users, currentUser, fetchProjects]
   )
 
-  console.log(projects);
   return(
     <div className="todo-container">
       {Object.values(projects).length ? (
