@@ -33,10 +33,16 @@ div.footer {
   padding: 3.5em;
   justify-content: center;
   background-color: darkgreen;
+  font-size: .85em;
 }
 
 div.footer li {
   margin-right: 2em;
+}
+
+div.footer a {
+  padding: .2em;
+  color: darkslateblue;
 }
 
 div.splash-1 {
