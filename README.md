@@ -1,7 +1,7 @@
 # PhilanthroTrees
 **[The PhilanthroTrees Demo Site](https://philanthrotrees.herokuapp.com/)**
 ### Background and Overview
-PhilanthroTrees is a volunteer task tracker that is inspired by Habitica. It is designed to encourage good service habits with a plant based reward and punishment motivation system. Each user's progress is represented with a tree which is grown through completing tasks and gaining experience. To hold users accountable, plant health can also be lost if tasks are not completed frequently enough, which might lead to a loss in progress. Users can also join a community, to share with friends about their progress.
+PhilanthroTrees is a volunteer task tracker that is inspired by Habitica. It is designed to encourage good service habits with a plant-based reward and punishment motivation system. Each user's progress is represented with a tree which is grown through completing tasks and gaining experience. To hold users accountable, plant health can be lost if tasks are not completed frequently enough, which might lead to a loss in progress and a withering plant. Users can also join a community to share tasks with their friends and enrich the volunteering experience.
 
 ### PHILANTHROTREES
 | **Table of Contents**                       |
@@ -14,14 +14,15 @@ PhilanthroTrees is a volunteer task tracker that is inspired by Habitica. It is 
 
 ### OVERVIEW
 
-PhilanthroTrees is a Habitica inspired volunteer tracker, designed to promote a sense of accomplishment among for citizens by growing plants with every new task completed, as well as keeping a record of the tasks that users completed.  
-Citizens can invite others to join their community, each completing tasks to grow the plant in their care and share their milestones both tangible and virtual!
+PhilanthroTrees is a Habitica inspired task tracker, designed to promote a sense volunteer activities citizens by growing plants with every new task completed and keeping a record of finished tasks to provide an extra sense of accomplishment to users.
+
+PhilanthroTrees users can invite others to join their community, each completing tasks to grow the plants in their care and share their milestones, both tangible and virtual!
 
 ### Inspiration:
 [Habitica](https://habitica.com/user/settings/site)
 
 ### Technologies and Technical Challenges:
-PhilanthroTrees will be a mobile first-focus web app. Communities, Citizens and their volunteer statistics will be stored via the MongoDB cloud database API.
+PhilanthroTrees ia a mobile-first focus web app. Communities, Citizens and their volunteer statistics will be stored via the MongoDB cloud database API.
 
 ### TECHNOLOGIES
 #### Backend:
@@ -42,7 +43,8 @@ Allows for rapid modular updating to specific Schema and provides an accessible 
 
 ### FEATURES
 #### Communities
-- Community citizens can send invites to any user that is PhilanthroTrees member as long as they provide the correct email address.  Citizens can also accept or decline invites to the Community of their choice.
+- Community citizens can send invites to any user that is a PhilanthroTrees member with a valid email address.
+- Once part of a community, users can view a shared project and task list.
 #### Projects and Tasks
 - Projects are displayed as a list on each user’s main page.
 - Projects gain experience upon the submission of completed tasks by users.
@@ -69,15 +71,16 @@ Allows for rapid modular updating to specific Schema and provides an accessible 
 - Users gain experience, leveling up at each new threshold and providing nourishment to their plant Avatar.
 
 ### UPCOMING FEATURES
-- Multi-Community Access for citizens wishing to participate in other communities
+- Multi-Community Access for users wishing to participate in other communities
 - Ability to view the growth of other community citizen's avatars and projects
-- More Citizen Avatars to choose from
+- More user Plant Avatars to choose from
 - Projects will display highest contributing citizens
-- Community Garden, displaying all the various projects, their current growth, as well as citizens and their current growth
+- Community Garden, displaying all the various projects and their current plant levels, as well as individual citizen stats
 ### CODE EXAMPLES
 ##### Sprite image determination and importing:
-In the following code we had to import an entire directory of subdirectories that contained all of the sprites for a particular plant. This was achieved through using webpack to import all of the png files into a single object within `sprite_pngs.js` which we then import into `sprite.js` where we were able to key into it using the desired plant type and level to render the exact plant sprite that we needed.   
-An additional challenge here was fetching the highest level sprite that existed if the desired level for the sprite was above the maximum existing sprite level. This was a particularly challenging problem because the types of sprites varied in their available levels, so for different sprite types there could be between 13 and 24 available pngs. This challenge was overcome by using a for loop to decrease the level that we are attempting to find for a particular sprite until we are able to find an existing sprite.
+In the following code, we had to import an entire directory of subdirectories that contained all of the sprites for a particular plant. This was achieved through using webpack to import all of the png files into a single object within `sprite_pngs.js` which we then import into `sprite.js` where we were able to key into it using the desired plant type and level to render the exact plant sprite that we needed.  
+
+An additional challenge here was fetching the highest level sprite that existed if the desired level for the sprite was above the maximum existing sprite level. This was a particularly challenging problem because the types of sprites varied in their available assets, so for different sprite types there could be between 13 and 24 available pngs. This challenge was overcome by using a for loop to decrement the level of the particular plant sprite until a matching image is found.
 ```javascript
 // ./frontend/src/components/main/sprite/sprite.js
 import React from 'react';
@@ -115,8 +118,8 @@ importAll(require.context(`../../../images/sprites/`, true, /\.png$/));
 export default sprites;
 ```
 ##### Forms using Formik
-Throughout this project we made use of [Formik](https://jaredpalmer.com/formik/) to help us streamline our form creation process and reduce the amount of boilerplate code we had to write. This allowed us to write the components for our forms very quickly and allowed us to spend more time focusing on the presentational aspects of our react components that were more unique.
-For example, here is the from that we have to allow a user to create a new community: 
+Throughout this project we made use of [Formik](https://jaredpalmer.com/formik/) to help streamline the form creation process and reduce the amount of boilerplate code. This allowed us to write the components for our forms very quickly and allowed us to spend more time focusing on the presentational aspects of our react components that were more unique.
+For example, here is the form that we have to allow a user to create a new community: 
 ```javascript
 import React from 'react';
 import { createUserCommunity } from '../../../actions/community_actions';
@@ -165,7 +168,7 @@ export default (props) => {
   );
 }
 ```
-In the above component `Formik` allowed us to not only create a form without creating a class component, but we were able to handle validation of the community name within the form handling, rather than delegating that task to the back-end model validation. This allows further flexibility for what we can validate, simplifies validation errors, and reduces the processing required by the server by allocating that processing to the user’s browser.
+In the above component, `Formik` allowed us to not only create a form without creating a class component, but also to handle validation of the community name within the form handling rather than delegating that task to the back-end model validation. This allows further flexibility for what we can validate, simplifies validation errors, and reduces the processing required by the server by allocating that processing to the user’s browser.
 
 ### Assets:
 [Plant Sprites](https://assage.itch.io/growing-plants-pixel-pack-32x32)
