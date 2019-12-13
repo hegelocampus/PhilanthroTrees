@@ -1,7 +1,7 @@
 # PhilanthroTrees
 **[The PhilanthroTrees Demo Site](https://philanthrotrees.herokuapp.com/)**
 ### Background and Overview
-PhilanthroTrees is a community-based volunteer task tracker that is inspired by Habitica. It is designed to encourage good service habits with a plant based reward and punishment motivation system. Each user's progress is represented with a tree which is grown through completing tasks and gaining experience. To hold users accountable, plant health can also be lost if tasks are not completed frequently enough, which might lead to a loss in progress. Group managers can also assign tasks to grow other plants in a Community Garden -- a visual representation of the group's volunteer progress.
+PhilanthroTrees is a volunteer task tracker that is inspired by Habitica. It is designed to encourage good service habits with a plant based reward and punishment motivation system. Each user's progress is represented with a tree which is grown through completing tasks and gaining experience. To hold users accountable, plant health can also be lost if tasks are not completed frequently enough, which might lead to a loss in progress. Users can also join a community, to share with friends about their progress.
 
 ### PHILANTHROTREES
 | **Table of Contents**                       |
@@ -14,8 +14,8 @@ PhilanthroTrees is a community-based volunteer task tracker that is inspired by 
 
 ### OVERVIEW
 
-PhilanthroTrees is a Habitica inspired community-volunteer tracker, designed to promote a sense of accomplishment among the communities citizens, as well as provide an aid in the administration of community works for teams, businesses, and organizations looking to better their society.  
-A Community’s citizens can invite other guests, and complete tasks to grow the plant in their care as well as contribute to the growth of each community project, both tangible and virtual!
+PhilanthroTrees is a Habitica inspired volunteer tracker, designed to promote a sense of accomplishment among for citizens by growing plants with every new task completed, as well as keeping a record of the tasks that users completed.  
+Citizens can invite others to join their community, each completing tasks to grow the plant in their care and share their milestones both tangible and virtual!
 
 ### Inspiration:
 [Habitica](https://habitica.com/user/settings/site)
@@ -43,18 +43,34 @@ Allows for rapid modular updating to specific Schema and provides an accessible 
 ### FEATURES
 #### Communities
 - Community citizens can send invites to any user that is PhilanthroTrees member as long as they provide the correct email address.  Citizens can also accept or decline invites to the Community of their choice.
-- Has many projects, which have many tasks
 #### Projects and Tasks
-- Projects are displayed as a list on each citizen’s main page.
-- Projects gain experience upon the submission of completed tasks by community citizens.
+- Projects are displayed as a list on each user’s main page.
+- Projects gain experience upon the submission of completed tasks by users.
 - Tasks can be created within the Project Show feature.
+
+  ![alt text][create]
+
+[create]: frontend/public/assets/images/task_create.png "Task Create Form"
+
 - Tasks can be submitted to give a user experience.
+
+  ![alt text][TaskSubmit]
+
+[TaskSubmit]: frontend/public/assets/images/task_submit.png "Task Submit Form"
+
+
 #### User and Project Experience and Sprites
 - User and project level are determined at render. The levels are then used to determine what sprite “level” needs to be rendered.
+
+  ![alt text][ProjectShow]
+
+[ProjectShow]: frontend/public/assets/images/philo_project_display.png "User and Project Cards"
+
 - Users gain experience, leveling up at each new threshold and providing nourishment to their plant Avatar.
 
 ### UPCOMING FEATURES
 - Multi-Community Access for citizens wishing to participate in other communities
+- Ability to view the growth of other community citizen's avatars and projects
 - More Citizen Avatars to choose from
 - Projects will display highest contributing citizens
 - Community Garden, displaying all the various projects, their current growth, as well as citizens and their current growth
