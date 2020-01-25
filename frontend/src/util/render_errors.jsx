@@ -6,7 +6,7 @@ import {
 import { useLocation } from 'react-router-dom';
 import { CLEAR_ERRORS } from '../actions/session_actions';
 
-export default (props) => {
+export default () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -14,7 +14,7 @@ export default (props) => {
     if (errors) {
       return Object.values(errors).map((error, idx) => {
         let errorArr = Array.isArray(error) ? error : Object.values(error);
-        if (errorArr[0]) {
+        if (errorArr[0] && !errorArr[0].message) {
           return <p key={idx}>{errorArr[0].toString()}</p>
         } else {
           return null;
