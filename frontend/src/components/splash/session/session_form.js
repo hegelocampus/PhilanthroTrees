@@ -4,6 +4,11 @@ import RenderErrors from '../../../util/render_errors';
 import { useDispatch } from 'react-redux';
 import { login, signup } from "../../../actions/session_actions";
 
+const GUEST_LOGIN = {
+  email: "test@test.com",
+  password: "testpass1"
+};
+
 export default ({ formType }) => {
   const dispatch = useDispatch();
   const process = (formType === 'login' ? login : signup);
@@ -20,7 +25,7 @@ export default ({ formType }) => {
         onSubmit={values => dispatch(process(values))}
         render={({ errors, status, touched }) => (
           <Form className="session-form">
-            {formType === 'signup' ? (
+            {formType === 'signup' && (
               <React.Fragment>
                 <p> Username must be between 2 and 30 characters. Choose wisely! Other members of your community will be able to see </p>
                 <Field
@@ -29,8 +34,6 @@ export default ({ formType }) => {
                   type='text'
                 />
               </React.Fragment>
-            ) : (
-              null
             )}
             <Field
               name='email'
@@ -68,10 +71,7 @@ export default ({ formType }) => {
                 <button
                   type="button"
                   onClick={(e) => {
-                    dispatch(login({
-                      email: "test@test.com",
-                      password: "testpass1"
-                    }))
+                    dispatch(login(GUEST_LOGIN))
                   }}
                   className="big-button"
                 >
