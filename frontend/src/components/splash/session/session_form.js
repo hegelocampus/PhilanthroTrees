@@ -26,14 +26,14 @@ export default ({ formType }) => {
       >
         <Form className="session-form">
           {formType === 'signup' && (
-            <React.Fragment>
+            <>
               <p> Username must be between 2 and 30 characters. Choose wisely! Other members of your community will be able to see </p>
               <Field
                 name='username'
                 placeholder='Username'
                 type='text'
               />
-            </React.Fragment>
+            </>
           )}
           <Field
             name='email'
