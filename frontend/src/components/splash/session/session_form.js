@@ -4,9 +4,9 @@ import RenderErrors from '../../../util/render_errors';
 import { useDispatch } from 'react-redux';
 import { login, signup } from "../../../actions/session_actions";
 
-export default (props) => {
+export default ({ formType }) => {
   const dispatch = useDispatch();
-
+  const process = (formType === 'login' ? login : signup);
   return (
     <React.Fragment>
       <RenderErrors />
@@ -17,17 +17,10 @@ export default (props) => {
           password: "",
           password2: ""
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          let process = (props.formType === 'login' ? login : signup);
-          dispatch(process(values)).then(
-            () => {
-              setSubmitting(false);
-            }
-          );
-        }}
-        render={({ errors, status, touched, isSubmitting }) => (
+        onSubmit={values => dispatch(process(values))}
+        render={({ errors, status, touched }) => (
           <Form className="session-form">
-            { props.formType === 'signup' ? (
+            {formType === 'signup' ? (
               <React.Fragment>
                 <p> Username must be between 2 and 30 characters. Choose wisely! Other members of your community will be able to see </p>
                 <Field
@@ -50,7 +43,7 @@ export default (props) => {
               type='password'
               required
             />
-            {(props.formType === 'signup' ? (
+            {formType === 'signup' ? (
               <>
                 <Field
                   name='password2'
@@ -59,7 +52,6 @@ export default (props) => {
                 />
                 <button
                   type='submit'
-                  disabled={ isSubmitting }
                   className="big-button"
                 >
                   Create Account
@@ -69,7 +61,6 @@ export default (props) => {
               <>
                 <button
                   type='submit'
-                  disabled={ isSubmitting }
                   className="big-button"
                 >
                   Sign In
@@ -82,13 +73,12 @@ export default (props) => {
                       password: "testpass1"
                     }))
                   }}
-                  disabled={ isSubmitting }
                   className="big-button"
                 >
                   Guest Login
                 </button>
               </>
-            ))}
+            )}
           </Form>
         )}
       />

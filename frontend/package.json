@@ -24,7 +24,7 @@
     "formik": "^1.5.8",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "rc-progress": "^2.5.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
