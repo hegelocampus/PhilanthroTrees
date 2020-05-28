@@ -1,6 +1,6 @@
 const sprites = {};
 function importAll (r) {
-  r.keys().forEach(key => sprites[key] = r(key));
+  r.keys().forEach(path => sprites[path] = r(path));
 }
 
 importAll(require.context(`../../../images/sprites/`, true, /\.png$/));
