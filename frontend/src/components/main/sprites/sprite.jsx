@@ -13,7 +13,7 @@ export default ({ level = 7, type = 'sprout' }) => {
       break
     }
     let parsedLvl = String(i).padStart(2, '0');
-    sprite = sprites[`./${type}/${type}_${parsedLvl}.png`];
+    sprite = sprites[`./${ type }/${ type }_${ parsedLvl }.png`];
   }
 
   return (
