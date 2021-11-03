@@ -43,7 +43,7 @@
     "pug": "^2.0.4",
     "sass": "^1.23.1",
     "typescript": "^3.6.4",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "pretty-quick": "^2.0.0"
