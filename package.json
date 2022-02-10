@@ -34,7 +34,7 @@
     "mongo-seeding": "^3.4.0-alpha.0",
     "mongoose": "^5.7.6",
     "morgan": "~1.9.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "node-sass-middleware": "^0.11.0",
     "nodemon": "^1.19.4",
     "passport": "^0.4.0",
